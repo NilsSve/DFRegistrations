@@ -49,9 +49,9 @@ CD_Popup_Object Registrations_sl is a dbModalPanel
         End_Object 
 
         Object oRegistrations_CODE is a cDbCJGridColumn
-            Entry_Item Registrations.CODE
-            Set piWidth to 250
-            Set psCaption to "Code"
+            Entry_Item Registrations.Product_Class
+            Set piWidth to 100
+            Set psCaption to "Product Class"
         End_Object 
 
         Object oRegistrations_USERS is a cDbCJGridColumn
