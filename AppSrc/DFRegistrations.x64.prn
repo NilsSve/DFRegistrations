@@ -1,0 +1,4000 @@
+Compiling Program: C:\Projects\DF20\DFRegistrations\AppSrc\DFRegistrations.src
+Memory Available: 102182547456
+1>Use DFAllEnt.pkg
+Using pre-compiled package DFALLENT.PKG
+Including file: dfallent.x64.pkd    (C:\Program Files\DataFlex 23.0\Pkg\dfallent.x64.pkd)
+73414>Use cCJStandardCommandBarSystem.pkg
+Including file: cCJStandardCommandBarSystem.pkg    (C:\Program Files\DataFlex 23.0\Pkg\cCJStandardCommandBarSystem.pkg)
+73414>>>// these are all the packages used in a standard MDI menubar/toolbar system
+73414>>>
+73414>>>Use cCJCommandBarSystem.pkg
+73414>>>Use cCJStandardMenuItemClasses.pkg
+Including file: cCJStandardMenuItemClasses.pkg    (C:\Program Files\DataFlex 23.0\Pkg\cCJStandardMenuItemClasses.pkg)
+73414>>>>>Use Dfpanel.pkg
+73414>>>>>Use cCJCommandBarSystem.pkg
+73414>>>>>Use LanguageText.pkg
+73414>>>>>
+73414>>>>>
+73414>>>>>Class cCJUndoMenuItem is a cCJMenuItem
+73415>>>>>    
+73415>>>>>    Procedure Construct_Object
+73417>>>>>        Forward Send Construct_Object
+73419>>>>>        Set psCaption   to C_$CaptionUndo
+73420>>>>>        Set psToolTip to C_$ToolTipUndo
+73421>>>>>        Set psDescription to C_$DescUndo
+73422>>>>>        Set psImage to "ActionUndo.ico"
+73423>>>>>        Set pbActiveUpdate to True
+73424>>>>>        Set psCategory to C_$CategoryEdit
+73425>>>>>        Set psShortcut to C_$Key_Ctrl_Z
+73426>>>>>    End_Procedure
+73427>>>>>    
+73427>>>>>    Procedure OnExecute Variant vCommandBarControl
+73429>>>>>        Send Undo of (focus(Self))
+73430>>>>>    End_Procedure
+73431>>>>>    
+73431>>>>>    Function IsEnabled Returns Boolean
+73433>>>>>        Boolean bEnabled
+73433>>>>>        Get CanUndo of (Focus(Self)) to bEnabled
+73434>>>>>        Function_Return bEnabled
+73435>>>>>    End_Function
+73436>>>>>    
+73436>>>>>End_Class
+73437>>>>>
+73437>>>>>
+73437>>>>>Class cCJDeleteEditMenuItem is a cCJMenuItem
+73438>>>>>    
+73438>>>>>    Procedure Construct_Object
+73440>>>>>        Forward Send Construct_Object
+73442>>>>>        Set psCaption   to C_$CaptionDelete
+73443>>>>>        Set psToolTip to C_$ToolTipDelete
+73444>>>>>        Set psDescription to C_$DescDelete
+73445>>>>>        Set psImage to "actionDelete.ico"
+73446>>>>>        Set psShortcut to C_$Key_Delete
+73447>>>>>        Set pbActiveUpdate to True
+73448>>>>>        Set psCategory to C_$CategoryEdit
+73449>>>>>    End_Procedure
+73450>>>>>    
+73450>>>>>    
+73450>>>>>    Procedure OnExecute Variant vCommandBarControl
+73452>>>>>        Send Delete of (focus(Self))
+73453>>>>>    End_Procedure
+73454>>>>>    
+73454>>>>>    Function IsEnabled Returns Boolean
+73456>>>>>        Boolean bEnabled
+73456>>>>>        Get CanDelete of (Focus(Self)) to bEnabled
+73457>>>>>        Function_Return bEnabled
+73458>>>>>    End_Function
+73459>>>>>    
+73459>>>>>End_Class
+73460>>>>>
+73460>>>>>
+73460>>>>>Class cCJCutMenuItem is a cCJMenuItem
+73461>>>>>    
+73461>>>>>    Procedure Construct_Object
+73463>>>>>        Forward Send Construct_Object
+73465>>>>>        Set psCaption   to C_$CaptionCut
+73466>>>>>        Set psToolTip to C_$TooltipCut
+73467>>>>>        Set psDescription to C_$DescCut
+73468>>>>>        Set psImage to "actionCut.ico"
+73469>>>>>        Set psShortcut to C_$Key_Ctrl_X
+73470>>>>>        Set pbActiveUpdate to True
+73471>>>>>        Set psCategory to C_$CategoryEdit
+73472>>>>>    End_Procedure
+73473>>>>>    
+73473>>>>>    
+73473>>>>>    Procedure OnExecute Variant vCommandBarControl
+73475>>>>>        Send Cut of (focus(Self))
+73476>>>>>    End_Procedure
+73477>>>>>    
+73477>>>>>    Function IsEnabled Returns Boolean
+73479>>>>>        Boolean bEnabled
+73479>>>>>        Get CanCut of (Focus(Self)) to bEnabled
+73480>>>>>        Function_Return bEnabled
+73481>>>>>    End_Function
+73482>>>>>    
+73482>>>>>End_Class
+73483>>>>>
+73483>>>>>
+73483>>>>>Class cCJCopyMenuItem is a cCJMenuItem
+73484>>>>>    
+73484>>>>>    Procedure Construct_Object
+73486>>>>>        Forward Send Construct_Object
+73488>>>>>        Set psCaption   to C_$CaptionCopy
+73489>>>>>        Set psToolTip to C_$ToolTipCopy
+73490>>>>>        Set psDescription to C_$DescCopy
+73491>>>>>        Set psImage to "actionCopy.ico"
+73492>>>>>        Set psShortcut to C_$Key_Ctrl_C
+73493>>>>>        Set pbActiveUpdate to True
+73494>>>>>        Set psCategory to C_$CategoryEdit
+73495>>>>>    End_Procedure
+73496>>>>>    
+73496>>>>>    
+73496>>>>>    Procedure OnExecute Variant vCommandBarControl
+73498>>>>>        Send Copy of (focus(Self))
+73499>>>>>    End_Procedure
+73500>>>>>    
+73500>>>>>    Function IsEnabled Returns Boolean
+73502>>>>>        Boolean bEnabled
+73502>>>>>        Get CanCopy of (Focus(Self)) to bEnabled
+73503>>>>>        Function_Return bEnabled
+73504>>>>>    End_Function
+73505>>>>>    
+73505>>>>>End_Class
+73506>>>>>
+73506>>>>>
+73506>>>>>Class cCJPasteMenuItem is a cCJMenuItem
+73507>>>>>    
+73507>>>>>    Procedure Construct_Object
+73509>>>>>        Forward Send Construct_Object
+73511>>>>>        Set psCaption   to C_$CaptionPaste
+73512>>>>>        Set psToolTip to C_$ToolTipPaste
+73513>>>>>        Set psDescription to C_$DescPaste
+73514>>>>>        Set psImage to "actionPaste.ico"
+73515>>>>>        Set pbActiveUpdate to True
+73516>>>>>        Set psShortcut to C_$Key_Ctrl_V
+73517>>>>>        Set psCategory to C_$CategoryEdit
+73518>>>>>    End_Procedure
+73519>>>>>    
+73519>>>>>    
+73519>>>>>    Procedure OnExecute Variant vCommandBarControl
+73521>>>>>        Send Paste of (focus(Self))
+73522>>>>>    End_Procedure
+73523>>>>>    
+73523>>>>>    Function IsEnabled Returns Boolean
+73525>>>>>        Boolean bEnabled
+73525>>>>>        Get CanPaste of (Focus(Self)) to bEnabled
+73526>>>>>        Function_Return bEnabled
+73527>>>>>    End_Function
+73528>>>>>    
+73528>>>>>End_Class
+73529>>>>>
+73529>>>>>Class cCJSelectAllMenuItem is a cCJMenuItem
+73530>>>>>    
+73530>>>>>    Procedure Construct_Object
+73532>>>>>        Forward Send Construct_Object
+73534>>>>>        Set psCaption   to C_$CaptionSelectAll
+73535>>>>>        Set psToolTip to C_$ToolTipSelectAll
+73536>>>>>        Set psDescription to C_$DescSelectAll
+73537>>>>>        Set pbActiveUpdate to True
+73538>>>>>        Set psShortcut to C_$Key_Ctrl_A
+73539>>>>>        Set psCategory to C_$CategoryEdit
+73540>>>>>    End_Procedure
+73541>>>>>    
+73541>>>>>    
+73541>>>>>    Procedure OnExecute Variant vCommandBarControl
+73543>>>>>        Send Select_All of (focus(Self))
+73544>>>>>    End_Procedure
+73545>>>>>    
+73545>>>>>    Function IsEnabled Returns Boolean
+73547>>>>>        Boolean bEnabled
+73547>>>>>        Get CanSelect of (Focus(Self)) to bEnabled
+73548>>>>>        Function_Return bEnabled
+73549>>>>>    End_Function
+73550>>>>>    
+73550>>>>>End_Class
+73551>>>>>
+73551>>>>>
+73551>>>>>Class cCJExitMenuItem is a cCJMenuItem
+73552>>>>>    
+73552>>>>>    Procedure Construct_Object
+73554>>>>>        Forward Send Construct_Object
+73556>>>>>        Set psCaption to C_$CaptionExit
+73557>>>>>        Set psToolTip to C_$ToolTipExit
+73558>>>>>        Set psDescription to C_$ToolTipExit
+73559>>>>>        Set psShortcut to C_$Key_Alt_F4
+73560>>>>>        Set psCategory to C_$CategoryFile
+73561>>>>>    End_Procedure
+73562>>>>>    
+73562>>>>>    Procedure OnExecute Variant vCommandBarControl
+73564>>>>>        Send Exit_Application of Desktop
+73565>>>>>    End_Procedure
+73566>>>>>    
+73566>>>>>End_Class
+73567>>>>>
+73567>>>>>Class cCJHelpMenuItem is a cCJMenuItem
+73568>>>>>    
+73568>>>>>    Procedure Construct_Object
+73570>>>>>        Forward Send Construct_Object
+73572>>>>>        Set psCaption to C_$CaptionHelp
+73573>>>>>        Set psDescription to C_$ToolTipHelp
+73574>>>>>        Set psToolTip to C_$DescHelp
+73575>>>>>        Set psImage to "ActionHelp.ico"
+73576>>>>>        Set psShortcut to "F1"
+73577>>>>>        Set psCategory to C_$CategoryHelp
+73578>>>>>    End_Procedure
+73579>>>>>    
+73579>>>>>    Procedure OnExecute Variant vCommandBarControl
+73581>>>>>        Send Help of (Focus(Self))
+73582>>>>>    End_Procedure
+73583>>>>>    
+73583>>>>>End_Class
+73584>>>>>
+73584>>>>>Class cCJStatusbarMenuItem is a cCJMenuItem
+73585>>>>>    
+73585>>>>>    Procedure Construct_Object
+73587>>>>>        Forward Send Construct_Object
+73589>>>>>        Set psCaption to C_$CaptionAddStatusbar
+73590>>>>>        Set psToolTip to C_$ToolTipAddStatusbar
+73591>>>>>        Set psDescription to  C_$DescAddStatusbar
+73592>>>>>        Set psCategory to C_$CategoryWindow
+73593>>>>>    End_Procedure
+73594>>>>>    
+73594>>>>>    Procedure OnExecute Variant vCommandBarControl
+73596>>>>>        Handle hoCommandBars hoClientArea
+73596>>>>>        Get CommandBarSystemObject to hoCommandBars
+73597>>>>>        Get ClientAreaObject of hoCommandBars to hoClientArea
+73598>>>>>        If hoClientArea Begin
+73600>>>>>            // the clientarea's parent panel has message
+73600>>>>>            Send Toggle_StatusBar of (Parent(hoClientArea))
+73601>>>>>        End
+73601>>>>>>
+73601>>>>>    End_Procedure
+73602>>>>>    
+73602>>>>>    Function IsChecked Returns Boolean
+73604>>>>>        Boolean bOn
+73604>>>>>        Handle hoCommandBars hoClientArea
+73604>>>>>        Get CommandBarSystemObject to hoCommandBars
+73605>>>>>        Get ClientAreaObject of hoCommandBars to hoClientArea
+73606>>>>>        If hoClientArea Begin
+73608>>>>>            // the clientarea's parent panel has message
+73608>>>>>            Get StatusBar_State of (Parent(hoClientArea)) to bOn
+73609>>>>>        End
+73609>>>>>>
+73609>>>>>        Function_Return bOn
+73610>>>>>    End_Function
+73611>>>>>End_Class
+73612>>>>>
+73612>>>>>Class cCJAutoArrangeIconsMenuItem is a cCJMenuItem
+73613>>>>>    
+73613>>>>>    Procedure Construct_Object
+73615>>>>>        Forward Send Construct_Object
+73617>>>>>        Set psCaption to C_$CaptionAutoArrangeIcons
+73618>>>>>        Set psToolTip to C_$ToolTipAutoArrangeIcons
+73619>>>>>        Set psDescription to C_$DescAutoArrangeIcons
+73620>>>>>        Set psCategory to C_$CategoryWindow
+73621>>>>>    End_Procedure
+73622>>>>>    
+73622>>>>>    Procedure OnExecute Variant vCommandBarControl
+73624>>>>>        Handle hoCommandBars hoClientArea
+73624>>>>>        Get CommandBarSystemObject to hoCommandBars
+73625>>>>>        Get ClientAreaObject of hoCommandBars to hoClientArea
+73626>>>>>        If hoClientArea Begin
+73628>>>>>            // the clientarea's parent panel has message
+73628>>>>>            Send Toggle_Auto_Arrange_Icons of (Parent(hoClientArea))
+73629>>>>>        End
+73629>>>>>>
+73629>>>>>    End_Procedure
+73630>>>>>    
+73630>>>>>    Function IsChecked Returns Boolean
+73632>>>>>        Boolean bOn
+73632>>>>>        Handle hoCommandBars hoClientArea
+73632>>>>>        Get CommandBarSystemObject to hoCommandBars
+73633>>>>>        Get ClientAreaObject of hoCommandBars to hoClientArea
+73634>>>>>        If hoClientArea Begin
+73636>>>>>            // the clientarea's parent panel has message
+73636>>>>>            Get Auto_Arrange_Icons_State of (Parent(hoClientArea)) to bOn
+73637>>>>>        End
+73637>>>>>>
+73637>>>>>        Function_Return bOn
+73638>>>>>    End_Function
+73639>>>>>End_Class
+73640>>>>>
+73640>>>>>Class cCJRestoreMenusMenuItem is a cCJMenuItem
+73641>>>>>    
+73641>>>>>    Procedure Construct_Object
+73643>>>>>        Forward Send Construct_Object
+73645>>>>>        Set psCaption to C_$CaptionRestoreMenus
+73646>>>>>        Set psToolTip to C_$ToolTipRestoreMenus
+73647>>>>>        Set psDescription to C_$DescRestoreMenus
+73648>>>>>        Set psCategory to C_$CategoryWindow
+73649>>>>>    End_Procedure
+73650>>>>>    
+73650>>>>>    Procedure OnExecute Variant vCommandBarControl
+73652>>>>>        Handle hoCommandBars
+73652>>>>>        Get CommandBarSystemObject to hoCommandBars
+73653>>>>>        Send RestoreLayout of hoCommandBars
+73654>>>>>    End_Procedure
+73655>>>>>    
+73655>>>>>End_Class
+73656>>>>>
+73656>>>>>Class cCJCascadeMenuItem is a cCJMenuItem
+73657>>>>>    
+73657>>>>>    Procedure Construct_Object
+73659>>>>>        Forward Send Construct_Object
+73661>>>>>        Set psCaption to C_$CaptionCascade
+73662>>>>>        Set psToolTip to C_$ToolTipCascade
+73663>>>>>        Set psDescription to  C_$DescCascade
+73664>>>>>        Set psImage to "ActionCascade.ico"
+73665>>>>>        Set psCategory to C_$CategoryWindow
+73666>>>>>    End_Procedure
+73667>>>>>    
+73667>>>>>    Procedure OnExecute Variant vCommandBarControl
+73669>>>>>        Handle hoCommandBars hoClientArea
+73669>>>>>        Get CommandBarSystemObject to hoCommandBars
+73670>>>>>        Get ClientAreaObject of hoCommandBars to hoClientArea
+73671>>>>>        If hoClientArea Begin
+73673>>>>>            Send Cascade_Windows of hoClientArea
+73674>>>>>        End
+73674>>>>>>
+73674>>>>>    End_Procedure
+73675>>>>>End_Class
+73676>>>>>
+73676>>>>>Class cCJTileHorizontally is a cCJMenuItem
+73677>>>>>    
+73677>>>>>    Procedure Construct_Object
+73679>>>>>        Forward Send Construct_Object
+73681>>>>>        Set psCaption to C_$CaptionTileHorizontally
+73682>>>>>        Set psToolTip to C_$ToolTipTileHorizontally
+73683>>>>>        Set psDescription to  C_$DescTileHorizontally
+73684>>>>>        Set psImage to "ActionTileHorizontally.ico"
+73685>>>>>        Set psCategory to C_$CategoryWindow
+73686>>>>>    End_Procedure
+73687>>>>>    
+73687>>>>>    Procedure OnExecute Variant vCommandBarControl
+73689>>>>>        Handle hoCommandBars hoClientArea
+73689>>>>>        Get CommandBarSystemObject to hoCommandBars
+73690>>>>>        Get ClientAreaObject of hoCommandBars to hoClientArea
+73691>>>>>        If hoClientArea Begin
+73693>>>>>            Send Tile_Windows_Horizontal of hoClientArea
+73694>>>>>        End
+73694>>>>>>
+73694>>>>>    End_Procedure
+73695>>>>>End_Class
+73696>>>>>
+73696>>>>>Class cCJTileVertically is a cCJMenuItem
+73697>>>>>    
+73697>>>>>    Procedure Construct_Object
+73699>>>>>        Forward Send Construct_Object
+73701>>>>>        Set psCaption to C_$CaptionTileVertically
+73702>>>>>        Set psToolTip to C_$ToolTipTileVertically
+73703>>>>>        Set psDescription to  C_$DescTileVertically
+73704>>>>>        Set psImage to "ActionTileVertically.ico"
+73705>>>>>        Set psCategory to C_$CategoryWindow
+73706>>>>>    End_Procedure
+73707>>>>>    
+73707>>>>>    Procedure OnExecute Variant vCommandBarControl
+73709>>>>>        Handle hoCommandBars hoClientArea
+73709>>>>>        Get CommandBarSystemObject to hoCommandBars
+73710>>>>>        Get ClientAreaObject of hoCommandBars to hoClientArea
+73711>>>>>        If hoClientArea Begin
+73713>>>>>            Send Tile_Windows_Vertical of hoClientArea
+73714>>>>>        End
+73714>>>>>>
+73714>>>>>    End_Procedure
+73715>>>>>End_Class
+73716>>>>>
+73716>>>>>Class cCJMinimizeWindowsMenuItem is a cCJMenuItem
+73717>>>>>    
+73717>>>>>    Procedure Construct_Object
+73719>>>>>        Forward Send Construct_Object
+73721>>>>>        Set psCaption to C_$CaptionMinimizeWindows
+73722>>>>>        Set psToolTip to C_$ToolTipMinimizeWindows
+73723>>>>>        Set psDescription to  C_$DescMinimizeWindows
+73724>>>>>        Set psCategory to C_$CategoryWindow
+73725>>>>>    End_Procedure
+73726>>>>>    
+73726>>>>>    Procedure OnExecute Variant vCommandBarControl
+73728>>>>>        Handle hoCommandBars hoClientArea
+73728>>>>>        Get CommandBarSystemObject to hoCommandBars
+73729>>>>>        Get ClientAreaObject of hoCommandBars to hoClientArea
+73730>>>>>        If hoClientArea Begin
+73732>>>>>            // the clientarea's parent panel has message
+73732>>>>>            Send Minimize_all_Windows of (Parent(hoClientArea))
+73733>>>>>        End
+73733>>>>>>
+73733>>>>>    End_Procedure
+73734>>>>>End_Class
+73735>>>>>
+73735>>>>>
+73735>>>>>Class cCJRestoreWindowsMenuItem is a cCJMenuItem
+73736>>>>>    
+73736>>>>>    Procedure Construct_Object
+73738>>>>>        Forward Send Construct_Object
+73740>>>>>        Set psCaption to C_$CaptionRestoreWindows
+73741>>>>>        Set psToolTip to C_$ToolTipRestoreWindows
+73742>>>>>        Set psDescription to  C_$DescRestoreWindows
+73743>>>>>        Set psCategory to C_$CategoryWindow
+73744>>>>>    End_Procedure
+73745>>>>>    
+73745>>>>>    Procedure OnExecute Variant vCommandBarControl
+73747>>>>>        Handle hoCommandBars hoClientArea
+73747>>>>>        Get CommandBarSystemObject to hoCommandBars
+73748>>>>>        Get ClientAreaObject of hoCommandBars to hoClientArea
+73749>>>>>        If hoClientArea Begin
+73751>>>>>            // the clientarea's parent panel has message
+73751>>>>>            Send Restore_all_Windows of (Parent(hoClientArea))
+73752>>>>>        End
+73752>>>>>>
+73752>>>>>    End_Procedure
+73753>>>>>End_Class
+73754>>>>>
+73754>>>>>Class cCJArrangeIconsMenuItem is a cCJMenuItem
+73755>>>>>    
+73755>>>>>    Procedure Construct_Object
+73757>>>>>        Forward Send Construct_Object
+73759>>>>>        Set psCaption to C_$CaptionArrangeIcons
+73760>>>>>        Set psToolTip to C_$ToolTipArrangeIcons
+73761>>>>>        Set psDescription to  C_$DescArrangeIcons
+73762>>>>>        Set psCategory to C_$CategoryWindow
+73763>>>>>    End_Procedure
+73764>>>>>    
+73764>>>>>    Procedure OnExecute Variant vCommandBarControl
+73766>>>>>        Handle hoCommandBars hoClientArea
+73766>>>>>        Get CommandBarSystemObject to hoCommandBars
+73767>>>>>        Get ClientAreaObject of hoCommandBars to hoClientArea
+73768>>>>>        If hoClientArea Begin
+73770>>>>>            Send Arrange_Icons of hoClientArea
+73771>>>>>        End
+73771>>>>>>
+73771>>>>>    End_Procedure
+73772>>>>>    
+73772>>>>>End_Class
+73773>>>Use cCJAboutMenuItem.pkg
+Including file: cCJAboutMenuItem.pkg    (C:\Program Files\DataFlex 23.0\Pkg\cCJAboutMenuItem.pkg)
+73773>>>>>Use cCJCommandBarSystem.pkg
+73773>>>>>Use LanguageText.pkg
+73773>>>>>
+73773>>>>>// It is expected that if you use this class that you provide an about object that is
+73773>>>>>// activated via activate_about such as DfAbout.pkg. We don't use this for you automatically
+73773>>>>>// because you may wish to create your own custom about package.
+73773>>>>>
+73773>>>>>Class cCJAboutMenuItem is a cCJMenuItem    
+73774>>>>>
+73774>>>>>    Procedure Construct_Object
+73776>>>>>        Forward Send Construct_Object
+73778>>>>>        Set psCaption to C_$CaptionAbout
+73779>>>>>        Set psDescription to C_$ToolTipAbout
+73780>>>>>        Set psToolTip to C_$DescAbout
+73781>>>>>        Set psImage to "ActionAbout.ico"
+73782>>>>>        Set psCategory to C_$CategoryHelp
+73783>>>>>    End_Procedure
+73784>>>>>    
+73784>>>>>    Procedure OnExecute Variant vCommandBarControl
+73786>>>>>        Handle hoCommandBars hoClientArea
+73786>>>>>        Get CommandBarSystemObject to hoCommandBars
+73787>>>>>        Get ClientAreaObject of hoCommandBars to hoClientArea
+73788>>>>>        If hoClientArea Begin
+73790>>>>>            Send Activate_About of hoClientArea
+73791>>>>>        End
+73791>>>>>>
+73791>>>>>    End_Procedure
+73792>>>>>
+73792>>>>>End_Class
+73793>>>>>
+73793>>>>>
+73793>>>Use cCJDeoMenuItemClasses.pkg
+73793>>>Use cCJMDIWindowsMenuItem.pkg
+Including file: cCJMDIWindowsMenuItem.pkg    (C:\Program Files\DataFlex 23.0\Pkg\cCJMDIWindowsMenuItem.pkg)
+73793>>>>>Use cCJCommandBarSystem.pkg
+73793>>>>>
+73793>>>>>Register_Function Client_ID Returns Integer
+73793>>>>>
+73793>>>>>// only used by cCJMDIWIndowsMenuItem
+73793>>>>>Class cCJMDIWindowItem is a cCJMenuItem
+73794>>>>>    
+73794>>>>>    Procedure Construct_Object
+73796>>>>>        Forward Send Construct_Object
+73798>>>>>        Property Handle phWindow 0 // object id of view
+73799>>>>>        Set pbControlFlagNoMovable to True
+73800>>>>>        Set pbActiveUpdate to True
+73801>>>>>    End_Procedure
+73802>>>>>    
+73802>>>>>    Procedure OnExecute Variant vCommandBarControl
+73804>>>>>        Handle hWindow
+73804>>>>>        Get phWindow to hWindow
+73805>>>>>        Send Activate_View of hWindow
+73806>>>>>    End_Procedure
+73807>>>>>    
+73807>>>>>End_Class
+73808>>>>>
+73808>>>>>
+73808>>>>>Class cCJMDIWindowsMenuItem is a cCJMenuItem
+73809>>>>>    
+73809>>>>>    Procedure Construct_Object
+73811>>>>>        Forward Send Construct_Object
+73813>>>>>        Property Handle[] phArrayOfWindows
+73814>>>>>        Set peControlType to xtpControlPopup
+73815>>>>>        Set psCategory to C_$CategoryWindow
+73816>>>>>    End_Procedure
+73817>>>>>    
+73817>>>>>    // This adds MDI windows to the existing menu items.
+73817>>>>>    // This removes any existing windows menus and always adds a new set to the end
+73817>>>>>    
+73817>>>>>    Procedure OnPopupInit Variant vCommandBarControl Handle hCommandBarControls
+73819>>>>>        Handle  hClientArea hView
+73819>>>>>        String  sLabel
+73819>>>>>        Integer i iWindows
+73819>>>>>        Handle[] hArrayOfWindows
+73820>>>>>        Variant vItem
+73820>>>>>        
+73820>>>>>        // delete all windows actions and menu items. Assume we have an array of DF action objects for the windows
+73820>>>>>        // also assume that destroying an action removes all menu instances of that action
+73820>>>>>        Get phArrayOfWindows to hArrayOfWindows
+73821>>>>>        Move (SizeOfArray(hArrayOfWindows)) to iWindows
+73822>>>>>        For i from 0 to (iWindows-1)
+73828>>>>>>
+73828>>>>>            Send Destroy of hArrayOfWindows[i] // assume this removes all menu items of this action
+73829>>>>>        Loop
+73830>>>>>>
+73830>>>>>        Move (ResizeArray(hArrayOfWindows,0)) to hArrayOfWindows
+73831>>>>>        
+73831>>>>>        // Add all views to this menu. Create the action and add the item
+73831>>>>>        Move 0 to i
+73832>>>>>        Get Client_Id to hClientArea // object id of client area
+73833>>>>>        If (hClientArea > 0) Begin
+73835>>>>>            Get Next_Mdi_Dialog of hClientArea True to hView // find first view
+73836>>>>>            While (hView <> 0)
+73840>>>>>                If (Active_State(hView)) Begin
+73842>>>>>                    // create the action
+73842>>>>>                    Get Create U_cCJMDIWindowItem to hArrayOfWindows[i]
+73843>>>>>                    Get Label of hView to sLabel // caption bar (name) of view
+73844>>>>>                    Set psCaption of hArrayOfWindows[i] to sLabel
+73845>>>>>                    Set psDescription of hArrayOfWindows[i] to ("Make this view (" - trim(sLabel) - ") the active window.")
+73846>>>>>                    If (current_scope(desktop)=hView and View_mode(hView)<>VIEWMODE_ICONIZE) Begin
+73848>>>>>                        Set pbChecked of hArrayOfWindows[i] to True
+73849>>>>>                    End
+73849>>>>>>
+73849>>>>>                    Set phWindow of hArrayOfWindows[i] to hView // used by custom OnExecute
+73850>>>>>                    If (i=0) Begin
+73852>>>>>                        Set pbControlBeginGroup of hArrayOfWindows[i] to True
+73853>>>>>                    End
+73853>>>>>>
+73853>>>>>                    // Create a menu item for this action
+73853>>>>>                    Get AddDynamicControl of hArrayOfWindows[i] hCommandBarControls to vItem
+73854>>>>>                    Increment i
+73855>>>>>                End
+73855>>>>>>
+73855>>>>>                Get Next_Mdi_Dialog of hClientArea False to hView // find next
+73856>>>>>            Loop
+73857>>>>>>
+73857>>>>>        End
+73857>>>>>>
+73857>>>>>        
+73857>>>>>        Set phArrayOfWindows to hArrayOfWindows
+73858>>>>>        
+73858>>>>>    End_Procedure
+73859>>>>>    
+73859>>>>>End_Class
+73860>
+73860>Object oHtmlHelp is a cHtmlHelp
+73862>End_Object
+73863>
+73863>Object oApplication is a cApplication
+73865>    Set peHelpType to htHtmlHelp
+73866>    Set psCompany to "RDC Tools International"
+73867>    Set psProduct to "DFRegistrations"
+73868>    Set psVersion to "2023"
+73869>    
+73869>    Object oConnection is a cConnection
+73871>        Use LoginEncryption.pkg
+Including file: LoginEncryption.pkg    (C:\Program Files\DataFlex 23.0\Pkg\LoginEncryption.pkg)
+73871>>>Use cLoginEncryption.pkg
+Including file: cLoginEncryption.pkg    (C:\Program Files\DataFlex 23.0\Pkg\cLoginEncryption.pkg)
+73871>>>>>Use cCryptographerEx.pkg
+Including file: cCryptographerEx.pkg    (C:\Program Files\DataFlex 23.0\Pkg\cCryptographerEx.pkg)
+73871>>>>>>>Use VdfBase.pkg
+73871>>>>>>>
+73871>>>>>>>Use CryptographerConstants.pkg
+Including file: CryptographerConstants.pkg    (C:\Program Files\DataFlex 23.0\Pkg\CryptographerConstants.pkg)
+73871>>>>>>>>>//   Author  : Ulbe Stellema
+73871>>>>>>>>>// Algorithm classes
+73871>>>>>>>>>Define ALG_CLASS_ANY                    for |CI$00000000 // (0)
+73871>>>>>>>>>Define ALG_CLASS_SIGNATURE              for |CI$00002000 // (1 << 13)
+73871>>>>>>>>>Define ALG_CLASS_MSG_ENCRYPT            for |CI$00004000 // (2 << 13)
+73871>>>>>>>>>Define ALG_CLASS_DATA_ENCRYPT           for |CI$00006000 // (3 << 13)
+73871>>>>>>>>>Define ALG_CLASS_HASH                   for |CI$00008000 // (4 << 13)
+73871>>>>>>>>>Define ALG_CLASS_KEY_EXCHANGE           for |CI$0000A000 // (5 << 13)
+73871>>>>>>>>>Define ALG_CLASS_ALL                    for |CI$0000E000 // (7 << 13)
+73871>>>>>>>>>
+73871>>>>>>>>>// Algorithm types
+73871>>>>>>>>>Define ALG_TYPE_ANY                     for |CI$00000000 // (0)
+73871>>>>>>>>>Define ALG_TYPE_DSS                     for |CI$00000200 // (1 << 9)
+73871>>>>>>>>>Define ALG_TYPE_RSA                     for |CI$00000400 // (2 << 9)
+73871>>>>>>>>>Define ALG_TYPE_BLOCK                   for |CI$00000600 // (3 << 9)
+73871>>>>>>>>>Define ALG_TYPE_STREAM                  for |CI$00000800 // (4 << 9)
+73871>>>>>>>>>Define ALG_TYPE_DH                      for |CI$00000A00 // (5 << 9)
+73871>>>>>>>>>Define ALG_TYPE_SECURECHANNEL           for |CI$00000C00 // (6 << 9)
+73871>>>>>>>>>
+73871>>>>>>>>>// Generic sub-ids
+73871>>>>>>>>>Define ALG_SID_ANY                      for |CI$00000000 // (0)
+73871>>>>>>>>>
+73871>>>>>>>>>// RSA sub-ids
+73871>>>>>>>>>Define ALG_SID_RSA_ANY                  for 0
+73871>>>>>>>>>Define ALG_SID_RSA_PKCS                 for 1
+73871>>>>>>>>>Define ALG_SID_RSA_MSATWORK             for 2
+73871>>>>>>>>>Define ALG_SID_RSA_ENTRUST              for 3
+73871>>>>>>>>>Define ALG_SID_RSA_PGP                  for 4
+73871>>>>>>>>>
+73871>>>>>>>>>// DSS sub-ids
+73871>>>>>>>>>Define ALG_SID_DSS_ANY                  for 0
+73871>>>>>>>>>Define ALG_SID_DSS_PKCS                 for 1
+73871>>>>>>>>>Define ALG_SID_DSS_DMS                  for 2
+73871>>>>>>>>>
+73871>>>>>>>>>// DES sub_ids
+73871>>>>>>>>>Define ALG_SID_DES                      for 1
+73871>>>>>>>>>Define ALG_SID_3DES                     for 3
+73871>>>>>>>>>Define ALG_SID_DESX                     for 4
+73871>>>>>>>>>Define ALG_SID_IDEA                     for 5
+73871>>>>>>>>>Define ALG_SID_CAST                     for 6
+73871>>>>>>>>>Define ALG_SID_SAFERSK64                for 7
+73871>>>>>>>>>Define ALG_SID_SAFERSK128               for 8
+73871>>>>>>>>>Define ALG_SID_3DES_112                 for 9
+73871>>>>>>>>>Define ALG_SID_CYLINK_MEK               for 12
+73871>>>>>>>>>Define ALG_SID_RC5                      for 13
+73871>>>>>>>>>Define ALG_SID_AES_128                  for 14
+73871>>>>>>>>>Define ALG_SID_AES_192                  for 15
+73871>>>>>>>>>Define ALG_SID_AES_256                  for 16
+73871>>>>>>>>>Define ALG_SID_AES                      for 17
+73871>>>>>>>>>
+73871>>>>>>>>>// Fortezza sub-ids
+73871>>>>>>>>>Define ALG_SID_SKIPJACK                 for 10
+73871>>>>>>>>>Define ALG_SID_TEK                      for 11
+73871>>>>>>>>>
+73871>>>>>>>>>// RC2 sub-ids
+73871>>>>>>>>>Define ALG_SID_RC2                      for 2
+73871>>>>>>>>>
+73871>>>>>>>>>// Stream cipher sub-ids
+73871>>>>>>>>>Define ALG_SID_RC4                      for 1
+73871>>>>>>>>>Define ALG_SID_SEAL                     for 2
+73871>>>>>>>>>
+73871>>>>>>>>>// Diffie-Hellman sub-ids
+73871>>>>>>>>>Define ALG_SID_DH_SANDF                 for 1
+73871>>>>>>>>>Define ALG_SID_DH_EPHEM                 for 2
+73871>>>>>>>>>Define ALG_SID_AGREED_KEY_ANY           for 3
+73871>>>>>>>>>Define ALG_SID_KEA                      for 4
+73871>>>>>>>>>
+73871>>>>>>>>>// Hash sub ids
+73871>>>>>>>>>Define ALG_SID_MD2                      for 1
+73871>>>>>>>>>Define ALG_SID_MD4                      for 2
+73871>>>>>>>>>Define ALG_SID_MD5                      for 3
+73871>>>>>>>>>Define ALG_SID_SHA                      for 4
+73871>>>>>>>>>Define ALG_SID_SHA1                     for 4
+73871>>>>>>>>>Define ALG_SID_MAC                      for 5
+73871>>>>>>>>>Define ALG_SID_RIPEMD                   for 6
+73871>>>>>>>>>Define ALG_SID_RIPEMD160                for 7
+73871>>>>>>>>>Define ALG_SID_SSL3SHAMD5               for 8
+73871>>>>>>>>>Define ALG_SID_HMAC                     for 9
+73871>>>>>>>>>Define ALG_SID_TLS1PRF                  for 10
+73871>>>>>>>>>Define ALG_SID_HASH_REPLACE_OWF         for 11
+73871>>>>>>>>>Define ALG_SID_SHA_256                  for 12
+73871>>>>>>>>>Define ALG_SID_SHA_384                  for 13
+73871>>>>>>>>>Define ALG_SID_SHA_512                  for 14
+73871>>>>>>>>>
+73871>>>>>>>>>// secure channel sub ids
+73871>>>>>>>>>Define ALG_SID_SSL3_MASTER              for 1
+73871>>>>>>>>>Define ALG_SID_SCHANNEL_MASTER_HASH     for 2
+73871>>>>>>>>>Define ALG_SID_SCHANNEL_MAC_KEY         for 3
+73871>>>>>>>>>Define ALG_SID_PCT1_MASTER              for 4
+73871>>>>>>>>>Define ALG_SID_SSL2_MASTER              for 5
+73871>>>>>>>>>Define ALG_SID_TLS1_MASTER              for 6
+73871>>>>>>>>>Define ALG_SID_SCHANNEL_ENC_KEY         for 7
+73871>>>>>>>>>
+73871>>>>>>>>>// algorithm identifier definitions
+73871>>>>>>>>>Define CALG_MD2                         for (ALG_CLASS_HASH ior ALG_TYPE_ANY ior ALG_SID_MD2)
+73871>>>>>>>>>Define CALG_MD4                         for (ALG_CLASS_HASH ior ALG_TYPE_ANY ior ALG_SID_MD4)
+73871>>>>>>>>>Define CALG_MD5                         for (ALG_CLASS_HASH ior ALG_TYPE_ANY ior ALG_SID_MD5)
+73871>>>>>>>>>Define CALG_SHA                         for (ALG_CLASS_HASH ior ALG_TYPE_ANY ior ALG_SID_SHA)
+73871>>>>>>>>>Define CALG_SHA1                        for (ALG_CLASS_HASH ior ALG_TYPE_ANY ior ALG_SID_SHA1)
+73871>>>>>>>>>Define CALG_MAC                         for (ALG_CLASS_HASH ior ALG_TYPE_ANY ior ALG_SID_MAC)
+73871>>>>>>>>>Define CALG_RSA_SIGN                    for (ALG_CLASS_SIGNATURE ior ALG_TYPE_RSA ior ALG_SID_RSA_ANY)
+73871>>>>>>>>>Define CALG_DSS_SIGN                    for (ALG_CLASS_SIGNATURE ior ALG_TYPE_DSS ior ALG_SID_DSS_ANY)
+73871>>>>>>>>>Define CALG_NO_SIGN                     for (ALG_CLASS_SIGNATURE ior ALG_TYPE_ANY ior ALG_SID_ANY)
+73871>>>>>>>>>Define CALG_RSA_KEYX                    for (ALG_CLASS_KEY_EXCHANGE ior ALG_TYPE_RSA ior ALG_SID_RSA_ANY)
+73871>>>>>>>>>Define CALG_DES                         for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_BLOCK ior ALG_SID_DES)
+73871>>>>>>>>>Define CALG_3DES_112                    for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_BLOCK ior ALG_SID_3DES_112)
+73871>>>>>>>>>Define CALG_3DES                        for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_BLOCK ior ALG_SID_3DES)
+73871>>>>>>>>>Define CALG_DESX                        for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_BLOCK ior ALG_SID_DESX)
+73871>>>>>>>>>Define CALG_RC2                         for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_BLOCK ior ALG_SID_RC2)
+73871>>>>>>>>>Define CALG_RC4                         for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_STREAM ior ALG_SID_RC4)
+73871>>>>>>>>>Define CALG_SEAL                        for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_STREAM ior ALG_SID_SEAL)
+73871>>>>>>>>>Define CALG_DH_SF                       for (ALG_CLASS_KEY_EXCHANGE ior ALG_TYPE_DH ior ALG_SID_DH_SANDF)
+73871>>>>>>>>>Define CALG_DH_EPHEM                    for (ALG_CLASS_KEY_EXCHANGE ior ALG_TYPE_DH ior ALG_SID_DH_EPHEM)
+73871>>>>>>>>>Define CALG_AGREEDKEY_ANY               for (ALG_CLASS_KEY_EXCHANGE ior ALG_TYPE_DH ior ALG_SID_AGREED_KEY_ANY)
+73871>>>>>>>>>Define CALG_KEA_KEYX                    for (ALG_CLASS_KEY_EXCHANGE ior ALG_TYPE_DH ior ALG_SID_KEA)
+73871>>>>>>>>>Define CALG_HUGHES_MD5                  for (ALG_CLASS_KEY_EXCHANGE ior ALG_TYPE_ANY ior ALG_SID_MD5)
+73871>>>>>>>>>Define CALG_SKIPJACK                    for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_BLOCK ior ALG_SID_SKIPJACK)
+73871>>>>>>>>>Define CALG_TEK                         for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_BLOCK ior ALG_SID_TEK)
+73871>>>>>>>>>Define CALG_CYLINK_MEK                  for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_BLOCK ior ALG_SID_CYLINK_MEK)
+73871>>>>>>>>>Define CALG_SSL3_SHAMD5                 for (ALG_CLASS_HASH ior ALG_TYPE_ANY ior ALG_SID_SSL3SHAMD5)
+73871>>>>>>>>>Define CALG_SSL3_MASTER                 for (ALG_CLASS_MSG_ENCRYPT ior ALG_TYPE_SECURECHANNEL ior ALG_SID_SSL3_MASTER)
+73871>>>>>>>>>Define CALG_SCHANNEL_MASTER_HASH        for (ALG_CLASS_MSG_ENCRYPT ior ALG_TYPE_SECURECHANNEL ior ALG_SID_SCHANNEL_MASTER_HASH)
+73871>>>>>>>>>Define CALG_SCHANNEL_MAC_KEY            for (ALG_CLASS_MSG_ENCRYPT ior ALG_TYPE_SECURECHANNEL ior ALG_SID_SCHANNEL_MAC_KEY)
+73871>>>>>>>>>Define CALG_SCHANNEL_ENC_KEY            for (ALG_CLASS_MSG_ENCRYPT ior ALG_TYPE_SECURECHANNEL ior ALG_SID_SCHANNEL_ENC_KEY)
+73871>>>>>>>>>Define CALG_PCT1_MASTER                 for (ALG_CLASS_MSG_ENCRYPT ior ALG_TYPE_SECURECHANNEL ior ALG_SID_PCT1_MASTER)
+73871>>>>>>>>>Define CALG_SSL2_MASTER                 for (ALG_CLASS_MSG_ENCRYPT ior ALG_TYPE_SECURECHANNEL ior ALG_SID_SSL2_MASTER)
+73871>>>>>>>>>Define CALG_TLS1_MASTER                 for (ALG_CLASS_MSG_ENCRYPT ior ALG_TYPE_SECURECHANNEL ior ALG_SID_TLS1_MASTER)
+73871>>>>>>>>>Define CALG_RC5                         for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_BLOCK ior ALG_SID_RC5)
+73871>>>>>>>>>Define CALG_HMAC                        for (ALG_CLASS_HASH ior ALG_TYPE_ANY ior ALG_SID_HMAC)
+73871>>>>>>>>>Define CALG_TLS1PRF                     for (ALG_CLASS_HASH ior ALG_TYPE_ANY ior ALG_SID_TLS1PRF)
+73871>>>>>>>>>Define CALG_HASH_REPLACE_OWF            for (ALG_CLASS_HASH ior ALG_TYPE_ANY ior ALG_SID_HASH_REPLACE_OWF)
+73871>>>>>>>>>Define CALG_AES_128                     for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_BLOCK ior ALG_SID_AES_128)
+73871>>>>>>>>>Define CALG_AES_192                     for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_BLOCK ior ALG_SID_AES_192)
+73871>>>>>>>>>Define CALG_AES_256                     for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_BLOCK ior ALG_SID_AES_256)
+73871>>>>>>>>>Define CALG_AES                         for (ALG_CLASS_DATA_ENCRYPT ior ALG_TYPE_BLOCK ior ALG_SID_AES)
+73871>>>>>>>>>Define CALG_SHA_256                     for (ALG_CLASS_HASH ior ALG_TYPE_ANY ior ALG_SID_SHA_256)
+73871>>>>>>>>>Define CALG_SHA_384                     for (ALG_CLASS_HASH ior ALG_TYPE_ANY ior ALG_SID_SHA_384)
+73871>>>>>>>>>Define CALG_SHA_512                     for (ALG_CLASS_HASH ior ALG_TYPE_ANY ior ALG_SID_SHA_512)
+73871>>>>>>>>>
+73871>>>>>>>>>// Providers
+73871>>>>>>>>>Define MS_DEF_PROV                      for "Microsoft Base Cryptographic Provider v1.0"
+73871>>>>>>>>>Define MS_ENHANCED_PROV                 for "Microsoft Enhanced Cryptographic Provider v1.0"
+73871>>>>>>>>>Define MS_STRONG_PROV                   for "Microsoft Strong Cryptographic Provider"
+73871>>>>>>>>>Define MS_DEF_RSA_SIG_PROV              for "Microsoft RSA Signature Cryptographic Provider"
+73871>>>>>>>>>Define MS_DEF_RSA_SCHANNEL_PROV         for "Microsoft RSA SChannel Cryptographic Provider"
+73871>>>>>>>>>Define MS_DEF_DSS_PROV                  for "Microsoft Base DSS Cryptographic Provider"
+73871>>>>>>>>>Define MS_DEF_DSS_DH_PROV               for "Microsoft Base DSS and Diffie-Hellman Cryptographic Provider"
+73871>>>>>>>>>Define MS_ENH_DSS_DH_PROV               for "Microsoft Enhanced DSS and Diffie-Hellman Cryptographic Provider"
+73871>>>>>>>>>Define MS_DEF_DH_SCHANNEL_PROV          for "Microsoft DH SChannel Cryptographic Provider"
+73871>>>>>>>>>Define MS_SCARD_PROV                    for "Microsoft Base Smart Card Crypto Provider"
+73871>>>>>>>>>Define MS_ENH_RSA_AES_PROV              for "Microsoft Enhanced RSA and AES Cryptographic Provider"
+73871>>>>>>>>>
+73871>>>>>>>>>// dwFlags definitions for CryptAcquireContext
+73871>>>>>>>>>Define CRYPT_VERIFYCONTEXT              for |CI$F0000000
+73871>>>>>>>>>Define CRYPT_NEWKEYSET                  for |CI$00000008
+73871>>>>>>>>>Define CRYPT_DELETEKEYSET               for |CI$00000010
+73871>>>>>>>>>Define CRYPT_MACHINE_KEYSET             for |CI$00000020
+73871>>>>>>>>>Define CRYPT_SILENT                     for |CI$00000040
+73871>>>>>>>>>
+73871>>>>>>>>>// dwFlag definitions for CryptGenKey
+73871>>>>>>>>>Define CRYPT_EXPORTABLE                 for |CI$00000001
+73871>>>>>>>>>Define CRYPT_USER_PROTECTED             for |CI$00000002
+73871>>>>>>>>>Define CRYPT_CREATE_SALT                for |CI$00000004
+73871>>>>>>>>>Define CRYPT_UPDATE_KEY                 for |CI$00000008
+73871>>>>>>>>>Define CRYPT_NO_SALT                    for |CI$00000010
+73871>>>>>>>>>Define CRYPT_PREGEN                     for |CI$00000040
+73871>>>>>>>>>Define CRYPT_RECIPIENT                  for |CI$00000010
+73871>>>>>>>>>Define CRYPT_INITIATOR                  for |CI$00000040
+73871>>>>>>>>>Define CRYPT_ONLINE                     for |CI$00000080
+73871>>>>>>>>>Define CRYPT_SF                         for |CI$00000100
+73871>>>>>>>>>Define CRYPT_CREATE_IV                  for |CI$00000200
+73871>>>>>>>>>Define CRYPT_KEK                        for |CI$00000400
+73871>>>>>>>>>Define CRYPT_DATA_KEY                   for |CI$00000800
+73871>>>>>>>>>Define CRYPT_VOLATILE                   for |CI$00001000
+73871>>>>>>>>>Define CRYPT_SGCKEY                     for |CI$00002000
+73871>>>>>>>>>Define CRYPT_ARCHIVABLE                 for |CI$00004000
+73871>>>>>>>>>
+73871>>>>>>>>>// Provider types
+73871>>>>>>>>>Define PROV_RSA_FULL                    for 1
+73871>>>>>>>>>Define PROV_RSA_SIG                     for 2
+73871>>>>>>>>>Define PROV_DSS                         for 3
+73871>>>>>>>>>Define PROV_FORTEZZA                    for 4
+73871>>>>>>>>>Define PROV_MS_EXCHANGE                 for 5
+73871>>>>>>>>>Define PROV_SSL                         for 6
+73871>>>>>>>>>Define PROV_RSA_SCHANNEL                for 12
+73871>>>>>>>>>Define PROV_DSS_DH                      for 13
+73871>>>>>>>>>Define PROV_EC_ECDSA_SIG                for 14
+73871>>>>>>>>>Define PROV_EC_ECNRA_SIG                for 15
+73871>>>>>>>>>Define PROV_EC_ECDSA_FULL               for 16
+73871>>>>>>>>>Define PROV_EC_ECNRA_FULL               for 17
+73871>>>>>>>>>Define PROV_DH_SCHANNEL                 for 18
+73871>>>>>>>>>Define PROV_SPYRUS_LYNKS                for 20
+73871>>>>>>>>>Define PROV_RNG                         for 21
+73871>>>>>>>>>Define PROV_INTEL_SEC                   for 22
+73871>>>>>>>>>Define PROV_REPLACE_OWF                 for 23
+73871>>>>>>>>>Define PROV_RSA_AES                     for 24
+73871>>>>>>>>>
+73871>>>>>>>>>// KP_MODE
+73871>>>>>>>>>// KP_MODE
+73871>>>>>>>>>Define CRYPT_MODE_CBC                   for 1       // Cipher block chaining
+73871>>>>>>>>>Define CRYPT_MODE_ECB                   for 2       // Electronic code book
+73871>>>>>>>>>Define CRYPT_MODE_OFB                   for 3       // Output feedback mode
+73871>>>>>>>>>Define CRYPT_MODE_CFB                   for 4       // Cipher feedback mode
+73871>>>>>>>>>Define CRYPT_MODE_CTS                   for 5       // Ciphertext stealing mode
+73871>>>>>>>>>Define CRYPT_MODE_CBCI                  for 6       // ANSI CBC Interleaved
+73871>>>>>>>>>Define CRYPT_MODE_CFBP                  for 7       // ANSI CFB Pipelined
+73871>>>>>>>>>Define CRYPT_MODE_OFBP                  for 8       // ANSI OFB Pipelined
+73871>>>>>>>>>Define CRYPT_MODE_CBCOFM                for 9       // ANSI CBC + OF Masking
+73871>>>>>>>>>Define CRYPT_MODE_CBCOFMI               for 10      // ANSI CBC + OFM Interleaved
+73871>>>>>>>>>
+73871>>>>>>>>>// dwParam definitions for CryptGetKeyParam
+73871>>>>>>>>>Define KP_IV                            for 1       // Initialization vector
+73871>>>>>>>>>Define KP_SALT                          for 2       // Salt value
+73871>>>>>>>>>Define KP_PADDING                       for 3       // Padding values
+73871>>>>>>>>>Define KP_MODE                          for 4       // Mode of the cipher
+73871>>>>>>>>>Define KP_MODE_BITS                     for 5       // Number of bits to feedback
+73871>>>>>>>>>Define KP_PERMISSIONS                   for 6       // Key permissions DWORD
+73871>>>>>>>>>Define KP_ALGID                         for 7       // Key algorithm
+73871>>>>>>>>>Define KP_BLOCKLEN                      for 8       // Block size of the cipher
+73871>>>>>>>>>Define KP_KEYLEN                        for 9       // Length of key in bits
+73871>>>>>>>>>Define KP_SALT_EX                       for 10      // Length of salt in bytes
+73871>>>>>>>>>Define KP_P                             for 11      // DSS/Diffie-Hellman P value
+73871>>>>>>>>>Define KP_G                             for 12      // DSS/Diffie-Hellman G value
+73871>>>>>>>>>Define KP_Q                             for 13      // DSS Q value
+73871>>>>>>>>>Define KP_X                             for 14      // Diffie-Hellman X value
+73871>>>>>>>>>Define KP_Y                             for 15      // Y value
+73871>>>>>>>>>Define KP_RA                            for 16      // Fortezza RA value
+73871>>>>>>>>>Define KP_RB                            for 17      // Fortezza RB value
+73871>>>>>>>>>Define KP_INFO                          for 18      // for putting information into an RSA envelope
+73871>>>>>>>>>Define KP_EFFECTIVE_KEYLEN              for 19      // setting and getting RC2 effective key length
+73871>>>>>>>>>Define KP_SCHANNEL_ALG                  for 20      // for setting the Secure Channel algorithms
+73871>>>>>>>>>Define KP_CLIENT_RANDOM                 for 21      // for setting the Secure Channel client random data
+73871>>>>>>>>>Define KP_SERVER_RANDOM                 for 22      // for setting the Secure Channel server random data
+73871>>>>>>>>>Define KP_RP                            for 23
+73871>>>>>>>>>Define KP_PRECOMP_MD5                   for 24
+73871>>>>>>>>>Define KP_PRECOMP_SHA                   for 25
+73871>>>>>>>>>Define KP_CERTIFICATE                   for 26      // for setting Secure Channel certificate data (PCT1)
+73871>>>>>>>>>Define KP_CLEAR_KEY                     for 27      // for setting Secure Channel clear key data (PCT1)
+73871>>>>>>>>>Define KP_PUB_EX_LEN                    for 28
+73871>>>>>>>>>Define KP_PUB_EX_VAL                    for 29
+73871>>>>>>>>>Define KP_KEYVAL                        for 30
+73871>>>>>>>>>Define KP_ADMIN_PIN                     for 31
+73871>>>>>>>>>Define KP_KEYEXCHANGE_PIN               for 32
+73871>>>>>>>>>Define KP_SIGNATURE_PIN                 for 33
+73871>>>>>>>>>Define KP_PREHASH                       for 34
+73871>>>>>>>>>Define KP_ROUNDS                        for 35
+73871>>>>>>>>>Define KP_OAEP_PARAMS                   for 36      // for setting OAEP params on RSA keys
+73871>>>>>>>>>Define KP_CMS_KEY_INFO                  for 37
+73871>>>>>>>>>Define KP_CMS_DH_KEY_INFO               for 38
+73871>>>>>>>>>Define KP_PUB_PARAMS                    for 39      // for setting public parameters
+73871>>>>>>>>>Define KP_VERIFY_PARAMS                 for 40      // for verifying DSA and DH parameters
+73871>>>>>>>>>Define KP_HIGHEST_VERSION               for 41      // for TLS protocol version setting
+73871>>>>>>>>>Define KP_GET_USE_COUNT                 for 42      // for use with PP_CRYPT_COUNT_KEY_USE contexts
+73871>>>>>>>>>
+73871>>>>>>>>>// dwParam definitions for CryptGetHashParam
+73871>>>>>>>>>Define HP_ALGID                         for |CI$0001  // Hash algorithm
+73871>>>>>>>>>Define HP_HASHVAL                       for |CI$0002  // Hash value
+73871>>>>>>>>>Define HP_HASHSIZE                      for |CI$0004  // Hash value size
+73871>>>>>>>>>Define HP_HMAC_INFO                     for |CI$0005  // information for creating an HMA
+73871>>>>>>>>>
+73871>>>>>>>>>// key BLOB types
+73871>>>>>>>>>Define KEYSTATEBLOB                     for |CI$0C
+73871>>>>>>>>>Define OPAQUEKEYBLOB                    for |CI$09
+73871>>>>>>>>>Define PLAINTEXTKEYBLOB                 for |CI$08
+73871>>>>>>>>>Define PRIVATEKEYBLOB                   for |CI$07
+73871>>>>>>>>>Define PUBLICKEYBLOB                    for |CI$06
+73871>>>>>>>>>Define PUBLICKEYBLOBEX                  for |CI$0A
+73871>>>>>>>>>Define SIMPLEBLOB                       for |CI$01
+73871>>>>>>>>>Define SYMMETRICWRAPKEYBLOB             for |CI$0B
+73871>>>>>>>>>
+73871>>>>>>>>>Define CUR_BLOB_VERSION                 for 2
+73871>>>>>>>>>
+73871>>>>>>>>>// KP_PADDING
+73871>>>>>>>>>Define PKCS5_PADDING                    for 1       // PKCS 5 (sec 6.2) padding method
+73871>>>>>>>>>Define RANDOM_PADDING                   for 2
+73871>>>>>>>>>Define ZERO_PADDING                     for 3
+73871>>>>>>>>>
+73871>>>>>>>>>//  Structure cryptimportkey
+73871>>>>>>>>>Struct PUBLICKEYSTRUC
+73871>>>>>>>>>    UChar    bType
+73871>>>>>>>>>    UChar    bVersion
+73871>>>>>>>>>    UShort   reserved
+73871>>>>>>>>>    UInteger aiKeyAlg
+73871>>>>>>>>>End_Struct
+73871>>>>>>>>>
+73871>>>>>>>>>Struct tPLAINTEXTKEYBLOB
+73871>>>>>>>>>    PUBLICKEYSTRUC hdr
+73871>>>>>>>>>    PUBLICKEYSTRUC hdr
+73871>>>>>>>>>    UInteger       dwKeySize
+73871>>>>>>>>>//    UChar[]        rgbKeyData
+73871>>>>>>>>>End_Struct
+73871>>>>>>>>>
+73871>>>>>>>>>
+73871>>>>>>>>>
+73871>>>>>>>>>//  Structure for specifying the inner and outer strings when calculating HMAC hash (use with CryptSetHashParam)
+73871>>>>>>>>>Struct HMAC_INFO
+73871>>>>>>>>>    UInteger HashAlgid
+73871>>>>>>>>>    Pointer pbInnerString
+73871>>>>>>>>>    DWord cbInnerString
+73871>>>>>>>>>    Pointer pbOuterString
+73871>>>>>>>>>    DWord cbOuterString
+73871>>>>>>>>>End_Struct
+73871>>>>>>>>>
+73871>>>>>>>>>Struct BLOBHEADER
+73871>>>>>>>>>    UChar   bType
+73871>>>>>>>>>    UChar   bVersion
+73871>>>>>>>>>    Short   reserved
+73871>>>>>>>>>    Integer aiKeyAlg
+73871>>>>>>>>>End_Struct
+73871>>>>>>>>>
+73871>>>>>>>>>Struct CryptoBlob
+73871>>>>>>>>>    BLOBHEADER  header
+73871>>>>>>>>>    BLOBHEADER  header
+73871>>>>>>>>>    Integer     cbKeySize
+73871>>>>>>>>>    UChar[32]   rgbKeyData
+73871>>>>>>>>>End_Struct
+73871>>>>>>>>>
+73871>>>>>>>>>
+73871>>>>>>>>>// Note: lpContainer and lpProvider refer to WString types.
+73871>>>>>>>>>External_Function CryptAcquireContextW "CryptAcquireContextW" advapi32.dll ;    Pointer phProv ;    Pointer lpContainer ;    Pointer lpProvider ;    Integer dwProvType ;    Integer dwFlags ;    Returns Boolean
+73872>>>>>>>>>
+73872>>>>>>>>>// Compatibilty wrapper Function CryptAcquireContext
+73872>>>>>>>>>Function CryptAcquireContext Global ;    Pointer phProv ;    Pointer szContainer ;    Pointer szProvider ;    Integer dwProvType ;    Integer dwFlags ;    Returns Boolean
+73874>>>>>>>>>    
+73874>>>>>>>>>    Boolean bResult
+73874>>>>>>>>>    UWide   uwContainer uwProvider
+73874>>>>>>>>>    UWide   uwContainer uwProvider
+73874>>>>>>>>>
+73874>>>>>>>>>    Send StringToWide szContainer (&uwContainer)
+73875>>>>>>>>>    Send StringToWide szProvider (&uwProvider)
+73876>>>>>>>>>    
+73876>>>>>>>>>    Move (CryptAcquireContextW (phProv, uwContainer.lpUText, uwProvider.lpUText, dwProvType, dwFlags)) to bResult                   
+73877>>>>>>>>>
+73877>>>>>>>>>    Function_Return bResult
+73878>>>>>>>>>End_Function
+73879>>>>>>>>>
+73879>>>>>>>>>External_Function CryptReleaseContext "CryptReleaseContext" advapi32.dll ;    Handle hProv ;    Integer dwFlags ;    Returns Boolean
+73880>>>>>>>>>
+73880>>>>>>>>>External_Function CryptCreateHash "CryptCreateHash" advapi32.dll ;    Handle hProv ;    Integer Algid ;    Handle hKey ;    Integer dwFlags ;    Pointer phHash ;    Returns Boolean
+73881>>>>>>>>>
+73881>>>>>>>>>External_Function CryptDestroyHash "CryptDestroyHash" advapi32.dll ;    Handle hHash ;    Returns Boolean
+73882>>>>>>>>>
+73882>>>>>>>>>External_Function CryptHashData "CryptHashData" advapi32.dll ;    Handle hHash ;    Pointer pbData ;    Integer dwDataLen ;    Integer dwFlags ;    Returns Boolean
+73883>>>>>>>>>
+73883>>>>>>>>>External_Function CryptDeriveKey "CryptDeriveKey" advapi32.dll ;    Handle hProv ;    Integer Algid ;    Handle hBaseData ;    Integer dwFlags ;    Pointer phKey ;    Returns Boolean
+73884>>>>>>>>>
+73884>>>>>>>>>External_Function CryptGetHashParam "CryptGetHashParam" advapi32.dll ;    Handle hHash ;    DWord dwParam ;    Pointer pbData ;    Pointer pdwDataLen ;    DWord dwFlags ;    Returns Integer
+73885>>>>>>>>>
+73885>>>>>>>>>External_Function CryptDestroyKey "CryptDestroyKey" advapi32.dll ;    Handle hKey ;    Returns Boolean
+73886>>>>>>>>>
+73886>>>>>>>>>External_Function CryptImportKey "CryptImportKey" advapi32.dll ;    Handle hProv ;    Pointer pbData ;    Integer dwDataLen ;    Handle hPubKey ;    Integer dwFlags ;    Pointer phKey ;    Returns Boolean
+73887>>>>>>>>>
+73887>>>>>>>>>External_Function CryptGetKeyParam "CryptGetKeyParam" advapi32.dll ;    Handle hKey ;    Integer dwParam ;    Pointer pbData ;    Pointer pdwDataLen ;    Integer dwFlags ;    Returns Boolean
+73888>>>>>>>>>    
+73888>>>>>>>>>External_Function CryptSetKeyParam "CryptSetKeyParam" advapi32.dll ;    Handle   hKey ;    UInteger dwParam ;    Pointer  pbdata ;    UInteger dwFlags ;    Returns  Boolean
+73889>>>>>>>>>
+73889>>>>>>>>>External_Function CryptEncrypt "CryptEncrypt" advapi32.dll ;    Handle hKey ;    Handle hHash ;    Boolean bFinal ;    Integer dwFlags ;    Pointer pbData ;    Pointer pdwDataLen ;    Integer dwBufLen ;    Returns Boolean
+73890>>>>>>>>>
+73890>>>>>>>>>External_Function CryptDecrypt "CryptDecrypt" advapi32.dll ;    Handle hKey ;    Handle hHash ;    Boolean bFinal ;    Integer dwFlags ;    Pointer pbData ;    Pointer pdwDataLen ;    Returns Boolean
+73891>>>>>>>>>
+73891>>>>>>>>>External_Function CryptGenRandom "CryptGenRandom" advapi32.dll ;    Handle hProv ;    DWord dwLen ;    Pointer pbBuffer ;    Returns Boolean
+73892>>>>>>>>>    
+73892>>>>>>>>>External_Function CryptSetHashParam "CryptSetHashParam" advapi32.dll ;    Handle hHash ;    DWord dwParam ;    Pointer pbData ;    Integer dwFlags ;    Returns Boolean
+73893>>>>>>>>>    
+73893>>>>>>>>>External_Function CryptGenKey "CryptGenKey" advapi32.dll ;    Handle hProv ;    Integer Algid ;    Integer dwFlags ;    Pointer phKey ;    Returns Boolean
+73894>>>>>>>>>    
+73894>>>>>>>>>External_Function CryptExportKey "CryptExportKey" advapi32.dll ;    Handle hKey ;    Handle hExpKey ;    Integer dwBlobType ;    Integer dwFlags ;    Pointer pbData ;    Pointer pdwDataLen ;    Returns Boolean
+73895>>>>>>>
+73895>>>>>>>Class cCryptographerEx is a cObject
+73896>>>>>>>    
+73896>>>>>>>    Procedure Construct_Object
+73898>>>>>>>        Forward Send Construct_Object
+73900>>>>>>>        
+73900>>>>>>>        Property String     psProvider  MS_ENHANCED_PROV
+73901>>>>>>>        Property Integer    piProvider  PROV_RSA_FULL
+73902>>>>>>>        Property Integer    piCipher    CALG_RC4
+73903>>>>>>>        Property Integer    piHash      CALG_MD5
+73904>>>>>>>        
+73904>>>>>>>        // Private properties
+73904>>>>>>>        Property Handle     Private_phProv
+73905>>>>>>>        
+73905>>>>>>>        // Block cipher properties
+73905>>>>>>>        Property UChar[]    paKey
+73906>>>>>>>        Property UChar[]    paIV
+73907>>>>>>>        Property Integer    piKeyAlg        PLAINTEXTKEYBLOB
+73908>>>>>>>        Property Integer    piKeyType       CALG_AES_256
+73909>>>>>>>        Property Integer    piKeyPadding    PKCS5_PADDING
+73910>>>>>>>        Property Integer    piKeyMode       CRYPT_MODE_CBC
+73911>>>>>>>        Property Integer    piBlockSize     16
+73912>>>>>>>    End_Procedure
+73913>>>>>>>    
+73913>>>>>>>    
+73913>>>>>>>    // Acquire key container handle
+73913>>>>>>>    Function AcquireContext Returns Handle
+73915>>>>>>>        Integer iProvider
+73915>>>>>>>        WString wProvider
+73915>>>>>>>        Handle hProv
+73915>>>>>>>        Boolean bOk
+73915>>>>>>>        Pointer pProv
+73915>>>>>>>        
+73915>>>>>>>        Move 0 to hProv
+73916>>>>>>>        Get piProvider to iProvider
+73917>>>>>>>        Get psProvider to wProvider
+73918>>>>>>>        
+73918>>>>>>>        //  Determine address to be passed as provider
+73918>>>>>>>        If (Trim(wProvider) <> "") Begin
+73920>>>>>>>            Move (AddressOf(wProvider)) to pProv
+73921>>>>>>>        End
+73921>>>>>>>>
+73921>>>>>>>        Else Begin
+73922>>>>>>>            Move 0 to pProv
+73923>>>>>>>        End
+73923>>>>>>>>
+73923>>>>>>>        
+73923>>>>>>>        //  Acquire Crypto Context. Note: pProv is pointer to UTF16 string.
+73923>>>>>>>        Move (CryptAcquireContextW(AddressOf(hProv),0,pProv,iProvider,CRYPT_VERIFYCONTEXT)) to bOk
+73924>>>>>>>        If (not(bOk) or hProv = 0) Begin
+73926>>>>>>>            Move (CryptAcquireContextW(AddressOf(hProv),0,pProv,iProvider,CRYPT_NEWKEYSET ior CRYPT_VERIFYCONTEXT)) to bOk
+73927>>>>>>>        End
+73927>>>>>>>>
+73927>>>>>>>        
+73927>>>>>>>        If (not(bOk) or hProv = 0) Begin
+73929>>>>>>>            // Fallback to original
+73929>>>>>>>            Move (CryptAcquireContextW(AddressOf(hProv),0,pProv,iProvider,0)) to bOk
+73930>>>>>>>            
+73930>>>>>>>            If (not(bOk) or hProv = 0) Begin
+73932>>>>>>>                Move (CryptAcquireContextW(AddressOf(hProv),0,pProv,iProvider,CRYPT_NEWKEYSET)) to bOk
+73933>>>>>>>            End
+73933>>>>>>>>
+73933>>>>>>>        End
+73933>>>>>>>>
+73933>>>>>>>        Set Private_phProv to hProv
+73934>>>>>>>        
+73934>>>>>>>        Function_Return hProv
+73935>>>>>>>    End_Function
+73936>>>>>>>    
+73936>>>>>>>    // Releases key container handle
+73936>>>>>>>    Function ReleaseContext Handle hProv Returns Boolean
+73938>>>>>>>        Function_Return (CryptReleaseContext(hProv,0))
+73939>>>>>>>    End_Function
+73940>>>>>>>    
+73940>>>>>>>    // Creates hash object
+73940>>>>>>>    Function CreateHash Handle hProv Returns Handle
+73942>>>>>>>        Integer iAlgorithm
+73942>>>>>>>        Handle hHash
+73942>>>>>>>        Boolean bOk
+73942>>>>>>>        
+73942>>>>>>>        Move 0 to hHash
+73943>>>>>>>        Get piHash to iAlgorithm
+73944>>>>>>>        Move (CryptCreateHash(hProv,iAlgorithm,0,0,AddressOf(hHash))) to bOk
+73945>>>>>>>        
+73945>>>>>>>        Function_Return hHash
+73946>>>>>>>    End_Function
+73947>>>>>>>    
+73947>>>>>>>    // Destroys the hash object
+73947>>>>>>>    Function DestroyHash Handle hHash Returns Boolean
+73949>>>>>>>        Function_Return (CryptDestroyHash(hHash))
+73950>>>>>>>    End_Function
+73951>>>>>>>    
+73951>>>>>>>    // Adds data to hash object
+73951>>>>>>>    Function HashData Handle hHash UChar[] ucData Returns Boolean
+73953>>>>>>>        Function_Return (CryptHashData(hHash,AddressOf(ucData), SizeOfArray(ucData),0))
+73954>>>>>>>    End_Function
+73955>>>>>>>    
+73955>>>>>>>    // Generates session key
+73955>>>>>>>    Function DeriveKey Handle hProv Handle hHash Returns Handle
+73957>>>>>>>        Integer iAlgorithm
+73957>>>>>>>        Handle hKey
+73957>>>>>>>        Boolean bOk
+73957>>>>>>>        
+73957>>>>>>>        Move 0 to hKey
+73958>>>>>>>        Get piCipher to iAlgorithm
+73959>>>>>>>        Move (CryptDeriveKey(hProv,iAlgorithm,hHash,CRYPT_EXPORTABLE,AddressOf(hKey))) to bOk
+73960>>>>>>>        
+73960>>>>>>>        Function_Return hKey
+73961>>>>>>>    End_Function
+73962>>>>>>>    
+73962>>>>>>>    // Imports a plain text key
+73962>>>>>>>    Function ImportPlainTextKey Handle hProv UChar[] ucaKey Returns Handle
+73964>>>>>>>        tPLAINTEXTKEYBLOB blobhead
+73964>>>>>>>        tPLAINTEXTKEYBLOB blobhead
+73964>>>>>>>        Boolean   bSuccess
+73964>>>>>>>        Handle    hKey
+73964>>>>>>>        Integer   iHeadSize iKeySize
+73964>>>>>>>        UChar[]   ucaKeyblob
+73965>>>>>>>        Integer iVoid
+73965>>>>>>>        
+73965>>>>>>>        Move (SizeOfType(tPLAINTEXTKEYBLOB)) to iHeadSize
+73966>>>>>>>        Move (SizeOfArray(ucaKey)) to iKeySize
+73967>>>>>>>        
+73967>>>>>>>        Move PLAINTEXTKEYBLOB to blobhead.hdr.bType
+73968>>>>>>>        Move CUR_BLOB_VERSION   to blobhead.hdr.bVersion
+73969>>>>>>>        Get piCipher            to blobhead.hdr.aiKeyAlg
+73970>>>>>>>        Move iKeySize           to blobhead.dwKeySize
+73971>>>>>>>        
+73971>>>>>>>        Move (ResizeArray(ucaKeyblob, iHeadSize)) to ucaKeyblob
+73972>>>>>>>        Move (CopyMemory(AddressOf(ucaKeyblob), AddressOf(blobhead), iHeadSize)) to iVoid
+73973>>>>>>>        Move (AppendArray(ucaKeyblob, ucaKey)) to ucaKeyblob
+73974>>>>>>>        
+73974>>>>>>>        Move 0 to hKey
+73975>>>>>>>        Move (CryptImportKey(hProv, AddressOf(ucaKeyblob), SizeOfArray(ucaKeyblob), 0, 0, AddressOf(hKey))) to bSuccess
+73976>>>>>>>        If (not(bSuccess)) Begin
+73978>>>>>>>            Move (ShowLastError()) to iVoid
+73979>>>>>>>        End
+73979>>>>>>>>
+73979>>>>>>>        
+73979>>>>>>>        Function_Return hKey
+73980>>>>>>>    End_Function
+73981>>>>>>>    
+73981>>>>>>>    // Destroys the key
+73981>>>>>>>    Function DestroyKey Handle hKey Returns Boolean
+73983>>>>>>>        Function_Return (CryptDestroyKey(hKey))
+73984>>>>>>>    End_Function
+73985>>>>>>>    
+73985>>>>>>>    // Retrieves key data
+73985>>>>>>>    Function KeyParameter Handle hKey Integer iQuery Returns Integer
+73987>>>>>>>        Integer iBuffer iLen
+73987>>>>>>>        Boolean bOk
+73987>>>>>>>        
+73987>>>>>>>        Move (SizeOfType(Integer)) to iLen
+73988>>>>>>>        Move (CryptGetKeyParam(hKey,iQuery,AddressOf(iBuffer),AddressOf(iLen),0)) to bOk
+73989>>>>>>>        Function_Return iBuffer
+73990>>>>>>>    End_Function
+73991>>>>>>>    
+73991>>>>>>>    // Retrieves a hash value
+73991>>>>>>>    Function HashValue Handle lhHash Returns UChar[]
+73993>>>>>>>        UChar[] ucHash
+73994>>>>>>>        Integer liResult
+73994>>>>>>>        DWord   dwDataLen
+73994>>>>>>>        
+73994>>>>>>>        Move 0 to dwDataLen
+73995>>>>>>>        Move (CryptGetHashParam(lhHash,HP_HASHVAL,0,AddressOf(dwDataLen),0)) to liResult
+73996>>>>>>>        If (liResult = 0) ;            Function_Return ""
+73999>>>>>>>        
+73999>>>>>>>        Move (ResizeArray(ucHash, dwDataLen, 0)) to ucHash
+74000>>>>>>>        Move (CryptGetHashParam(lhHash,HP_HASHVAL,AddressOf(ucHash),AddressOf(dwDataLen),0)) to liResult
+74001>>>>>>>        If (liResult = 0) ;            Function_Return ""
+74004>>>>>>>        
+74004>>>>>>>        Function_Return ucHash
+74005>>>>>>>    End_Function
+74006>>>>>>>
+74006>>>>>>>    // Encrypts data
+74006>>>>>>>    Function Encrypt UChar[] ucPassword UChar[] ucData Returns UChar[]
+74008>>>>>>>        Handle hProv hHash hKey
+74008>>>>>>>        Integer iAlgorithm iDataLen iCipherLen iErr
+74008>>>>>>>        Boolean bOk
+74008>>>>>>>        
+74008>>>>>>>        Get AcquireContext to hProv
+74009>>>>>>>        If (hProv) Begin
+74011>>>>>>>            Get CreateHash hProv to hHash
+74012>>>>>>>            If (hHash) Begin
+74014>>>>>>>                Get HashData hHash ucPassword to bOk
+74015>>>>>>>                If (bOk) Begin
+74017>>>>>>>                    Get piCipher to iAlgorithm
+74018>>>>>>>                    Get DeriveKey hProv hHash to hKey
+74019>>>>>>>                End
+74019>>>>>>>>
+74019>>>>>>>                Get DestroyHash hHash to bOk
+74020>>>>>>>            End
+74020>>>>>>>>
+74020>>>>>>>            
+74020>>>>>>>            If (hKey) Begin
+74022>>>>>>>                //  First call to determine resulting data size
+74022>>>>>>>                Move (SizeOfArray(ucData)) to iDataLen
+74023>>>>>>>                Move (SizeOfArray(ucData)) to iCipherLen
+74024>>>>>>>                Move (CryptEncrypt(hKey, 0, True, 0, 0, AddressOf(iCipherLen), iDataLen)) to bOk
+74025>>>>>>>                
+74025>>>>>>>                //  Reserve space in string
+74025>>>>>>>                If (iDataLen < iCipherLen) Begin
+74027>>>>>>>                    Move (ResizeArray(ucData, iCipherLen, 0)) to ucData
+74028>>>>>>>                End
+74028>>>>>>>>
+74028>>>>>>>                
+74028>>>>>>>                //  Call to really decrypt
+74028>>>>>>>                Move (CryptEncrypt(hKey,0,True,0,AddressOf(ucData),AddressOf(iDataLen),SizeOfArray(ucData))) to bOk
+74029>>>>>>>                //If (not(bOk)) Begin
+74029>>>>>>>                //Move "" to sData
+74029>>>>>>>                //Move (GetLastError()) to iErr
+74029>>>>>>>                //End
+74029>>>>>>>                
+74029>>>>>>>                Get DestroyKey hKey to bOk
+74030>>>>>>>            End 
+74030>>>>>>>>
+74030>>>>>>>            Get ReleaseContext hProv to bOk
+74031>>>>>>>        End 
+74031>>>>>>>>
+74031>>>>>>>        Function_Return ucData
+74032>>>>>>>    End_Function
+74033>>>>>>>    
+74033>>>>>>>    // Decrypts data
+74033>>>>>>>    Function Decrypt UChar[] ucPassword UChar[] ucData Returns UChar[]
+74035>>>>>>>        Handle hProv hHash hKey
+74035>>>>>>>        Integer iAlgorithm iDataLen
+74035>>>>>>>        Boolean bOk
+74035>>>>>>>        
+74035>>>>>>>        Get AcquireContext to hProv
+74036>>>>>>>        If (hProv) Begin
+74038>>>>>>>            Get CreateHash hProv to hHash
+74039>>>>>>>            If (hHash) Begin
+74041>>>>>>>                Get HashData hHash ucPassword to bOk
+74042>>>>>>>                If (bOk) Begin
+74044>>>>>>>                    Get piCipher to iAlgorithm
+74045>>>>>>>                    Get DeriveKey hProv hHash to hKey
+74046>>>>>>>                End
+74046>>>>>>>>
+74046>>>>>>>                Get DestroyHash hHash to bOk
+74047>>>>>>>            End
+74047>>>>>>>>
+74047>>>>>>>            
+74047>>>>>>>            If (hKey) Begin
+74049>>>>>>>                Move (SizeOfArray(ucData)) to iDataLen
+74050>>>>>>>                Move (CryptDecrypt(hKey,0,True,0,AddressOf(ucData),AddressOf(iDataLen))) to bOk
+74051>>>>>>>                //  Resulting data can be shorter as the input string, in that case we shorten the result string
+74051>>>>>>>                If (SizeOfArray (ucData) > iDataLen) Begin
+74053>>>>>>>                    Move (ResizeArray(ucData, iDataLen)) to ucData
+74054>>>>>>>                End
+74054>>>>>>>>
+74054>>>>>>>                
+74054>>>>>>>                Get DestroyKey hKey to bOk
+74055>>>>>>>            End
+74055>>>>>>>>
+74055>>>>>>>            Get ReleaseContext hProv to bOk
+74056>>>>>>>        End
+74056>>>>>>>>
+74056>>>>>>>        Function_Return ucData
+74057>>>>>>>    End_Function
+74058>>>>>>>    
+74058>>>>>>>    // Creates a key
+74058>>>>>>>    Function CreateKey Handle hProv Returns Handle
+74060>>>>>>>        Integer iAlg iType iByte iLength iSize
+74060>>>>>>>        CryptoBlob keyBlob
+74060>>>>>>>        CryptoBlob keyBlob
+74060>>>>>>>        Boolean bOk
+74060>>>>>>>        Handle hKey
+74060>>>>>>>        UChar[] aKey
+74061>>>>>>>
+74061>>>>>>>        Get paKey to aKey
+74062>>>>>>>        Get piKeyAlg to iAlg
+74063>>>>>>>        Get piKeyType to iType
+74064>>>>>>>        Move iAlg                   to keyBlob.header.bType
+74065>>>>>>>        Move CUR_BLOB_VERSION       to keyBlob.header.bVersion
+74066>>>>>>>        Move iType                  to keyBlob.header.aiKeyAlg
+74067>>>>>>>        Move (SizeOfArray(aKey))    to keyBlob.cbKeySize
+74068>>>>>>>        
+74068>>>>>>>        Move (SizeOfArray(aKey)-1) to iLength
+74069>>>>>>>        For iByte from 0 to iLength
+74075>>>>>>>>
+74075>>>>>>>            Move aKey[iByte] to keyBlob.rgbKeyData[iByte]
+74076>>>>>>>        Loop
+74077>>>>>>>>
+74077>>>>>>>        
+74077>>>>>>>        Move 0 to hKey
+74078>>>>>>>        Move (CryptImportKey(hProv,AddressOf(keyBlob),SizeOfType(CryptoBlob),0,0,AddressOf(hKey))) to bOk
+74079>>>>>>>        Function_Return hKey
+74080>>>>>>>    End_Function
+74081>>>>>>>    
+74081>>>>>>>    // Sets the key parameters
+74081>>>>>>>    Function SetKeyParameters Handle hKey Returns Boolean
+74083>>>>>>>        Integer iPadding iMode
+74083>>>>>>>        Boolean bOk
+74083>>>>>>>        UChar[] aIV
+74084>>>>>>>        
+74084>>>>>>>        //Move (SizeOfArray(aIV)-1) to iLength
+74084>>>>>>>        //For iByte from 0 to iLength
+74084>>>>>>>        //    Move iByte to aIV[iByte]
+74084>>>>>>>        //Loop
+74084>>>>>>>
+74084>>>>>>>        // Set initialization vector
+74084>>>>>>>        Get paIV to aIV
+74085>>>>>>>        Move (CryptSetKeyParam(hKey,KP_IV,AddressOf(aIV),0)) to bOk
+74086>>>>>>>        If (bOk) Begin
+74088>>>>>>>            // Set padding
+74088>>>>>>>            Get piKeyPadding to iPadding
+74089>>>>>>>            Move (CryptSetKeyParam(hKey,KP_PADDING,AddressOf(iPadding),0)) to bOk
+74090>>>>>>>            If (bOk) Begin
+74092>>>>>>>                // Set move
+74092>>>>>>>                Get piKeyMode to iMode
+74093>>>>>>>                Move (CryptSetKeyParam(hKey,KP_MODE,AddressOf(iMode),0)) to bOk
+74094>>>>>>>            End
+74094>>>>>>>>
+74094>>>>>>>        End
+74094>>>>>>>>
+74094>>>>>>>        Function_Return bOk        
+74095>>>>>>>    End_Function
+74096>>>>>>>    
+74096>>>>>>>    // Encrypts using block cipher
+74096>>>>>>>    Function BlockEncrypt UChar[] ucData Returns UChar[]
+74098>>>>>>>        Handle hProv hKey
+74098>>>>>>>        Integer iLen iSize iBlocks
+74098>>>>>>>        Boolean bOk
+74098>>>>>>>        
+74098>>>>>>>        Get AcquireContext to hProv
+74099>>>>>>>        If (hProv) Begin
+74101>>>>>>>            // Create key
+74101>>>>>>>            Get CreateKey hProv to hKey
+74102>>>>>>>            If (hKey) Begin
+74104>>>>>>>                Get SetKeyParameters hKey to bOk
+74105>>>>>>>                If (bOk) Begin
+74107>>>>>>>                    // Buffer for block ciphers can be up to block length larger
+74107>>>>>>>                    Get piBlockSize to iSize
+74108>>>>>>>                    Move (SizeOfArray(ucData)) to iLen
+74109>>>>>>>                    
+74109>>>>>>>                    Move ((iLen/iSize)+1) to iBlocks
+74110>>>>>>>                    Move (ResizeArray(ucData,iBlocks*iSize)) to ucData
+74111>>>>>>>                    Move (CryptEncrypt(hKey,0,True,0,AddressOf(ucData),AddressOf(iLen),SizeOfArray(ucData))) to bOk
+74112>>>>>>>                End
+74112>>>>>>>>
+74112>>>>>>>                Get DestroyKey hKey to bOk
+74113>>>>>>>            End
+74113>>>>>>>>
+74113>>>>>>>            Get ReleaseContext hProv to bOk
+74114>>>>>>>        End
+74114>>>>>>>>
+74114>>>>>>>        Function_Return ucData
+74115>>>>>>>    End_Function
+74116>>>>>>>    
+74116>>>>>>>    // Decrypts using block cipher
+74116>>>>>>>    Function BlockDecrypt UChar[] ucData Returns UChar[]
+74118>>>>>>>        Handle hProv hKey
+74118>>>>>>>        Integer iLen
+74118>>>>>>>        Boolean bOk
+74118>>>>>>>        
+74118>>>>>>>        Get AcquireContext to hProv
+74119>>>>>>>        If (hProv) Begin
+74121>>>>>>>            // Create key
+74121>>>>>>>            Get CreateKey hProv to hKey
+74122>>>>>>>            If (hKey) Begin
+74124>>>>>>>                Get SetKeyParameters hKey to bOk
+74125>>>>>>>                If (bOk) Begin
+74127>>>>>>>                    Move (SizeOfArray(ucData)) to iLen
+74128>>>>>>>                    Move (CryptDecrypt(hKey,0,True,0,AddressOf(ucData),AddressOf(iLen))) to bOk
+74129>>>>>>>                    Move (ResizeArray(ucData,iLen)) to ucData
+74130>>>>>>>                End
+74130>>>>>>>>
+74130>>>>>>>                Get DestroyKey hKey to bOk
+74131>>>>>>>            End
+74131>>>>>>>>
+74131>>>>>>>            Get ReleaseContext hProv to bOk
+74132>>>>>>>        End
+74132>>>>>>>>
+74132>>>>>>>        Function_Return ucData
+74133>>>>>>>    End_Function
+74134>>>>>>>    
+74134>>>>>>>    
+74134>>>>>>>    //  Generates random data.
+74134>>>>>>>    Function GenerateRandom Integer iBytes Returns UChar[]
+74136>>>>>>>        Handle hProv
+74136>>>>>>>        UChar[] uaResult
+74137>>>>>>>        Boolean bRes
+74137>>>>>>>        
+74137>>>>>>>        Get AcquireContext to hProv
+74138>>>>>>>        
+74138>>>>>>>        Move (ResizeArray(uaResult, iBytes)) to uaResult
+74139>>>>>>>        Move (CryptGenRandom(hProv, iBytes, AddressOf(uaResult))) to bRes
+74140>>>>>>>        
+74140>>>>>>>        Get ReleaseContext hProv to bRes
+74141>>>>>>>        
+74141>>>>>>>        Function_Return uaResult
+74142>>>>>>>    End_Function
+74143>>>>>>>    
+74143>>>>>>>    //  Generates random data and does a base64 encoding to properly present it as a string.
+74143>>>>>>>    Function GenerateRandomString Integer iLength Returns String
+74145>>>>>>>        String sResult
+74145>>>>>>>        UChar[] ucData
+74146>>>>>>>        Pointer pBase64
+74146>>>>>>>        Integer iVoid
+74146>>>>>>>        
+74146>>>>>>>        Get GenerateRandom iLength to ucData
+74147>>>>>>>        
+74147>>>>>>>        Move (Base64Encode(AddressOf(ucData), iLength)) to pBase64
+74148>>>>>>>        Move (PointerToString(pBase64)) to sResult
+74149>>>>>>>        Move (Free(pBase64)) to iVoid
+74150>>>>>>>        
+74150>>>>>>>        Function_Return (Left(sResult, iLength))
+74151>>>>>>>    End_Function
+74152>>>>>>>    
+74152>>>>>>>End_Class
+74153>>>>>
+74153>>>>>Class cLoginEncryption is a cObject
+74154>>>>>    
+74154>>>>>    Procedure Construct_Object
+74156>>>>>        Forward Send Construct_Object
+74158>>>>>        // this must be set to a multi (40ish) character random key
+74158>>>>>        Property String psEncryptPassword ""
+74159>>>>>        
+74159>>>>>        Object oDataCrypter is a cCryptographerEx
+74161>>>>>            Set piHash to CALG_SHA_256
+74162>>>>>            Set piCipher to CALG_AES_256
+74163>>>>>            Set psProvider to "" //  Not providing a specific provider gives the default provider for the provider type
+74164>>>>>            Set piProvider to PROV_RSA_AES
+74165>>>>>        End_Object
+74166>>>>>    End_Procedure
+74167>>>>>    
+74167>>>>>    // This can be augmented to return a password encryption key using any
+74167>>>>>    // hidden mechanism desired.
+74167>>>>>    Function GetEncryptionPassword Returns String
+74169>>>>>        String sPassword
+74169>>>>>        Get psEncryptPassword to sPassword
+74170>>>>>        Function_Return sPassword
+74171>>>>>    End_Function
+74172>>>>>    
+74172>>>>>    // Encrypts a string into an unreadable hash that can later be decrypted using DecryptKey.
+74172>>>>>    //
+74172>>>>>    // Params:
+74172>>>>>    //   sPlainText     String to encrypt.
+74172>>>>>    // Returns:
+74172>>>>>    //   Base64 encoded hash.
+74172>>>>>    Function EncryptPassword String sPlainText Returns String
+74174>>>>>        String sEncryptPassword sBase64
+74174>>>>>        UChar[] ucBinary
+74175>>>>>        Pointer pBase64
+74175>>>>>        Integer iVoid
+74175>>>>>        
+74175>>>>>        //  Encrypt Key
+74175>>>>>        Get GetEncryptionPassword to sEncryptPassword
+74176>>>>>        If (sEncryptPassword = "") Begin
+74178>>>>>            Error DFERR_PROGRAM "No encryption password set"
+74179>>>>>>
+74179>>>>>        End
+74179>>>>>>
+74179>>>>>        
+74179>>>>>        Get Encrypt of oDataCrypter (StringToUCharArray(sEncryptPassword)) (StringToUCharArray(sPlainText)) to ucBinary
+74180>>>>>        
+74180>>>>>        If (SizeOfArray(ucBinary) = 0) Begin
+74182>>>>>            Error DFERR_PROGRAM "Unable to encrypt database login password"
+74183>>>>>>
+74183>>>>>            Function_Return ""
+74184>>>>>        End
+74184>>>>>>
+74184>>>>>        
+74184>>>>>        //  Encode binary hash to Base64
+74184>>>>>        Move (Base64Encode(AddressOf(ucBinary), SizeOfArray(ucBinary))) to pBase64
+74185>>>>>        Move (PointerToString(pBase64)) to sBase64
+74186>>>>>        Move (Free(pBase64)) to iVoid
+74187>>>>>        
+74187>>>>>        Function_Return sBase64
+74188>>>>>    End_Function
+74189>>>>>    
+74189>>>>>    
+74189>>>>>    // Decrypts the unreadable hash generated by EncryptKey into a readable string.
+74189>>>>>    //
+74189>>>>>    // Params:
+74189>>>>>    //   sBase64EncryptedPassword       Base64 Encrypted password
+74189>>>>>    // Returns:
+74189>>>>>    //   Readable plain text password
+74189>>>>>    Function DecryptPassword String sBase64EncryptedPassword Returns String
+74191>>>>>        String sEncryptPassword
+74191>>>>>        UChar[] ucBinary ucPlain
+74193>>>>>        Boolean bIsHex
+74193>>>>>        Integer iLen iVoid
+74193>>>>>        Pointer pBinary
+74193>>>>>        
+74193>>>>>        If (sBase64EncryptedPassword <> "") Begin
+74195>>>>>            //  Decode from Base64
+74195>>>>>            Move (Base64Decode(AddressOf(sBase64EncryptedPassword), &iLen)) to pBinary
+74196>>>>>            
+74196>>>>>            Move (ResizeArray(ucBinary, iLen, 0)) to ucBinary
+74197>>>>>            Move (MemCopy(AddressOf(ucBinary), pBinary, iLen)) to iVoid
+74198>>>>>                        
+74198>>>>>            Move (Free(pBinary)) to iVoid
+74199>>>>>            
+74199>>>>>            //  Encrypted binary hash to string
+74199>>>>>            Get GetEncryptionPassword to sEncryptPassword
+74200>>>>>            Get Decrypt of oDataCrypter (StringToUCharArray(sEncryptPassword)) ucBinary to ucPlain
+74201>>>>>        End
+74201>>>>>>
+74201>>>>>        
+74201>>>>>        Function_Return (UCharArrayToString(ucPlain))
+74202>>>>>    End_Function
+74203>>>>>End_Class
+74204>>>
+74204>>>Object oLoginEncryption is a cLoginEncryption
+74206>>>
+74206>>>    // this must be created in your appsrc directory and must contain an encryption
+74206>>>    // key that is set to psEncryptPassword. It will look something like this
+74206>>>    //
+74206>>>    // Set psEncryptPassword to "JchUAo7W@r.b{<Yk~OONi0nq=sMi[*Rn[A-`Vo)q"
+74206>>>    //  
+Including file: LoginEncryptionKey.inc    (C:\Projects\DF20\DFRegistrations\AppSrc\LoginEncryptionKey.inc)
+74206>>>>// Studio generated login encryption key
+74206>>>>Set psEncryptPassword to "-x5le#3-kx<d>zIF1XU/=4?k[WsZhZ5yui%K-alt"
+74207>>>>
+74207>>>    
+74207>>>    // use this to register this object to your cConnection Object. This object
+74207>>>    // must be created after the cConnection object
+74207>>>    Move Self to ghoLoginEncryption
+74208>>>End_Object
+74209>        Use DatabaseLoginDialog.dg
+Including file: DatabaseLoginDialog.dg    (C:\Program Files\DataFlex 23.0\Pkg\DatabaseLoginDialog.dg)
+74209>>>
+74209>>>Use Windows.pkg
+74209>>>Use cConnection.pkg
+74209>>>Use dfLine.pkg
+74209>>>
+74209>>>Object oDatabaseLoginDialog is a ModalPanel
+74211>>>    Set Label to "Database Login"
+74212>>>    Set Location to 2 2
+74213>>>    Set Size to 110 211
+74214>>>    
+74214>>>    Property String psId
+74216>>>    Property Boolean pbOk False
+74218>>>    Property Boolean pbChanged False
+74220>>>    Property Boolean pbAllowRemember True
+74222>>>    
+74222>>>    // this registers this object with the cConnection object.
+74222>>>    Move Self to ghoLoginConnectDialog
+74223>>>    
+74223>>>    Object oUserIDForm is a Form
+74225>>>        Set Label to "User Name"
+74226>>>        Set Size to 12 85
+74227>>>        Set Location to 34 79
+74228>>>        Set Label_Col_Offset to 64
+74229>>>        Set peAnchors to anTopLeftRight
+74230>>>    End_Object
+74231>>>    
+74231>>>    Object oPwdForm is a Form
+74233>>>        Set Size to 12 85
+74234>>>        Set Location to 49 79
+74235>>>        Set Label_Col_Offset to 64
+74236>>>        Set Password_State to True
+74237>>>        Set peAnchors to anTopLeftRight
+74238>>>        Set Label to "Password"
+74239>>>    End_Object
+74240>>>    
+74240>>>    Object oTrustedConnection is a CheckBox
+74242>>>        Set Size to 10 50
+74243>>>        Set Location to 65 79
+74244>>>        Set Label to "Trusted Connection"
+74245>>>    End_Object
+74246>>>    
+74246>>>    Object oRemember is a CheckBox
+74248>>>        Set Size to 10 50
+74249>>>        Set Location to 79 14
+74250>>>        Set Label to "Remember and don't ask again"
+74251>>>        Set Checked_State to True
+74252>>>    End_Object
+74253>>>    
+74253>>>    Object oLogin_btn is a Button
+74255>>>        Set Label to "&Login"
+74256>>>        Set Location to 92 102
+74257>>>        Set peAnchors to anBottomRight
+74258>>>        Set Default_State to True
+74259>>>        
+74259>>>        Procedure OnClick
+74262>>>            Boolean bTrust
+74262>>>            String sUser sPwd sConn sErr sId
+74262>>>            Integer iError
+74262>>>            Get psId to sId
+74263>>>            Get Value of oUserIDForm to sUser
+74264>>>            Get Value of oPwdForm to sPwd
+74265>>>            Get Checked_State of oTrustedConnection to bTrust
+74266>>>            
+74266>>>            Get LoginConnectIdNewCredentials of ghoConnection sId sUser sPwd bTrust to iError
+74267>>>            If (iError=0) Begin
+74269>>>                Set pbOk to True
+74270>>>                Set pbChanged to True
+74271>>>                Send Close_Panel
+74272>>>            End
+74272>>>>
+74272>>>            Else Begin
+74273>>>                Get psErrorText of ghoConnection to sErr
+74274>>>                Send UserError sErr "Login Error"
+74275>>>            End
+74275>>>>
+74275>>>        End_Procedure
+74276>>>    End_Object
+74277>>>    
+74277>>>    Object oCancel_btn is a Button
+74279>>>        Set Label to "&Cancel"
+74280>>>        Set Location to 92 157
+74281>>>        Set peAnchors to anBottomRight
+74282>>>        
+74282>>>        Procedure OnClick
+74285>>>            Send Close_Panel
+74286>>>        End_Procedure
+74287>>>    End_Object
+74288>>>    
+74288>>>    Object oConnectionIdInfo is a TextBox
+74290>>>        Set Size to 10 50
+74291>>>        Set Location to 4 14
+74292>>>        Set Label to 'Connection Id='
+74293>>>    End_Object
+74294>>>    
+74294>>>    Object oConnectionServerInfo is a TextBox
+74296>>>        Set Size to 10 50
+74297>>>        Set Location to 16 14
+74298>>>        Set Label to 'Server'
+74299>>>    End_Object
+74300>>>    
+74300>>>    Object oLineControl1 is a LineControl
+74302>>>        Set Size to 2 202
+74303>>>        Set Location to 29 5
+74304>>>    End_Object
+74305>>>    
+74305>>>    Function LoginConnectIdDialog String sId Returns Boolean
+74308>>>        Boolean bOk bChanged bTrusted bAllowRemember bRemember
+74308>>>        String sUser sPwd sDescription
+74308>>>        tConnection Connect
+74308>>>        tConnection Connect
+74308>>>        
+74308>>>        Get pbAllowRemember to bAllowRemember
+74309>>>        
+74309>>>        
+74309>>>        If not bAllowRemember Begin
+74311>>>            Set Enabled_State of oRemember to bRemember
+74312>>>            Set Visible_State of oRemember to bRemember
+74313>>>        End
+74313>>>>
+74313>>>        
+74313>>>        Get ConnectionIdInfo of ghoConnection sId to Connect
+74314>>>        Set Value of oConnectionIdInfo to ("Connection ID="+Connect.sId)
+74315>>>        Set Value of oConnectionServerInfo to Connect.sString
+74316>>>        
+74316>>>        Set psId to sId
+74317>>>        Set pbOk to False
+74318>>>        Set pbChanged to False
+74319>>>        Set Value of oUserIDForm to Connect.sUID
+74320>>>        Set Value of oPwdForm to ""
+74321>>>        
+74321>>>        Send Popup
+74322>>>        
+74322>>>        Get pbOk to bOk
+74323>>>        Get pbChanged to bChanged
+74324>>>        If (bChanged and bOk) Begin
+74326>>>            If bAllowRemember Begin
+74328>>>                Get Checked_State of oRemember to bRemember
+74329>>>                If bRemember Begin
+74331>>>                    Get Checked_State of oTrustedConnection to bTrusted
+74332>>>                    If not (bTrusted) Begin
+74334>>>                        Get Value of oUserIDForm to sUser
+74335>>>                        Get Value of oPwdForm to sPwd
+74336>>>                    End
+74336>>>>
+74336>>>                    Get StoreConnectionIdCredentials of ghoConnection sId sUser sPwd bTrusted to bOk
+74337>>>                End
+74337>>>>
+74337>>>            End
+74337>>>>
+74337>>>        End
+74337>>>>
+74337>>>        Function_Return bOk
+74338>>>    End_Function
+74339>>>    
+74339>>>    
+74339>>>    On_Key Key_Alt+Key_O Send KeyAction of oLogin_btn
+74340>>>    On_Key Key_Alt+Key_L Send KeyAction of oCancel_btn
+74341>>>End_Object
+74342>>>
+74342>    End_Object
+74343>
+74343>End_Object
+74344>
+74344>Object oToolTipController is a cToolTipController
+74346>    Move Self to ghoToolTipController
+74347>End_Object
+74348>
+74348>Use oEditContextMenu.pkg
+Including file: oEditContextMenu.pkg    (C:\Program Files\DataFlex 23.0\Pkg\oEditContextMenu.pkg)
+74348>>>Use cCJStandardMenuItemClasses.pkg
+74348>>>
+74348>>>Object oEditContextMenu is a cCJContextMenu
+74350>>>    
+74350>>>    Move Self to Default_Form_Floating_Menu_ID
+74351>>>    
+74351>>>    Object oUndoMenuItem is a cCJUndoMenuItem
+74353>>>    End_Object
+74354>>>    
+74354>>>    Object oCutMenuItem is a cCJCutMenuItem
+74356>>>        Set pbControlBeginGroup to True
+74357>>>    End_Object
+74358>>>    
+74358>>>    Object oCopyMenuItem is a cCJCopyMenuItem
+74360>>>    End_Object
+74361>>>
+74361>>>    Object oPasteMenuItem is a cCJPasteMenuItem
+74363>>>    End_Object
+74364>>>
+74364>>>    Object oDeleteItem is a cCJDeleteEditMenuItem
+74366>>>    End_Object
+74367>>>
+74367>>>    Object oSelectAllMenuItem is a cCJSelectAllMenuItem
+74369>>>        Set pbControlBeginGroup to True
+74370>>>    End_Object
+74371>>>
+74371>>>End_Object
+74372>>>
+74372>Use oDEOEditContextMenu17.pkg
+Including file: oDEOEditContextMenu17.pkg    (C:\Program Files\DataFlex 23.0\Pkg\oDEOEditContextMenu17.pkg)
+74372>>>Use Windows.pkg
+74372>>>Use cCJStandardMenuItemClasses.pkg
+74372>>>Use cCJDeoMenuItemClasses.pkg
+74372>>>
+74372>>>
+74372>>>Object oDEOEditContextMenu17 is a cCJContextMenu
+74374>>>    
+74374>>>    Move Self to Default_dbFloating_Menu_ID
+74375>>>    
+74375>>>    Object oUndoMenuItem is a cCJUndoMenuItem
+74377>>>    End_Object
+74378>>>    
+74378>>>    Object oCutMenuItem is a cCJCutMenuItem
+74380>>>        Set pbControlBeginGroup to True
+74381>>>    End_Object
+74382>>>    
+74382>>>    Object oCopyMenuItem is a cCJCopyMenuItem
+74384>>>    End_Object
+74385>>>
+74385>>>    Object oPasteMenuItem is a cCJPasteMenuItem
+74387>>>    End_Object
+74388>>>
+74388>>>    Object oDeleteItem is a cCJDeleteEditMenuItem
+74390>>>    End_Object
+74391>>>
+74391>>>    Object oSelectAllMenuItem is a cCJSelectAllMenuItem
+74393>>>        Set pbControlBeginGroup to True
+74394>>>    End_Object
+74395>>>
+74395>>>    Object oPromptMenuItem is a cCJPromptMenuItem
+74397>>>        Set pbControlBeginGroup to True
+74398>>>    End_Object
+74399>>>
+74399>>>    Object oFindNextMenu is a cCJFindNextMenuItem
+74401>>>        Set pbControlBeginGroup to True
+74402>>>    End_Object
+74403>>>
+74403>>>    Object oFindPreviousMenu is a cCJFindPreviousMenuItem
+74405>>>    End_Object
+74406>>>
+74406>>>    Object oClearMenuItem is a cCJClearMenuItem
+74408>>>        Set pbControlBeginGroup to True
+74409>>>    End_Object
+74410>>>
+74410>>>    Object oClearAllMenu is a cCJClearAllMenuItem
+74412>>>    End_Object
+74413>>>
+74413>>>    Object oSaveMenu is a cCJSaveMenuItem
+74415>>>    End_Object
+74416>>>    
+74416>>>    Object oDeleteMenu is a cCJDeleteMenuItem
+74418>>>    End_Object
+74419>>>
+74419>>>    Object oRememberitem is a cCJRememberFieldMenuItem
+74421>>>        Set pbControlBeginGroup to True
+74422>>>    End_Object
+74423>>>
+74423>>>    Object oRetainItem is a cCJRememberLastFieldMenuItem
+74425>>>    End_Object
+74426>>>
+74426>>>    Object oUnRememberitem is a cCJUnRememberFieldMenuItem
+74428>>>    End_Object
+74429>>>
+74429>>>    Object oCJClearAllDynamicDefaults is a cCJUnRememberFieldAllMenuItem
+74431>>>    End_Object
+74432>>>
+74432>>>End_Object
+74433>
+74433>Object oMain is a Panel
+74435>    Set Label to "DataFlex Registration Ini-file Creator"
+74436>    Set Location to 4 3
+74437>    Set Size to 300 498
+74438>
+74438>    Object oCommandBarSystem is a cCJCommandBarSystem
+74440>        Set pbTimerUpdate to True
+74441>        Set peVisualTheme to xtpThemeOffice2013Outlook
+74442>        Set pbAutoResizeIcons to True
+74443>        Set pbLargeIcons to True
+74444>        Set pbTabbedWorkspaces to True
+74445>
+74445>        Procedure OnCreateCommandBars
+74448>            Handle hoOptions
+74448>            Get OptionsObject to hoOptions
+74449>            Forward Send OnCreateCommandBars
+74451>        End_Procedure
+74452>
+74452>        Object oMenuBar is a cCJMenuBar
+74454>
+74454>            Object oFileMenu is a cCJMenuItem
+74456>                Set peControlType to xtpControlPopup          
+74457>                Set psCaption   to "&File"
+74458>                Set psDescription to "Find, Save, Delete, Clear information or quit this application."
+74459>                Set psCategory to "Menus"
+74460>
+74460>                Object oClearMenuItem is a cCJClearMenuItem
+74462>                    Set pbAddToDesignerMenu to True
+74463>                End_Object
+74464>
+74464>                Object oClearAllMenu is a cCJClearAllMenuItem
+74466>                    Set pbAddToDesignerMenu to True
+74467>                End_Object
+74468>
+74468>                Object oPromptMenuItem is a cCJPromptMenuItem
+74470>                    Set pbAddToDesignerMenu to True
+74471>                    Set pbControlBeginGroup to True
+74472>                End_Object
+74473>
+74473>                Object oFindMenuItem is a cCJFindMenuItem
+74475>                    Set pbAddToDesignerMenu to True
+74476>                    Set pbControlBeginGroup to True
+74477>                End_Object
+74478>
+74478>                Object oFindNextMenu is a cCJFindNextMenuItem
+74480>                    Set pbAddToDesignerMenu to True
+74481>                End_Object
+74482>
+74482>                Object oFindPreviousMenu is a cCJFindPreviousMenuItem
+74484>                    Set pbAddToDesignerMenu to True
+74485>                End_Object
+74486>
+74486>                Object oFindFirstMenu is a cCJFindFirstMenuItem
+74488>                    Set pbAddToDesignerMenu to True
+74489>                End_Object
+74490>
+74490>                Object oFindLastMenu is a cCJFindLastMenuItem
+74492>                    Set pbAddToDesignerMenu to True
+74493>                End_Object
+74494>
+74494>                Object oSaveMenuItem is a cCJSaveMenuItem
+74496>                    Set pbAddToDesignerMenu to True
+74497>                    Set pbControlBeginGroup to True
+74498>                End_Object
+74499>
+74499>                Object oDeleteMenuItem is a cCJDeleteMenuItem
+74501>                    Set pbAddToDesignerMenu to True
+74502>                End_Object
+74503>
+74503>                Object oExitMenu is a cCJExitMenuItem
+74505>                    Set pbControlBeginGroup to True
+74506>                End_Object
+74507>
+74507>            End_Object
+74508>
+74508>            Object oViewMenu is a cCJMenuItem
+74510>                Set peControlType to xtpControlPopup
+74511>                Set psCaption to "&View"
+74512>                Set psToolTip to "View"
+74513>                Set psDescription to "Available Views"
+74514>
+74514>                Object oRegistrationCodesMenuItem is a cCJMenuItem
+74516>                    Set psCaption to "Registration Codes"
+74517>                    Set psTooltip to "Registration Codes"
+74518>                
+74518>                    Procedure OnExecute Variant vCommandBarControl
+74521>                        Handle hoClient
+74521>                        Get Client_Id to hoClient
+74522>                        Send Activate_oRegistrations_View of hoClient
+74523>                    End_Procedure
+74524>                End_Object
+74525>            End_Object
+74526>            
+74526>            Object oReportMenu is a cCJMenuItem
+74528>                Set peControlType to xtpControlPopup          
+74529>                Set psCaption to "&Report"
+74530>                Set psToolTip to "Report"
+74531>                Set psDescription to "Available Reports"
+74532>            End_Object
+74533>
+74533>            Object oNavigateMenu is a cCJMenuItem
+74535>                Set peControlType to xtpControlPopup      
+74536>                Set psCaption to "&Navigate"    
+74537>                Set psTooltip to "Navigate"    
+74538>                Set psDescription to "Move to different areas of the application"
+74539>
+74539>                Object oNextAreaMenu is a cCJNextAreaMenu
+74541>                End_Object
+74542>
+74542>                Object oPriorAreaMenu is a cCJPriorAreaMenu
+74544>                End_Object
+74545>
+74545>                Object oNextViewMenu is a cCJNextViewMenu
+74547>                End_Object
+74548>
+74548>                Object oPriorViewMenu is a cCJPriorViewMenu
+74550>                End_Object
+74551>
+74551>                Object oPromptMenu is a cCJPromptMenuItem
+74553>                    Set pbControlBeginGroup to True
+74554>                End_Object
+74555>
+74555>                Object oZoomMenu is a cCJZoomMenuItem
+74557>                End_Object
+74558>
+74558>            End_Object
+74559>
+74559>            Object oWindowMenu is a cCJMDIWindowsMenuItem
+74561>                Set peControlType to xtpControlPopup
+74562>                Set psCaption to "&Window"
+74563>                Set psToolTip to "Window"
+74564>                Set psDescription to "Display Current Views and set other display options."    
+74565>
+74565>                // These are the static windows items. More will be created in onInitPopup 
+74565>                Object oDisplayOptionsMenu is a cCJMenuItem
+74567>                    Set peControlType to xtpControlPopup          
+74568>                    Set psCaption to "&Display Options"
+74569>                    Set psToolTip to "Display Options"
+74570>                    Set psDescription to "Set display options"
+74571>
+74571>                    Object oStatusbarMenu is a cCJStatusbarMenuItem
+74573>                    End_Object
+74574>
+74574>                    Object oAutoArrangeIconsMenu is a cCJAutoArrangeIconsMenuItem
+74576>                    End_Object
+74577>
+74577>                    Object oRestoreMenusMenu is a cCJRestoreMenusMenuItem
+74579>                        Set pbControlBeginGroup to True
+74580>                    End_Object
+74581>
+74581>                End_Object
+74582>
+74582>                Object oCascadeMenu is a cCJCascadeMenuItem
+74584>                    Set pbControlBeginGroup to True
+74585>                End_Object
+74586>
+74586>                Object oHorizTile is a cCJTileHorizontally
+74588>                End_Object
+74589>
+74589>                Object oVertTile is a cCJTileVertically
+74591>                End_Object
+74592>
+74592>                Object oMinimizeMenuItem is a cCJMinimizeWindowsMenuItem
+74594>                    Set pbControlBeginGroup to True
+74595>                End_Object
+74596>
+74596>                Object oRestoreMenuItem is a cCJRestoreWindowsMenuItem
+74598>                End_Object
+74599>
+74599>                Object oArrangeIconsMenuItem is a cCJAutoArrangeIconsMenuItem
+74601>                    Set pbControlBeginGroup to True
+74602>                End_Object
+74603>
+74603>            End_Object
+74604>
+74604>            Object oHelpMenu is a cCJMenuItem
+74606>                Set peControlType to xtpControlPopup    
+74607>                Set psCaption to "&Help"
+74608>                Set psDescription to "Access Information for learning and using this DataFlex application."
+74609>                Set psToolTip to "Help"
+74610>
+74610>                Object oHelpMenuItem is a cCJHelpMenuItem 
+74612>                End_Object
+74613>
+74613>                Object oAboutMenuItem is a cCJAboutMenuItem
+74615>                End_Object
+74616>
+74616>            End_Object
+74617>
+74617>        End_Object
+74618>
+74618>        Object oFindToolBar is a cCJToolbar
+74620>            Set psTitle to "Finding Toolbar"
+74621>
+74621>            Object oFindFirstTool is a cCJFindFirstMenuItem
+74623>            End_Object
+74624>
+74624>            Object oFindPreviousTool is a cCJFindPreviousMenuItem
+74626>            End_Object
+74627>
+74627>            Object oFindMenuTool is a cCJFindMenuItem
+74629>            End_Object
+74630>
+74630>            Object oFindNextTool is a cCJFindNextMenuItem
+74632>            End_Object
+74633>
+74633>            Object oFindLastTool is a cCJFindLastMenuItem
+74635>            End_Object
+74636>
+74636>            Object oPromptToolItem is a cCJPromptMenuItem
+74638>                Set pbControlBeginGroup to True
+74639>            End_Object
+74640>
+74640>        End_Object
+74641>
+74641>        Object oFileToolBar is a cCJToolbar
+74643>            Set psTitle to "Data Entry Toolbar"
+74644>
+74644>            Object oClearToolItem is a cCJClearMenuItem
+74646>                Set peControlStyle to xtpButtonIconAndCaption
+74647>            End_Object
+74648>
+74648>            Object oClearAllToolItem2 is a cCJClearAllMenuItem
+74650>                Set peControlStyle to xtpButtonIconAndCaption
+74651>            End_Object
+74652>
+74652>            Object oSaveToolItem is a cCJSaveMenuItem
+74654>                Set peControlStyle to xtpButtonIconAndCaption
+74655>                Set pbControlBeginGroup to True
+74656>            End_Object
+74657>
+74657>            Object oDeleteToolItem is a cCJDeleteMenuItem
+74659>                Set peControlStyle to xtpButtonIconAndCaption
+74660>            End_Object
+74661>
+74661>        End_Object
+74662>
+74662>        Object oEditToolBar is a cCJToolbar
+74664>            Set psTitle to "Edit Toolbar"
+74665>
+74665>            Object oCutToolbarItem is a cCJCutMenuItem
+74667>            End_Object
+74668>
+74668>            Object oCopyToolbarItem is a cCJCopyMenuItem
+74670>            End_Object
+74671>
+74671>            Object oPasteToolbarItem is a cCJPasteMenuItem
+74673>            End_Object
+74674>
+74674>            Object oDeleteEditToolbarItem is a cCJDeleteEditMenuItem
+74676>                Set pbControlBeginGroup to True
+74677>            End_Object
+74678>
+74678>        End_Object
+74679>
+74679>        Object oRememberToolbar is a cCJToolbar
+74681>            Set psTitle to C_$Remember
+74682>
+74682>            Object oRememberItems is a cCJMenuItem
+74684>
+74684>                Set peControlType to xtpControlPopup
+74685>                Set peControlStyle to xtpButtonCaption
+74686>                Set psCaption to C_$Remember
+74687>                
+74687>                Object oMenuItem is a cCJRememberFieldMenuItem
+74689>                    Set peControlStyle to xtpButtonIconAndCaption
+74690>                End_Object
+74691>                
+74691>                Object oMenuItem is a cCJRememberLastFieldMenuItem
+74693>                    Set peControlStyle to xtpButtonIconAndCaption
+74694>                End_Object
+74695>                
+74695>                Object oMenuItem is a cCJUnRememberFieldMenuItem
+74697>                    Set peControlStyle to xtpButtonIconAndCaption
+74698>                End_Object
+74699>                
+74699>                Object oMenuItem is a cCJUnRememberFieldAllMenuItem
+74701>                    Set peControlStyle to xtpButtonIconAndCaption
+74702>                End_Object
+74703>
+74703>            End_Object
+74704>            
+74704>        End_Object
+74705>        
+74705>        Object oStatusBar is a cCJStatusBar
+74707>
+74707>            Object oStatusPane1 is a cCJStatusBarPane
+74709>                Set piID to sbpIDIdlePane
+74710>                Set pbStyleStretch to True
+74711>            End_Object
+74712>
+74712>            Object oStatusPane2 is a cCJStatusBarPane
+74714>                Set phoViewPane to Self
+74715>                Set pbStyleStretch to True
+74716>            End_Object
+74717>
+74717>        End_Object
+74718>
+74718>    End_Object
+74719>
+74719>    Object oClientArea is a ClientArea
+74721>        Use StdAbout.pkg
+Including file: StdAbout.pkg    (C:\Program Files\DataFlex 23.0\Pkg\StdAbout.pkg)
+74721>>>// This provides a quick and simple way to create an about package for a program.
+74721>>>// You need to create a message inside you client area called Activate_About.
+74721>>>// Within this message you should send the message DoAbout passing needed
+74721>>>// string information.
+74721>>>//
+74721>>>//       Procedure Activate_About
+74721>>>//           Send DoAbout sTitle sVersion sCopyright sAuthor sBitmap
+74721>>>//       End_Procedure
+74721>>>//    where: sTitle =     Name of application. If none provided, uses caption
+74721>>>//                        bar title
+74721>>>//           sVersion   = Version Line. If none provided, will be blank
+74721>>>//           sCopyRight = Copyright Line. If none provided, will be blank
+74721>>>//           sAuthor    = Author name, blank if none provided
+74721>>>//           sBitMap    = Bitmap logo. If none provided, standard VDF bitmap
+74721>>>//                        is used.
+74721>>>// It is expected that you will place this in your own object package. For
+74721>>>// example an order about package may look like this:
+74721>>>//
+74721>>>//   // OrderAbout.pkg
+74721>>>//   Use StdAbout.pkg
+74721>>>//   Procedure Activate_About
+74721>>>//      String sTitle sCopyright sVersion sAuthor
+74721>>>//      Move "My Order Entry System" to sTitle
+74721>>>//      Move "Version 2.1" to sVersion
+74721>>>//      Move "Copyright xxxx, Super Software Inc." to sCopyright
+74721>>>//      Move "John Smith"  to sAuthor
+74721>>>//      Send DoAbout sTitle sVersion sCopyright sAuthor ""
+74721>>>//   end_procedure
+74721>>>//   // end of file.
+74721>>>
+74721>>>Use DfAbout.pkg
+Including file: Dfabout.pkg    (C:\Program Files\DataFlex 23.0\Pkg\Dfabout.pkg)
+74721>>>>>Use LanguageText.pkg
+74721>>>>>Use Windows.pkg
+74721>>>>>Use DFbitmap.pkg
+74721>>>>>Use GlobalFunctionsProcedures.pkg
+74721>>>>>Use cTextEdit.pkg
+74721>>>>>Use tWinStructs.pkg
+74721>>>>>
+74721>>>>>Use cli.pkg
+74721>>>>>Use DFBTRDRV.PKG
+Including file: DFBTRDRV.PKG    (C:\Program Files\DataFlex 23.0\Pkg\DFBTRDRV.PKG)
+74721>>>>>>>// $File title : Package for the DataFlex Connectivity Kit for Pervasive.SQL
+74721>>>>>>>// Notice      : This package contains constants and commands, used to call
+74721>>>>>>>//               specific functions in the DFBTRDRV.
+74721>>>>>>>Use Ui
+74721>>>>>>>//
+74721>>>>>>>// Driver Indentification
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>// Driver attributes
+74721>>>>>>>//
+74721>>>>>>>// Call_Driver functions ID's
+74721>>>>>>>//
+74721>>>>>>>//
+74721>>>>>>>// DFBTRFN_CONVERT_FILE options
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// DFBTRFN_SET_OWNER options
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// DFBTRFN_SET_TRANSACTION_TYPE options
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// Command to create all vars which may be needed
+74721>>>>>>>// in other commands.
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// Command to set the owner of a Btrieve file.
+74721>>>>>>>// File must have been opened.
+74721>>>>>>>// Filenumber needs to be passed.
+74721>>>>>>>// To clear set the owner to "".
+74721>>>>>>>// Examples:
+74721>>>>>>>//      DFBTR_SET_OWNER MyFileNumber to "Secret"
+74721>>>>>>>//      DFBTR_SET_OWNER MyFileNumber to "Secret" READONLY CALLBACK MyCallBack
+74721>>>>>>>//      DFBTR_SET_OWNER MyFileNumber to "Secret" ENCRYPT
+74721>>>>>>>//      DFBTR_SET_OWNER MyFileNumber to "Secret" READONLY ENCRYPT CALLBACK MyCallBack
+74721>>>>>>>// To clear:
+74721>>>>>>>//      DFBTR_SET_OWNER MyFileNumber to ""
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// Command to parse DFBTR_SET_OWNVER
+74721>>>>>>>// options.
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// Command to parse for Callback
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// Command to clear the owner of a Btrieve file.
+74721>>>>>>>// File must have been opened.
+74721>>>>>>>// Filenumber needs to be passed.
+74721>>>>>>>// Examples:
+74721>>>>>>>//      DFBTR_CLEAR_OWNER MyFileNumber
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// Command to add a owner name to the internal list of ownernames
+74721>>>>>>>// which will be tries when opening files.
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// Command to remove all owners from the internal list of ownernames
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// Command to set the owner name to be used when opening the DDF files.
+74721>>>>>>>// The DDF owner is required when Pervasive.SQL security is turned on.
+74721>>>>>>>// The DDF owner is equal to the password of the Master user in Pervasive.SQL
+74721>>>>>>>// This command overwrites the DDF_OWNER setting in DFBTRDRV.INT
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// Command to change the transaction type.
+74721>>>>>>>// Valid types are:
+74721>>>>>>>//     DFBTRTT_NONE
+74721>>>>>>>//     DFBTRTT_EXCLUSIVE
+74721>>>>>>>//     DFBTRTT_CONCURRENT
+74721>>>>>>>//
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// Command to get the current transaction type.
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// Command to set explicit_locking
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// Command to get explicit locking
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// Command to set detection for incompatible positive signs in numeric fields
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>//
+74721>>>>>>>// Command to get detection for incompatible positive signs in numeric fields
+74721>>>>>>>//
+74721>>>>>>>
+74721>>>>>>>// Purpose: An instance of this class can be used as a broker object to
+74721>>>>>>>//          call several Dfbtrdrv releated methods.
+74721>>>>>>>
+74721>>>>>>>Class cDFBtrDrvHandler is an Array
+74722>>>>>>>    
+74722>>>>>>>    Procedure Construct_Object Integer iImage
+74724>>>>>>>        Forward Send Construct_object iImage
+74726>>>>>>>        
+74726>>>>>>>        Property String  psDriverID "DFBTRDRV"
+74727>>>>>>>    End_Procedure
+74728>>>>>>>    
+74728>>>>>>>    //  The revsion of a Dfbtrdrv Connectivity Kit
+74728>>>>>>>    //
+74728>>>>>>>    
+74728>>>>>>>    Function CKRevision Returns String
+74730>>>>>>>        String  sDriverID
+74730>>>>>>>        String  sRevision
+74730>>>>>>>        String  sVoid
+74730>>>>>>>        Integer iRetval
+74730>>>>>>>        
+74730>>>>>>>        // Ignore error 20491 DFBTRERR_INVALID_DRIVER_FUNCTION_CALL.
+74730>>>>>>>        // This error would otherwise be raised when we have an older
+74730>>>>>>>        // DFBTRDRV version that has no DFBTRFN_CKREVISION function
+74730>>>>>>>        Send Ignore_error to Error_object_Id 20491
+74731>>>>>>>        Get psDriverID to sDriverID
+74732>>>>>>>        Move (Repeat(" ", 255)) to sRevision
+74733>>>>>>>        Call_Driver 0 sDRiverID Function DFBTRFN_CKREVISION Callback 0 Passing sRevision sVoid 0 Result iRetval
+74738>>>>>>>        Send Trap_Error to Error_object_Id 20491
+74739>>>>>>>        If (Trim(sRevision) = "") Begin
+74741>>>>>>>            // Unable to get the revision. return all zeroes.
+74741>>>>>>>            Move "0.0.0.0" to sRevision
+74742>>>>>>>        End
+74742>>>>>>>>
+74742>>>>>>>        Function_Return sRevision
+74743>>>>>>>    End_Function
+74744>>>>>>>    
+74744>>>>>>>    Function CkUsesUri Returns Integer
+74746>>>>>>>        String  sDriverID
+74746>>>>>>>        String  sVoid1
+74746>>>>>>>        String  sVoid2
+74746>>>>>>>        Integer iRetval
+74746>>>>>>>        
+74746>>>>>>>        Get psDriverID to sDriverID
+74747>>>>>>>        
+74747>>>>>>>        Move 0 to iRetval
+74748>>>>>>>        // Ignore error 20491 DFBTRERR_INVALID_DRIVER_FUNCTION_CALL.
+74748>>>>>>>        // This error would otherwise be raised when we have an older
+74748>>>>>>>        // DFBTRDRV version that has no DFBTRFN_CKUSESURI function
+74748>>>>>>>        Send Ignore_error to Error_object_Id 20491
+74749>>>>>>>        Call_Driver 0 sDRiverID Function DFBTRFN_CKUSESURI Callback 0 Passing sVoid1 sVoid2 0 Result iRetval
+74754>>>>>>>        Send Trap_Error to Error_object_Id 20491
+74755>>>>>>>        
+74755>>>>>>>        Function_Return iRetval
+74756>>>>>>>    End_Function
+74757>>>>>>>    
+74757>>>>>>>    
+74757>>>>>>>    
+74757>>>>>>>    // Extract the Nth part of a a.b.c.d revsion string.
+74757>>>>>>>    //
+74757>>>>>>>    // Returns : The part version number or -1 if there is no such part number.
+74757>>>>>>>    //
+74757>>>>>>>    
+74757>>>>>>>    Function ExtractPartFromRevision Integer iPartNum String sRevision Returns Integer
+74759>>>>>>>        Integer iPartRev
+74759>>>>>>>        Integer iCurrentPart
+74759>>>>>>>        Integer iSeparatorPos
+74759>>>>>>>        
+74759>>>>>>>        If (iPartNum > 4) ;            Function_Return -1
+74762>>>>>>>        
+74762>>>>>>>        Move 0 to iCurrentPart
+74763>>>>>>>        Repeat
+74763>>>>>>>>
+74763>>>>>>>            Move (Pos(".", sRevision)) to iSeparatorPos
+74764>>>>>>>            If (iSeparatorPos > 0) Begin
+74766>>>>>>>                Move (Left(sRevision, iSeparatorPos - 1)) to iPartRev
+74767>>>>>>>                Move (Right(sRevision, Length(sRevision) - iSeparatorPos)) to sRevision
+74768>>>>>>>                Increment iCurrentPart
+74769>>>>>>>            End
+74769>>>>>>>>
+74769>>>>>>>            Else If (sRevision <> "") Begin
+74772>>>>>>>                Move sRevision to iPartRev
+74773>>>>>>>                Move "" to sRevision
+74774>>>>>>>                Increment iCurrentPart
+74775>>>>>>>            End
+74775>>>>>>>>
+74775>>>>>>>            Else ;                Move -1 to iPartRev
+74777>>>>>>>        Until (iCurrentPart >= iPartNum or iPartRev = -1)
+74779>>>>>>>        
+74779>>>>>>>        Function_Return iPartRev
+74780>>>>>>>    End_Function
+74781>>>>>>>    
+74781>>>>>>>    
+74781>>>>>>>    
+74781>>>>>>>    //
+74781>>>>>>>    //  Returns the major revision of the CK
+74781>>>>>>>    //
+74781>>>>>>>    
+74781>>>>>>>    Function CKMajorRevision Returns Integer
+74783>>>>>>>        Function_Return (ExtractPartFromRevision (Current_Object, 1, CKRevision(Current_Object)))
+74784>>>>>>>    End_Function
+74785>>>>>>>    
+74785>>>>>>>    
+74785>>>>>>>    
+74785>>>>>>>    //  Returns the minor revision of the CK
+74785>>>>>>>    //
+74785>>>>>>>    
+74785>>>>>>>    Function CKMinorRevision Returns Integer
+74787>>>>>>>        Function_Return (ExtractPartFromRevision (Current_Object, 2, CKRevision(Current_Object)))
+74788>>>>>>>    End_Function
+74789>>>>>>>    
+74789>>>>>>>    
+74789>>>>>>>    //  Returns the release revision of the CK
+74789>>>>>>>    //
+74789>>>>>>>    
+74789>>>>>>>    Function CKReleaseRevision Returns Integer
+74791>>>>>>>        Function_Return (ExtractPartFromRevision (Current_Object, 3, CKRevision(Current_Object)))
+74792>>>>>>>    End_Function
+74793>>>>>>>    
+74793>>>>>>>    
+74793>>>>>>>    //  Returns the major revision of the CK
+74793>>>>>>>    //
+74793>>>>>>>    
+74793>>>>>>>    Function CKBuildRevision Returns Integer
+74795>>>>>>>        Function_Return (ExtractPartFromRevision (Current_Object, 4, CKRevision(Current_Object)))
+74796>>>>>>>    End_Function
+74797>>>>>>>    
+74797>>>>>>>    
+74797>>>>>>>    //  Determines if the CK conforms to a passed minimal revsion.
+74797>>>>>>>    //
+74797>>>>>>>    
+74797>>>>>>>    Function IsMinimalRevision Integer iMajor Integer iMinor Integer iRelease Integer iBuild Returns Integer
+74799>>>>>>>        If (iMajor < CKMajorRevision(Current_object)) ;            Function_Return (True)
+74802>>>>>>>        Else If (iMajor = CKMajorRevision(Current_object)) Begin
+74805>>>>>>>            If (iMinor < CKMinorRevision(Current_object)) ;                Function_Return (True)
+74808>>>>>>>            Else If (iMinor = CKMinorRevision(Current_object)) Begin
+74811>>>>>>>                If (iRelease < CKReleaseRevision(Current_object)) ;                    Function_Return (True)
+74814>>>>>>>                Else If (iRelease = CKReleaseRevision(Current_object) and iBuild <= CKBuildRevision(Current_object)) ;                    Function_Return (True)
+74818>>>>>>>            End
+74818>>>>>>>>
+74818>>>>>>>        End
+74818>>>>>>>>
+74818>>>>>>>        
+74818>>>>>>>        Function_Return (False)
+74819>>>>>>>    End_Function
+74820>>>>>>>    
+74820>>>>>>>    //   Functions to query the Pervasive.SQL version:
+74820>>>>>>>    //       PSQLRequesterVersionInfo    Integer iFileNum Returns String
+74820>>>>>>>    //       PSQLLocalEngineVersionInfo  Integer iFileNum Returns String
+74820>>>>>>>    //       PSQLServerEngineVersionInfo Integer iFileNum Returns String
+74820>>>>>>>    //
+74820>>>>>>>    //   All 3 functions return the version of a Pervasive.SQL component
+74820>>>>>>>    //   in the following format:
+74820>>>>>>>    //       <version>.<revision>.<type>
+74820>>>>>>>    //   possible values for <type>:
+74820>>>>>>>    //       9 for 32-bit Windows workstation/workgroup engine or Linux
+74820>>>>>>>    //         server using Workgroup authentication mode
+74820>>>>>>>    //       C for client cache engine
+74820>>>>>>>    //       D for DOS workstation
+74820>>>>>>>    //       N for client Requester
+74820>>>>>>>    //       S for NetWare server
+74820>>>>>>>    //       T for 32-bit Windows server engine
+74820>>>>>>>    //       U for Linux server using PAM or BTPASSWD authentication
+74820>>>>>>>    //
+74820>>>>>>>    //   example:
+74820>>>>>>>    //       8.50.T
+74820>>>>>>>    //   will be returned for a Pervasive.SQL 8.5 Server Engine running on
+74820>>>>>>>    //   32-bits Windows server.
+74820>>>>>>>    //
+74820>>>>>>>    //   The FileNumber parameter must specify an opened table or 0.
+74820>>>>>>>    //   For PSQLServerEngineVersionInfo the FileNumber can not be 0.
+74820>>>>>>>    //
+74820>>>>>>>    //   If the version information is not available or can not be obtained
+74820>>>>>>>    //   the functions will return "0.0.0"
+74820>>>>>>>    
+74820>>>>>>>    //  Returns the version information of the
+74820>>>>>>>    //           Pervasive.SQL Client requester.
+74820>>>>>>>    
+74820>>>>>>>    Function PSQLRequesterVersionInfo Integer iFileNum Returns String
+74822>>>>>>>        
+74822>>>>>>>        String  sDriverID
+74822>>>>>>>        String  sVersion
+74822>>>>>>>        String  sVoid
+74822>>>>>>>        Integer iRetval
+74822>>>>>>>        
+74822>>>>>>>        // Ignore error 20491 DFBTRERR_INVALID_DRIVER_FUNCTION_CALL.
+74822>>>>>>>        // This error would otherwise be raised when we have an older
+74822>>>>>>>        // DFBTRDRV version that has no DFBTRFN_CKREVISION function
+74822>>>>>>>        Send Ignore_error to Error_object_Id 20491
+74823>>>>>>>        Get psDriverID to sDriverID
+74824>>>>>>>        Move (Repeat(" ", 255)) to sVersion
+74825>>>>>>>        Call_Driver iFileNum sDRiverID Function DFBTRFN_PSQLREQUESTERVERSIONINFO Callback 0 Passing sVersion sVoid 0 Result iRetval
+74830>>>>>>>        Send Trap_Error to Error_object_Id 20491
+74831>>>>>>>        If (Trim(sVersion) = "") Begin
+74833>>>>>>>            // Unable to get the revision. return all zeroes.
+74833>>>>>>>            Move "0.0.0" to sVersion
+74834>>>>>>>        End
+74834>>>>>>>>
+74834>>>>>>>        Function_Return sVersion
+74835>>>>>>>    End_Function
+74836>>>>>>>    
+74836>>>>>>>    //           Pervasive.SQL Engine
+74836>>>>>>>    
+74836>>>>>>>    Function PSQLLocalEngineVersionInfo Integer iFileNum Returns String
+74838>>>>>>>        
+74838>>>>>>>        String  sDriverID
+74838>>>>>>>        String  sVersion
+74838>>>>>>>        String  sVoid
+74838>>>>>>>        Integer iRetval
+74838>>>>>>>        
+74838>>>>>>>        // Ignore error 20491 DFBTRERR_INVALID_DRIVER_FUNCTION_CALL.
+74838>>>>>>>        // This error would otherwise be raised when we have an older
+74838>>>>>>>        // DFBTRDRV version that has no DFBTRFN_CKREVISION function
+74838>>>>>>>        Send Ignore_error to Error_object_Id 20491
+74839>>>>>>>        Get psDriverID to sDriverID
+74840>>>>>>>        Move (Repeat(" ", 255)) to sVersion
+74841>>>>>>>        Call_Driver iFileNum sDRiverID Function DFBTRFN_PSQLLOCALENGINEVERSIONINFO Callback 0 Passing sVersion sVoid 0 Result iRetval
+74846>>>>>>>        Send Trap_Error to Error_object_Id 20491
+74847>>>>>>>        If (Trim(sVersion) = "") Begin
+74849>>>>>>>            // Unable to get the revision. return all zeroes.
+74849>>>>>>>            Move "0.0.0" to sVersion
+74850>>>>>>>        End
+74850>>>>>>>>
+74850>>>>>>>        Function_Return sVersion
+74851>>>>>>>    End_Function
+74852>>>>>>>    
+74852>>>>>>>    //  Returns the version information of the
+74852>>>>>>>    //           Pervasive.SQL Server Engine
+74852>>>>>>>    
+74852>>>>>>>    Function PSQLServerEngineVersionInfo Integer iFileNum Returns String
+74854>>>>>>>        
+74854>>>>>>>        String  sDriverID
+74854>>>>>>>        String  sVersion
+74854>>>>>>>        String  sVoid
+74854>>>>>>>        Integer iRetval
+74854>>>>>>>        
+74854>>>>>>>        // Ignore error 20491 DFBTRERR_INVALID_DRIVER_FUNCTION_CALL.
+74854>>>>>>>        // This error would otherwise be raised when we have an older
+74854>>>>>>>        // DFBTRDRV version that has no DFBTRFN_CKREVISION function
+74854>>>>>>>        Send Ignore_error to Error_object_Id 20491
+74855>>>>>>>        Get psDriverID to sDriverID
+74856>>>>>>>        Move (Repeat(" ", 255)) to sVersion
+74857>>>>>>>        Call_Driver iFileNum sDRiverID Function DFBTRFN_PSQLSERVERENGINEVERSIONINFO Callback 0 Passing sVersion sVoid 0 Result iRetval
+74862>>>>>>>        Send Trap_Error to Error_object_Id 20491
+74863>>>>>>>        If (Trim(sVersion) = "") Begin
+74865>>>>>>>            // Unable to get the revision. return all zeroes.
+74865>>>>>>>            Move "0.0.0" to sVersion
+74866>>>>>>>        End
+74866>>>>>>>>
+74866>>>>>>>        Function_Return sVersion
+74867>>>>>>>    End_Function
+74868>>>>>>>    
+74868>>>>>>>End_Class
+74869>>>>>>>
+74869>>>>>>>
+74869>>>>>Use MSSqldrv.pkg
+Including file: MSSqldrv.pkg    (C:\Program Files\DataFlex 23.0\Pkg\MSSqldrv.pkg)
+74869>>>>>>>//     Package that declares MS SQL driver constants and functions.
+74869>>>>>>>//     This package can be used by developers who want to add Data Access
+74869>>>>>>>//     MS SQL Client specific code to a DataFlex application.
+74869>>>>>>>
+74869>>>>>>>Use Cli.pkg
+74869>>>>>>>Use SQL.pkg
+74869>>>>>>>
+74869>>>>>>>//   Driver Indentification
+74869>>>>>>>
+74869>>>>>>>//   Error number constants
+74869>>>>>>>
+74869>>>>>>>
+74869>>>>>>>//   Possible DF_DRIVER_SQLSERVER_CLIENT_VERSION values
+74869>>>>>>>
+74869>>>>>>>
+74869>>>>>>>
+74869>>>>>>>
+74869>>>>>>>
+74869>>>>>>>
+74869>>>>>>>// SQL Server spcific types.
+74869>>>>>>>Define SQL_SS_TIMESTAMPOFFSET   for   (-155) //SQL server datetimeoffset type */
+74869>>>>>>>Define SQL_SS_TIME2             for   (-154) //SQL server time type */
+74869>>>>>>>Define SQL_SS_XML               for   (-152) //SQL server xml type */
+74869>>>>>>>Define SQL_SS_VARIANT           for   (-150) //SQL server variant type */
+74869>>>>>>>
+74869>>>>>>>// SQL Server spcific types.
+74869>>>>>>>Define SQL_TYPE_TIMESTAMP2      for   (-200) //SQL server datetime2 type */
+74869>>>>>>>Define SQL_VARCHARMAX           for   (-201) //SQL server varchar(max) type */
+74869>>>>>>>Define SQL_WVARCHARMAX          for   (-202) //SQL server wvarchar(max) type */
+74869>>>>>>>Define SQL_VARBINARYMAX         for   (-203) //SQL server varbinary(max) type */
+74869>>>>>>>Define SQL_TYPE_MONEY           for   (-204) //SQL server money type */
+74869>>>>>>>Define SQL_TYPE_SMALLMONEY      for   (-205) //SQL server smallmoney type */
+74869>>>>>>>Define SQL_TYPE_SMALLDATETIME   for   (-206) //SQL server smalldatetype type */
+74869>>>>>>>
+74869>>>>>>>
+74869>>>>>>>//   MSSQL_SetConstraint <FileNum> <ConstraintText>
+74869>>>>>>>//
+74869>>>>>>>//     Setup a constraint for a file.
+74869>>>>>>>
+74869>>>>>>>
+74869>>>>>>>Class cMSSQLHandler is a cCLIHandler
+74870>>>>>>>    
+74870>>>>>>>    Procedure Construct_Object
+74872>>>>>>>        Forward Send Construct_Object
+74874>>>>>>>        
+74874>>>>>>>        Set psDriverID to MSSQLDRV_ID
+74875>>>>>>>    End_Procedure
+74876>>>>>>>    
+74876>>>>>>>    
+74876>>>>>>>    
+74876>>>>>>>    //   Extract the list from the out connect string.
+74876>>>>>>>    Function ExtractList String sOutConnStr Integer hoStore Returns Integer
+74878>>>>>>>        String  sItem
+74878>>>>>>>        Integer iStart
+74878>>>>>>>        Integer iEnd
+74878>>>>>>>        
+74878>>>>>>>        If (hoStore = 0) ;            Move Current_object to hoStore
+74881>>>>>>>        
+74881>>>>>>>        Send Delete_Data to hoStore
+74882>>>>>>>        Move (Pos("{", sOutConnStr)) to iStart
+74883>>>>>>>        While (iStart > 0)
+74887>>>>>>>            Move (Right(sOutConnStr, Length(sOutConnStr) - iStart)) to sOutConnStr
+74888>>>>>>>            If (Left(sOutConnStr, 1) = "}") ;                Move 0 to iStart
+74891>>>>>>>            Else Begin
+74892>>>>>>>                Move (Pos(",", sOutConnStr)) to iStart
+74893>>>>>>>                Move (Pos("}", sOutConnStr)) to iEnd
+74894>>>>>>>                If ((iStart = 0) or (iEnd < iStart)) ;                    Move iEnd to iStart
+74897>>>>>>>                
+74897>>>>>>>                If (iStart > 0) ;                    Set Value of hoStore  (Item_Count(Current_Object)) to (Left(sOutConnStr, iStart - 1))
+74900>>>>>>>                
+74900>>>>>>>                If (iStart = iEnd) ;                    Move 0 to iStart
+74903>>>>>>>            End
+74903>>>>>>>>
+74903>>>>>>>        Loop
+74904>>>>>>>>
+74904>>>>>>>        
+74904>>>>>>>        Function_Return (Item_Count(hoStore))
+74905>>>>>>>    End_Procedure
+74906>>>>>>>    
+74906>>>>>>>    
+74906>>>>>>>    
+74906>>>>>>>    //   Call the driver's browse connect function
+74906>>>>>>>    Function BrowseConnect String sInConnStr Returns String
+74908>>>>>>>        String  sDriver
+74908>>>>>>>        String  sOutConnStr
+74908>>>>>>>        Integer iArg
+74908>>>>>>>        Integer iRetval
+74908>>>>>>>        
+74908>>>>>>>        Get psDriverID to sDriver
+74909>>>>>>>        If (sDriver <> "") Begin
+74911>>>>>>>            Move (Repeat(" ", 8192)) to sOutConnStr
+74912>>>>>>>            Call_Driver 0 sDRiver Function CLI_BROWSECONNECT Callback 0 Passing sInConnStr sOutConnStr iArg Result iRetval
+74917>>>>>>>        End
+74917>>>>>>>>
+74917>>>>>>>        
+74917>>>>>>>        Function_Return sOutConnStr
+74918>>>>>>>    End_Function// BrowseConnect
+74919>>>>>>>    
+74919>>>>>>>    
+74919>>>>>>>    Function BrowseConnectLocal String sInConnStr Returns String
+74921>>>>>>>        String  sDriver
+74921>>>>>>>        String  sOutConnStr
+74921>>>>>>>        Integer iArg
+74921>>>>>>>        Integer iRetval
+74921>>>>>>>        
+74921>>>>>>>        Move 1 to iArg // Browses only local
+74922>>>>>>>        
+74922>>>>>>>        Get psDriverID to sDriver
+74923>>>>>>>        If (sDriver <> "") Begin
+74925>>>>>>>            Move (Repeat(" ", 8192)) to sOutConnStr
+74926>>>>>>>            Call_Driver 0 sDRiver Function CLI_BROWSECONNECT Callback 0 Passing sInConnStr sOutConnStr iArg Result iRetval
+74931>>>>>>>        End
+74931>>>>>>>>
+74931>>>>>>>        
+74931>>>>>>>        Function_Return sOutConnStr
+74932>>>>>>>    End_Function// BrowseConnect
+74933>>>>>>>    
+74933>>>>>>>    
+74933>>>>>>>    Function EnumerateServersNetworkOrLocal Integer iNetworkLocal  Returns Integer
+74935>>>>>>>        
+74935>>>>>>>        String  sServerList
+74935>>>>>>>        Integer iNumServers
+74935>>>>>>>        Integer iDriver
+74935>>>>>>>        Integer iClientVersion
+74935>>>>>>>        String  sDriver
+74935>>>>>>>        
+74935>>>>>>>        Get DriverIndex MSSQLDRV_ID to iDriver
+74936>>>>>>>        
+74936>>>>>>>        If (iDriver) Begin
+74938>>>>>>>            
+74938>>>>>>>            Get_Attribute DF_DRIVER_SQLSERVER_CLIENT_VERSION of iDriver to iClientVersion
+74941>>>>>>>            
+74941>>>>>>>            Get SqlServerClientDriverName iClientVersion to sDriver
+74942>>>>>>>            
+74942>>>>>>>            Move ("DRIVER={" + sDriver + "};") to sDriver
+74943>>>>>>>            If (iNetworkLocal = 0) Begin
+74945>>>>>>>                Get BrowseConnect sDriver to sServerList
+74946>>>>>>>            End
+74946>>>>>>>>
+74946>>>>>>>            Else Begin
+74947>>>>>>>                Get BrowseConnectLocal sDriver to sServerList
+74948>>>>>>>            End
+74948>>>>>>>>
+74948>>>>>>>            Get ExtractList sServerList Current_object to iNumServers
+74949>>>>>>>        End
+74949>>>>>>>>
+74949>>>>>>>        
+74949>>>>>>>        Function_Return iNumServers
+74950>>>>>>>        
+74950>>>>>>>    End_Function
+74951>>>>>>>    
+74951>>>>>>>    //   Enumerate the available SQL Server database servers
+74951>>>>>>>    //   This function will return all SQL Server instances on the network.
+74951>>>>>>>    //   This may take a long time.
+74951>>>>>>>    //   To enumerate only local SQL Server instances use EnumerateServersLocal
+74951>>>>>>>    Function EnumerateServers Returns Integer
+74953>>>>>>>        
+74953>>>>>>>        Integer iNumServers
+74953>>>>>>>        Integer iNetworkLocal
+74953>>>>>>>        
+74953>>>>>>>        Move 0 to iNetworkLocal // 0 = enumerate network servers
+74954>>>>>>>        
+74954>>>>>>>        Get EnumerateServersNetworkOrLocal iNetworkLocal to iNumServers
+74955>>>>>>>        
+74955>>>>>>>        Function_Return iNumServers
+74956>>>>>>>        
+74956>>>>>>>    End_Function
+74957>>>>>>>    
+74957>>>>>>>    
+74957>>>>>>>    //   Enumerate the available SQL Server database servers
+74957>>>>>>>    //   This function will return only return SQL Server instance on the local machine
+74957>>>>>>>    //   To enumerate all SQL Server instances in a network use EnumerateServers
+74957>>>>>>>    Function EnumerateServersLocal Returns Integer
+74959>>>>>>>        
+74959>>>>>>>        Integer iNumServers
+74959>>>>>>>        Integer iNetworkLocal
+74959>>>>>>>        
+74959>>>>>>>        Move 1 to iNetworkLocal // 1 = enumerate local servers
+74960>>>>>>>        
+74960>>>>>>>        Get EnumerateServersNetworkOrLocal iNetworkLocal to iNumServers
+74961>>>>>>>        
+74961>>>>>>>        Function_Return iNumServers
+74962>>>>>>>        
+74962>>>>>>>    End_Function
+74963>>>>>>>    
+74963>>>>>>>    
+74963>>>>>>>    
+74963>>>>>>>    //   Enumerate database in a given server.
+74963>>>>>>>    Function EnumerateDatabases String sServer String sUser String sPassWord Returns Integer
+74965>>>>>>>        Integer hoSQL
+74965>>>>>>>        String  sConnect
+74965>>>>>>>        String  sDatabase
+74965>>>>>>>        Integer hdbc
+74965>>>>>>>        Integer hstmt
+74965>>>>>>>        Integer iFetchResult
+74965>>>>>>>        
+74965>>>>>>>        If (Num_Arguments < 3) ;            Move "" to sPassWord
+74968>>>>>>>        If (Num_Arguments < 2) ;            Move "" to sUser
+74971>>>>>>>        
+74971>>>>>>>        If (sUser <> "") ;            Move ("SERVER=" + Trim(sServer) + ";UID=" + Trim(sUser) + ";PWD=" + Trim(sPassword) + ";") to sConnect
+74974>>>>>>>        Else ;            Move ("SERVER=" + Trim(sServer) + ";Trusted_Connection=yes") to sConnect
+74976>>>>>>>        
+74976>>>>>>>        Object oEnumDBSQLmanager is a cSQLHandleManager
+74978>>>>>>>            Move Current_Object to hoSQL
+74979>>>>>>>        End_Object
+74980>>>>>>>        
+74980>>>>>>>        If (hoSQL <> 0) Begin
+74982>>>>>>>            Get SQLConnect of hoSQL "MSSQLDRV" sConnect to hdbc
+74983>>>>>>>            If (hdbc <> 0) Begin
+74985>>>>>>>                Get SQLOpen of hdbc to hstmt
+74986>>>>>>>                If (hstmt <> 0) Begin
+74988>>>>>>>                    //   We could do a direct select on the sysdatabases table but we use
+74988>>>>>>>                    //   the stored procedure sp_database instead. SQL Server recommends this
+74988>>>>>>>                    //   approach in case meta data might change, the stored procedure will
+74988>>>>>>>                    //   stay the same.
+74988>>>>>>>                    Send SQLSetProcedureName to hstmt "sp_databases"
+74989>>>>>>>                    Send SQLCall to hstmt
+74990>>>>>>>                    Repeat
+74990>>>>>>>>
+74990>>>>>>>                        Get SQLFetch of hstmt to iFetchResult
+74991>>>>>>>                        If (iFetchResult <> 0) Begin
+74993>>>>>>>                            Get SQLColumnValue of hstmt 1 to sDatabase
+74994>>>>>>>                            Set Value  (Item_Count(Current_Object)) to sDatabase
+74995>>>>>>>                        End
+74995>>>>>>>>
+74995>>>>>>>                    Until (iFetchResult = 0)
+74997>>>>>>>                    
+74997>>>>>>>                    Send SQLClose to hstmt
+74998>>>>>>>                End
+74998>>>>>>>>
+74998>>>>>>>                Send SQLDisconnect to hdbc
+74999>>>>>>>            End
+74999>>>>>>>>
+74999>>>>>>>        End
+74999>>>>>>>>
+74999>>>>>>>        Send Destroy_Object to hoSQL
+75000>>>>>>>        
+75000>>>>>>>        Function_Return (Item_Count(Current_Object))
+75001>>>>>>>    End_Function
+75002>>>>>>>    
+75002>>>>>>>    
+75002>>>>>>>    Function SqlServerClientVersionName Integer iClientVersion  Returns String
+75004>>>>>>>        
+75004>>>>>>>        String  sSqlServerClientVersionName
+75004>>>>>>>        
+75004>>>>>>>        
+75004>>>>>>>        Case Begin
+75004>>>>>>>
+75004>>>>>>>            Case (iClientVersion = SQLSERVER2019CLIENT)
+75006>>>>>>>                Move SQLSERVER2019CLIENTNAME to sSqlServerClientVersionName
+75007>>>>>>>                Case Break
+75008>>>>>>>            
+75008>>>>>>>            Case (iClientVersion = SQLSERVER2017CLIENT)
+75011>>>>>>>                Move SQLSERVER2017CLIENTNAME to sSqlServerClientVersionName
+75012>>>>>>>                Case Break
+75013>>>>>>>                
+75013>>>>>>>            Case (iClientVersion = SQLSERVER2016CLIENT)
+75016>>>>>>>                Move SQLSERVER2016CLIENTNAME to sSqlServerClientVersionName
+75017>>>>>>>                Case Break
+75018>>>>>>>            
+75018>>>>>>>            Case (iClientVersion = SQLSERVER2014CLIENT)
+75021>>>>>>>                Move SQLSERVER2014CLIENTNAME to sSqlServerClientVersionName
+75022>>>>>>>                Case Break
+75023>>>>>>>            
+75023>>>>>>>            Case (iClientVersion = SQLSERVER2012CLIENT)
+75026>>>>>>>                Move SQLSERVER2012CLIENTNAME to sSqlServerClientVersionName
+75027>>>>>>>                Case Break
+75028>>>>>>>            
+75028>>>>>>>            Case (iClientVersion = SQLSERVER2008CLIENT)
+75031>>>>>>>                Move SQLSERVER2008CLIENTNAME to sSqlServerClientVersionName
+75032>>>>>>>                Case Break
+75033>>>>>>>            
+75033>>>>>>>            Case (iClientVersion = SQLSERVER2005CLIENT)
+75036>>>>>>>                Move SQLSERVER2005CLIENTNAME to sSqlServerClientVersionName
+75037>>>>>>>                Case Break
+75038>>>>>>>            
+75038>>>>>>>            Case (iClientVersion = SQLSERVER2000CLIENT)
+75041>>>>>>>                Move SQLSERVER2000CLIENTNAME to sSqlServerClientVersionName
+75042>>>>>>>                Case Break
+75043>>>>>>>            
+75043>>>>>>>            Case Else
+75043>>>>>>>                Move (SFormat("%1 (version %2) ",SQLSERVERUNKNOWNCLIENTNAME,iClientVersion)) to sSqlServerClientVersionName
+75044>>>>>>>                
+75044>>>>>>>        Case End
+75044>>>>>>>        
+75044>>>>>>>        
+75044>>>>>>>        Function_Return sSqlServerClientVersionName
+75045>>>>>>>        
+75045>>>>>>>    End_Function
+75046>>>>>>>
+75046>>>>>>>
+75046>>>>>>>    Function SqlServerClientDriverName Integer iClientVersion  Returns String
+75048>>>>>>>        
+75048>>>>>>>        String  sSqlServerClientDriverName
+75048>>>>>>>        
+75048>>>>>>>        Case Begin
+75048>>>>>>>
+75048>>>>>>>            Case (iClientVersion = SQLSERVER2019CLIENT)
+75050>>>>>>>                Move SQLSERVER2019DRVRSTR to sSqlServerClientDriverName
+75051>>>>>>>                Case Break
+75052>>>>>>>
+75052>>>>>>>            Case (iClientVersion = SQLSERVER2017CLIENT)
+75055>>>>>>>                Move SQLSERVER2017DRVRSTR to sSqlServerClientDriverName
+75056>>>>>>>                Case Break
+75057>>>>>>>                
+75057>>>>>>>            Case (iClientVersion = SQLSERVER2016CLIENT)
+75060>>>>>>>                Move SQLSERVER2016DRVRSTR to sSqlServerClientDriverName
+75061>>>>>>>                Case Break
+75062>>>>>>>            
+75062>>>>>>>            Case (iClientVersion = SQLSERVER2014CLIENT)
+75065>>>>>>>                Move SQLSERVER2014DRVRSTR to sSqlServerClientDriverName
+75066>>>>>>>                Case Break
+75067>>>>>>>            
+75067>>>>>>>            Case (iClientVersion = SQLSERVER2012CLIENT)
+75070>>>>>>>                Move SQLSERVER2012DRVRSTR to sSqlServerClientDriverName
+75071>>>>>>>                Case Break
+75072>>>>>>>            
+75072>>>>>>>            Case (iClientVersion = SQLSERVER2008CLIENT)
+75075>>>>>>>                Move SQLSERVER2008DRVRSTR to sSqlServerClientDriverName
+75076>>>>>>>                Case Break
+75077>>>>>>>            
+75077>>>>>>>            Case (iClientVersion = SQLSERVER2005CLIENT)
+75080>>>>>>>                Move SQLSERVER2005DRVRSTR to sSqlServerClientDriverName
+75081>>>>>>>                Case Break
+75082>>>>>>>            
+75082>>>>>>>            Case (iClientVersion = SQLSERVER2000CLIENT)
+75085>>>>>>>                Move SQLSERVER2000DRVRSTR to sSqlServerClientDriverName
+75086>>>>>>>                Case Break
+75087>>>>>>>            
+75087>>>>>>>            Case Else
+75087>>>>>>>                Move SQLSERVER2000DRVRSTR to sSqlServerClientDriverName
+75088>>>>>>>                
+75088>>>>>>>        Case End
+75088>>>>>>>        
+75088>>>>>>>        
+75088>>>>>>>        Function_Return sSqlServerClientDriverName
+75089>>>>>>>        
+75089>>>>>>>    End_Function
+75090>>>>>>>    
+75090>>>>>>>    
+75090>>>>>>>End_Class
+75091>>>>>>>
+75091>>>>>>>
+75091>>>>>
+75091>>>>>Register_Function phoWorkspace Returns Handle
+75091>>>>>Register_Function Help_filename Returns String
+75091>>>>>Register_Function GetHelpFile Returns String
+75091>>>>>Register_Function pbEnterKeyAsTabKey Returns Boolean
+75091>>>>>
+75091>>>>>// Do not call directly, use the wrapper function instead
+75091>>>>>External_Function WNetGetUserW "WNetGetUserW" MPR.DLL ;    Pointer lpName ;    Pointer lpUser_Name ;    Pointer lpLength ;    Returns DWord
+75092>>>>>
+75092>>>>>// Wrapper Function WNetGetUser
+75092>>>>>Function WNetGetUser Global ;    Pointer lpName ;    Pointer lpUser_Name ;    Pointer lpLength ;    Returns DWord
+75094>>>>>    
+75094>>>>>    DWord   dwResult     
+75094>>>>>    UWide   uwName uwUserName
+75094>>>>>    UWide   uwName uwUserName
+75094>>>>>        
+75094>>>>>    Send StringToWide lpName (&uwName)
+75095>>>>>    
+75095>>>>>    Send WideSetBuffer lpUser_Name lpLength (&uwUserName)    
+75096>>>>>    
+75096>>>>>    Move (WNetGetUserW (uwName.lpUText, uwUserName.lpUText, lpLength)) to dwResult
+75097>>>>>    
+75097>>>>>    Send WideToString (&uwUserName) lpUser_Name
+75098>>>>>    
+75098>>>>>    Function_Return dwResult
+75099>>>>>End_Function
+75100>>>>>
+75100>>>>>//    This function reads the current username Of windows and returns that
+75100>>>>>//    name or an text unknown user
+75100>>>>>Function Network_User_Name for cDesktop Returns String
+75102>>>>>    WString wName
+75102>>>>>    Integer iRetval iLength
+75102>>>>>    
+75102>>>>>    Move 0 to iLength
+75103>>>>>    Move (WNetGetUserW (0, 0, AddressOf (iLength))) to iRetval
+75104>>>>>    Move (ZeroString(iLength)) to wName
+75105>>>>>    Move (WNetGetUserW (0, AddressOf (wName), AddressOf (iLength))) to iRetval
+75106>>>>>    
+75106>>>>>    If (iRetval = NO_ERROR) Begin
+75108>>>>>        Function_Return (CString (wName))
+75109>>>>>    End
+75109>>>>>>
+75109>>>>>    
+75109>>>>>    Function_Return "User Unknown"
+75110>>>>>End_Function
+75111>>>>>
+75111>>>>>External_Function GlobalMemoryStatus "GlobalMemoryStatus" Kernel32.Dll Pointer lpsMemoryStatus Returns Integer
+75112>>>>>
+75112>>>>>External_Function GlobalMemoryStatusEx "GlobalMemoryStatusEx" Kernel32.Dll Pointer lpMemoryStatus Returns Integer
+75113>>>>>
+75113>>>>>Class SysinfoDisplay is a cTextEdit
+75114>>>>>    Procedure Construct_Object
+75116>>>>>        Forward Send Construct_Object
+75118>>>>>        
+75118>>>>>        Set Location to 6 6
+75119>>>>>        Set Size to 110 255
+75120>>>>>        Set Read_Only_State to True
+75121>>>>>        Set pbWrap to False
+75122>>>>>    End_Procedure
+75123>>>>>    
+75123>>>>>    //    This method will show the name Of the current directory in the system
+75123>>>>>    //    information box
+75123>>>>>    Procedure Show_Current_Directory
+75125>>>>>        String sDir
+75125>>>>>        
+75125>>>>>        Get_Current_Directory to sDir
+75126>>>>>        
+75126>>>>>        Send AppendTextLn (SFormat (C_$CurrentDirectory, sDir))
+75127>>>>>    End_Procedure
+75128>>>>>    
+75128>>>>>    Procedure Show_Windows_Directory
+75130>>>>>        String sWindir
+75130>>>>>        
+75130>>>>>        Get_Windows_Directory to sWindir
+75131>>>>>        
+75131>>>>>        Send AppendTextLn (SFormat (C_$WindowsDirectory, sWindir))
+75132>>>>>    End_Procedure
+75133>>>>>    
+75133>>>>>    Procedure Show_Current_User
+75135>>>>>        Send AppendTextLn (SFormat (C_$NetworkUserName, Network_User_Name (Self)))
+75136>>>>>    End_Procedure
+75137>>>>>    
+75137>>>>>    Procedure Show_Number_Format
+75139>>>>>        Integer iFormat
+75139>>>>>        String sFormatText
+75139>>>>>        
+75139>>>>>        Get_Attribute DF_THOUSANDS_SEPARATOR to iFormat
+75142>>>>>        Move (Character (iFormat)) to sFormatText
+75143>>>>>        Send AppendTextLn (SFormat (C_$ThousandsSeparator, sFormatText, iFormat))
+75144>>>>>        
+75144>>>>>        Get_Attribute DF_DECIMAL_SEPARATOR to iFormat
+75147>>>>>        Move (Character (iFormat)) to sFormatText
+75148>>>>>        Send AppendTextLn (SFormat (C_$DecimalSeparator, sFormatText))
+75149>>>>>    End_Procedure
+75150>>>>>    
+75150>>>>>    Procedure Show_Filelist_Name
+75152>>>>>        String sFilename
+75152>>>>>        
+75152>>>>>        Get_Attribute DF_FILELIST_NAME to sFilename
+75155>>>>>        
+75155>>>>>        Send AppendTextLn (SFormat (C_$CurrentFilelist, sFilename))
+75156>>>>>        Send AppendTextLn ""
+75157>>>>>    End_Procedure
+75158>>>>>    
+75158>>>>>    Procedure Show_Lock_Delay
+75160>>>>>        Integer iLockdelay
+75160>>>>>        
+75160>>>>>        Get_Attribute DF_LOCK_DELAY to iLockdelay
+75163>>>>>        
+75163>>>>>        Send AppendTextLn (SFormat (C_$DatabaseLockingDelay, iLockDelay))
+75164>>>>>    End_Procedure
+75165>>>>>    
+75165>>>>>    Procedure Show_Lock_Timeout
+75167>>>>>        Integer iLockTimeout
+75167>>>>>        
+75167>>>>>        Get_Attribute DF_LOCK_TIMEOUT to iLockTimeout
+75170>>>>>        
+75170>>>>>        Send AppendTextLn (SFormat (C_$DatabaseLockingTimeout, iLockTimeOut))
+75171>>>>>    End_Procedure
+75172>>>>>    
+75172>>>>>    Procedure Show_Screen_Size
+75174>>>>>        Integer iYscreensize iXscreensize
+75174>>>>>        
+75174>>>>>        Move (GetSystemMetrics (SM_CXSCREEN)) to iXscreensize
+75175>>>>>        Move (GetSystemMetrics (SM_CYSCREEN)) to iYscreensize
+75176>>>>>        
+75176>>>>>        Send AppendTextLn (SFormat (C_$VideoResolution, iXscreensize, iYscreensize))
+75177>>>>>    End_Procedure
+75178>>>>>    
+75178>>>>>    Procedure Show_Page_Size
+75180>>>>>        Send AppendTextLn (SFormat (C_$PageEndFormFeed, Pageend, Pagefeed))
+75181>>>>>    End_Procedure
+75182>>>>>    
+75182>>>>>    Procedure Show_Date
+75184>>>>>        Date dToday
+75184>>>>>        
+75184>>>>>        Move (CurrentDateTime()) to  dToday
+75185>>>>>        
+75185>>>>>        Send AppendTextLn (SFormat (C_$CurrentSystemDate, String (dToday)))
+75186>>>>>    End_Procedure
+75187>>>>>    
+75187>>>>>    Procedure Show_Date_Format
+75189>>>>>        Integer iDateFormat
+75189>>>>>        String sDateFormat
+75189>>>>>        
+75189>>>>>        Get_Attribute DF_DATE_FORMAT to iDateFormat
+75192>>>>>        Case Begin
+75192>>>>>            Case (iDateFormat = DF_DATE_USA)
+75194>>>>>                Move C_$USA to sDateFormat
+75195>>>>>                Case Break
+75196>>>>>            Case (iDateFormat = DF_DATE_EUROPEAN)
+75199>>>>>                Move C_$European to sDateFormat
+75200>>>>>                Case Break
+75201>>>>>            Case (iDateFormat = DF_DATE_MILITARY)
+75204>>>>>                Move C_$Military to sDateFormat
+75205>>>>>                Case Break
+75206>>>>>            Case Else
+75206>>>>>                Move C_$UnknownDateType to sDateFormat
+75207>>>>>                Case Break
+75208>>>>>        Case End
+75208>>>>>        
+75208>>>>>        Send AppendTextLn (SFormat (C_$DateFormat, sDateformat))
+75209>>>>>    End_Procedure
+75210>>>>>    
+75210>>>>>    Procedure Show_Systemresources
+75212>>>>>        tWinMemoryStatusEx MemoryStatusInfo
+75212>>>>>        tWinMemoryStatusEx MemoryStatusInfo
+75212>>>>>        Integer iRetval
+75212>>>>>        
+75212>>>>>        Move (SizeOfType (tWinMemoryStatusEx)) to MemoryStatusInfo.dwLength
+75213>>>>>        Move (GlobalMemoryStatusEx (AddressOf (MemoryStatusInfo))) to iRetval
+75214>>>>>        If (iRetval = 0) Begin
+75216>>>>>            Move (ShowLastError ()) to iRetval
+75217>>>>>        End
+75217>>>>>>
+75217>>>>>        
+75217>>>>>        Send AppendTextLn (SFormat (C_$AvailableMemory, MemoryStatusInfo.ullTotalPhys))
+75218>>>>>        Send AppendTextLn (SFormat (C_$MemoryUtilization, MemoryStatusInfo.dwMemoryLoad))
+75219>>>>>        Send AppendTextLn (SFormat (C_$AvailablePhysicalMemory, Integer ( Real (MemoryStatusInfo.ullAvailPhys) / Real (MemoryStatusInfo.ullTotalPhys) * 100.0)))
+75220>>>>>        Send AppendTextLn (SFormat (C_$AvailablePagefileSpace, Integer ( Real (MemoryStatusInfo.ullAvailPageFile) / Real (MemoryStatusInfo.ullTotalPageFile) * 100.0)))
+75221>>>>>        Send AppendTextLn (SFormat (C_$AvailableVirtualMemory, Integer ( Real (MemoryStatusInfo.ullAvailVirtual) / Real (MemoryStatusInfo.ullTotalVirtual) * 100.0)))
+75222>>>>>    End_Procedure
+75223>>>>>    
+75223>>>>>    Procedure Show_Registration
+75225>>>>>        String sRegName
+75225>>>>>        Integer iSN iMaxUsers
+75225>>>>>        
+75225>>>>>        Registration sRegName iSN
+75226>>>>>>
+75226>>>>>        
+75226>>>>>        Get_Licensed_Max_Users to iMaxUsers
+75227>>>>>        
+75227>>>>>        Send AppendTextLn ""
+75228>>>>>        Send AppendTextLn (SFormat (C_$Serial, iSN))
+75229>>>>>        Send AppendTextLn (SFormat (C_$RegName, sRegName))
+75230>>>>>        Send AppendTextLn (SFormat (C_$MaxNumUsers, iMaxUsers))
+75231>>>>>    End_Procedure
+75232>>>>>    
+75232>>>>>    // If workspaces are used, we will send the message EnumerateWorkspaceData
+75232>>>>>    // To the workspace object passing the an object and message To send back
+75232>>>>>    // To this object. It is expected that the workspace object will send this
+75232>>>>>    // message for every line Of information it wants displayed (passing the
+75232>>>>>    // information To be displayed
+75232>>>>>    Register_Procedure EnumerateWorkspaceData Handle hObjId Handle hmMessId
+75232>>>>>    
+75232>>>>>    Procedure Show_ServicePack
+75234>>>>>        String sKey sVersionDescription sVersion
+75234>>>>>        Handle hoRegistry
+75234>>>>>        Boolean bExists bOpened
+75234>>>>>        
+75234>>>>>        Get Create (RefClass (cRegistry)) to hoRegistry
+75235>>>>>        Set phRootKey of hoRegistry to HKEY_LOCAL_MACHINE
+75236>>>>>        Set pfAccessRights of hoRegistry to KEY_READ
+75237>>>>>        
+75237>>>>>        Move C_DFVersionRegistryRoot to sKey
+75238>>>>>        Get KeyExists of hoRegistry sKey to bExists
+75239>>>>>        If (bExists) Begin
+75241>>>>>            Get OpenKey of hoRegistry sKey to bOpened
+75242>>>>>            If (bOpened) Begin
+75244>>>>>                Get ValueExists of hoRegistry "CurrentVersionDescription" to bExists
+75245>>>>>                If (bExists) Begin
+75247>>>>>                    Get ReadString of hoRegistry "CurrentVersionDescription" to sVersionDescription
+75248>>>>>                End
+75248>>>>>>
+75248>>>>>                
+75248>>>>>                Get ValueExists of hoRegistry "CurrentVersion" to bExists
+75249>>>>>                If (bExists) Begin
+75251>>>>>                    Get ReadString of hoRegistry "CurrentVersion" to sVersion
+75252>>>>>                End
+75252>>>>>>
+75252>>>>>                Send CloseKey of hoRegistry
+75253>>>>>            End
+75253>>>>>>
+75253>>>>>        End
+75253>>>>>>
+75253>>>>>        Send Destroy of hoRegistry
+75254>>>>>        
+75254>>>>>        If (sVersionDescription <> "") Begin
+75256>>>>>            Send AppendTextLn (sVersionDescription * "-" * sVersion)
+75257>>>>>            Send AppendTextLn ""
+75258>>>>>        End
+75258>>>>>>
+75258>>>>>    End_Procedure
+75259>>>>>    
+75259>>>>>    
+75259>>>>>    Procedure Show_WorkspaceInformation
+75261>>>>>        Integer hoWorkspace
+75261>>>>>        
+75261>>>>>        If (ghoApplication <> 0) Begin
+75263>>>>>            Get phoWorkspace of ghoApplication to hoWorkspace
+75264>>>>>            If (hoWorkspace <> 0) Begin
+75266>>>>>                Send EnumerateWorkspaceData of hoWorkspace Self (Refproc (AppendTextLn))
+75267>>>>>                Send AppendTextLn ""
+75268>>>>>            End
+75268>>>>>>
+75268>>>>>        End
+75268>>>>>>
+75268>>>>>    End_Procedure
+75269>>>>>    
+75269>>>>>    // If connection ids are used, we will send the message EnumerateConnections
+75269>>>>>    // to the connection manager object passing the an object and message to send
+75269>>>>>    // back to this object. It is expected that the connection manager object will
+75269>>>>>    // send this message for every line Of information it wants displayed (passing
+75269>>>>>    // the information To be displayed
+75269>>>>>    Register_Procedure EnumerateConnections Integer hObjId Integer hmMessId
+75269>>>>>    
+75269>>>>>    Procedure Show_ConnectionIdInformation
+75271>>>>>        If (ghoConnection > 0) Begin
+75273>>>>>            Send AppendTextLn ""
+75274>>>>>            Send EnumerateConnections of ghoConnection Self (RefProc(AppendTextLn))
+75275>>>>>        End
+75275>>>>>>
+75275>>>>>    End_Procedure
+75276>>>>>    
+75276>>>>>    Function VersionStr Integer iVer Integer iRev Integer iBld Returns String
+75278>>>>>        Function_Return (String (iVer) - "." - String (iRev) - "." - String (iBld))
+75279>>>>>    End_Function
+75280>>>>>    
+75280>>>>>    Procedure Show_Versions
+75282>>>>>        Integer iVersion iRevision iBuild
+75282>>>>>        
+75282>>>>>        Version_Information iVersion iRevision iBuild
+75284>>>>>        
+75284>>>>>        Send AppendTextLn (SFormat (C_$RuntimeVersion, VersionStr(Self,iVersion,iRevision,iBuild) ))
+75285>>>>>        Send AppendTextLn (SFormat (C_$PackageVersion, VersionStr(Self,PKG_VERSION, PKG_REVISION, PKG_BUILD) ))
+75286>>>>>        Send AppendTextLn (SFormat (C_$FMACVersion, VersionStr(Self,FMAC_VERSION, FMAC_REVISION, FMAC_BUILD) ))
+75287>>>>>    End_Procedure
+75288>>>>>    
+75288>>>>>    Procedure Show_Platform
+75290>>>>>        Send AppendTextLn (SFormat (C_$Platform,"64-bit"))
+75291>>>>>    End_Procedure
+75292>>>>>    
+75292>>>>>    Function CKRevisionNumber String sDriverID Returns String
+75294>>>>>        Handle hoCLIHandler
+75294>>>>>        Handle hoDFBtrDrvHandler
+75294>>>>>        String sCKRevision
+75294>>>>>        
+75294>>>>>        
+75294>>>>>        If (sDriverID = "MSSQLDRV" or sDriverID = "ODBC_DRV" or sDriverID = "DB2_DRV") Begin
+75296>>>>>            Get Create (RefClass(cCLIHandler)) to hoCLIHandler
+75297>>>>>            Set psDriverID of hoCLIHandler to sDriverID
+75298>>>>>            Move (CKRevision(hoCLIHandler)) to sCKRevision
+75299>>>>>            Send Destroy of hoCLIHandler
+75300>>>>>        End
+75300>>>>>>
+75300>>>>>        Else Begin
+75301>>>>>            If (sDriverID = "DFBTRDRV") Begin
+75303>>>>>                Get Create (RefClass(cDFBtrDrvHandler)) to hoDFBtrDrvHandler
+75304>>>>>                Set psDriverID of hoDFBtrDrvHandler to sDriverID
+75305>>>>>                Move (CKRevision(hoDFBtrDrvHandler)) to sCKRevision
+75306>>>>>                Send Destroy of hoDFBtrDrvHandler
+75307>>>>>            End
+75307>>>>>>
+75307>>>>>        End
+75307>>>>>>
+75307>>>>>        
+75307>>>>>        Function_Return sCKRevision
+75308>>>>>    End_Function
+75309>>>>>    
+75309>>>>>    
+75309>>>>>    Function IsDataAccessCK String sDriverID Returns Boolean
+75311>>>>>        
+75311>>>>>        If (sDriverID = "DATAFLEX") Begin
+75313>>>>>            Function_Return False
+75314>>>>>        End
+75314>>>>>>
+75314>>>>>        
+75314>>>>>        Function_Return (sDriverID = "MSSQLDRV" or sDriverID = "ODBC_DRV" or sDriverID = "DB2_DRV" or sDriverID = "DFBTRDRV")
+75315>>>>>    End_Function
+75316>>>>>    
+75316>>>>>    
+75316>>>>>    Procedure Show_Drivers
+75318>>>>>        String sCurrentDriver sRevNumber
+75318>>>>>        String sLoadedDrivers sClientDriver
+75318>>>>>        Integer iNumberOfDrivers iCount iClientVersion iMSSQLIndex
+75318>>>>>        Boolean bOK
+75318>>>>>        Handle hoMsqlDrv
+75318>>>>>        
+75318>>>>>        Move "" to sLoadedDrivers
+75319>>>>>        Get_Attribute DF_NUMBER_DRIVERS to iNumberOfDrivers
+75322>>>>>        For iCount from 1 to iNumberOfDrivers
+75328>>>>>>
+75328>>>>>            Get_Attribute DF_DRIVER_NAME of iCount to sCurrentDriver
+75331>>>>>            If (sLoadedDrivers <> "") Begin
+75333>>>>>                Move (Append (sLoadedDrivers, ", ")) to sLoadedDrivers
+75334>>>>>            End
+75334>>>>>>
+75334>>>>>            Get IsDataAccessCK sCurrentDriver to bOK
+75335>>>>>            If (bOK) Begin
+75337>>>>>                If (sCurrentDriver = "MSSQLDRV") Begin
+75339>>>>>                    Move iCount to iMSSQLIndex
+75340>>>>>                End
+75340>>>>>>
+75340>>>>>                Get CKRevisionNumber sCurrentDriver to sRevNumber
+75341>>>>>                // if mssqldrv, show the client number
+75341>>>>>                Move (sCurrentDriver * "(" + sRevNumber + ")") to sCurrentDriver
+75342>>>>>            End
+75342>>>>>>
+75342>>>>>            Move (Append (sLoadedDrivers, sCurrentDriver)) to sLoadedDrivers
+75343>>>>>        Loop
+75344>>>>>>
+75344>>>>>        Send AppendTextLn (SFormat (C_$DatabaseDriver, sLoadedDrivers))
+75345>>>>>        If (iMSSQLIndex>0) Begin
+75347>>>>>            Get_Attribute DF_DRIVER_SQLSERVER_CLIENT_VERSION of iMSSQLIndex to iClientVersion
+75350>>>>>            Get Create (RefClass(cMSSQLHandler)) to hoMsqlDrv
+75351>>>>>            Get SqlServerClientVersionName of hoMsqlDrv iClientVersion to sClientDriver
+75352>>>>>            Send Destroy of hoMsqlDrv
+75353>>>>>            Send AppendTextLn (SFormat("MSSQLDRV Client Version: %1", sClientDriver))
+75354>>>>>        End
+75354>>>>>>
+75354>>>>>    End_Procedure
+75355>>>>>    
+75355>>>>>    Procedure Show_HelpFile
+75357>>>>>        String sHelpFile
+75357>>>>>        Integer eHelpType
+75357>>>>>        
+75357>>>>>        If (ghoApplication <> 0) Begin
+75359>>>>>            Get peHelpType of ghoApplication to eHelpType
+75360>>>>>            If (eHelpType = htHtmlHelp and ghoHtmlHelp) Begin
+75362>>>>>                Get GetHelpFile of ghoHtmlHelp to sHelpFile
+75363>>>>>            End
+75363>>>>>>
+75363>>>>>            Else If (eHelpType = htWinHelp and Help_object_id) Begin
+75366>>>>>                Get Help_filename of Help_object_id to sHelpFile
+75367>>>>>            End
+75367>>>>>>
+75367>>>>>            Else Begin
+75368>>>>>                Move C_$ThereIsNoHelpfileDefined to sHelpFile
+75369>>>>>            End
+75369>>>>>>
+75369>>>>>            
+75369>>>>>            Send AppendTextLn ""
+75370>>>>>            Send AppendTextLn (SFormat (C_$HelpFile, sHelpFile))
+75371>>>>>        End
+75371>>>>>>
+75371>>>>>    End_Procedure
+75372>>>>>    
+75372>>>>>    Procedure Show_EnterAsTab
+75374>>>>>        Boolean bEnterKeyAsTabKey
+75374>>>>>        String sText
+75374>>>>>        
+75374>>>>>        If (ghoApplication <> 0) Begin
+75376>>>>>            Get pbEnterKeyAsTabKey of ghoApplication to bEnterKeyAsTabKey
+75377>>>>>            If (bEnterKeyAsTabKey) Begin
+75379>>>>>                Move "True" to sText
+75380>>>>>            End
+75380>>>>>>
+75380>>>>>            Else Begin
+75381>>>>>                Move "False" to sText
+75382>>>>>            End
+75382>>>>>>
+75382>>>>>            Send AppendTextLn (SFormat (C_$EnterKeyNavForward, sText))
+75383>>>>>        End
+75383>>>>>>
+75383>>>>>    End_Procedure
+75384>>>>>    
+75384>>>>>    //    During activation we will remove the old information and add the newly
+75384>>>>>    //    found systeminformation
+75384>>>>>    Procedure Add_Focus Integer hoRoot
+75386>>>>>        Forward Send Add_Focus hoRoot
+75388>>>>>        
+75388>>>>>        Send Delete_Data
+75389>>>>>        
+75389>>>>>        Set Changed_State to False
+75390>>>>>        Set Read_Only_State to True
+75391>>>>>        
+75391>>>>>        Send Show_ServicePack
+75392>>>>>        Send Show_Versions
+75393>>>>>        Send Show_Platform
+75394>>>>>        Send Show_Drivers
+75395>>>>>        If (ghoConnection <> 0) Begin
+75397>>>>>            Send Show_ConnectionIdInformation
+75398>>>>>        End
+75398>>>>>>
+75398>>>>>        Send Show_HelpFile
+75399>>>>>        Send Show_Current_Directory
+75400>>>>>        Send Show_Filelist_Name
+75401>>>>>        If (ghoApplication <> 0) Begin
+75403>>>>>            Send Show_WorkSpaceInformation // added To show WS info
+75404>>>>>        End
+75404>>>>>>
+75404>>>>>        Send Show_Current_User
+75405>>>>>        Send Show_Windows_Directory
+75406>>>>>        Send Show_Screen_Size
+75407>>>>>        Send Show_Page_Size
+75408>>>>>        Send Show_EnterAsTab
+75409>>>>>        Send Show_Number_Format
+75410>>>>>        Send Show_Date_Format
+75411>>>>>        Send Show_Lock_Delay
+75412>>>>>        Send Show_Lock_Timeout
+75413>>>>>        Send Show_Date
+75414>>>>>        Send Show_Systemresources
+75415>>>>>        Send Show_Registration
+75416>>>>>        Send Beginning_of_Data
+75417>>>>>        
+75417>>>>>        Set Icon to 'default.ico'
+75418>>>>>    End_Procedure
+75419>>>>>End_Class
+75420>>>>>
+75420>>>>>Class SysInfoDialog is a ModalPanel
+75421>>>>>    Procedure Construct_Object
+75423>>>>>        Forward Send Construct_Object
+75425>>>>>        
+75425>>>>>        Set Label to C_$SystemInformation
+75426>>>>>        Set Size to 140 267
+75427>>>>>        Set piMinSize to 140 267
+75428>>>>>        Set Locate_Mode to CENTER_ON_SCREEN
+75429>>>>>        Set Border_Style to Border_Thick
+75430>>>>>        
+75430>>>>>        Object oSysinfoDisplay is a SysInfoDisplay
+75432>>>>>            Set peAnchors to anAll
+75433>>>>>        End_Object
+75434>>>>>        
+75434>>>>>        Object oCloseButton is a Button
+75436>>>>>            Set Label to C_$Close
+75437>>>>>            Set Location to 120 210
+75438>>>>>            Set Message 0 to (Refproc (Close_Panel))
+75439>>>>>            Set Default_State to True
+75440>>>>>            Set peAnchors to anBottomRight
+75441>>>>>        End_Object
+75442>>>>>        
+75442>>>>>        On_Key kCancel Send Close_Panel
+75443>>>>>    End_Procedure
+75444>>>>>End_Class
+75445>>>>>
+75445>>>>>Class AboutDialog is a ModalPanel
+75446>>>>>    Procedure Construct_Object
+75448>>>>>        String sVdfRootDir
+75448>>>>>        
+75448>>>>>        Forward Send Construct_Object
+75450>>>>>        
+75450>>>>>        Set Label to C_$About
+75451>>>>>        Set Size to 89 282
+75452>>>>>        Set Locate_Mode to CENTER_ON_SCREEN
+75453>>>>>        
+75453>>>>>        Object oSysInfoDialog is a SysInfoDialog
+75455>>>>>        End_Object
+75456>>>>>        
+75456>>>>>        Object oBox is a Container3d
+75458>>>>>            Set Border_Style to Border_StaticEdge
+75459>>>>>            Set Size to 63 272
+75460>>>>>            Set Location to 4 5
+75461>>>>>            
+75461>>>>>            Object oAboutGraphic is a BitmapContainer
+75463>>>>>                Set Border_Style to Border_None
+75464>>>>>                Set Bitmap_Style to Bitmap_Center
+75465>>>>>                Set Size to 48 48
+75466>>>>>                Set Location to 7 2
+75467>>>>>            End_Object
+75468>>>>>            
+75468>>>>>            Object oProductName is a TextBox
+75470>>>>>                Set Label to C_$ProductName
+75471>>>>>                Set Size to 10 45
+75472>>>>>                Set Location to 8 53
+75473>>>>>            End_Object
+75474>>>>>            
+75474>>>>>            Object oVersion is a TextBox
+75476>>>>>                Set Label to C_$Version
+75477>>>>>                Set Size to 10 25
+75478>>>>>                Set Location to 21 53
+75479>>>>>            End_Object
+75480>>>>>            
+75480>>>>>            Object oCopyright is a TextBox
+75482>>>>>                Set Label to C_$Copyright
+75483>>>>>                Set Size to 10 31
+75484>>>>>                Set Location to 34 53
+75485>>>>>            End_Object
+75486>>>>>            
+75486>>>>>            Object oAuthor is a TextBox
+75488>>>>>                Set Label to C_$Author
+75489>>>>>                Set Size to 10 22
+75490>>>>>                Set Location to 46 53
+75491>>>>>            End_Object
+75492>>>>>        End_Object
+75493>>>>>        
+75493>>>>>        Object oOKButton is a Button
+75495>>>>>            On_Item C_$OK Send Close_Panel
+75496>>>>>            Set Size to 14 50
+75497>>>>>            Set Location to 71 227
+75498>>>>>        End_Object
+75499>>>>>        
+75499>>>>>        Object oSysInfoButton is a Button
+75501>>>>>            On_Item C_$SystemInfo Send Show_Sysinfo
+75502>>>>>            Set Size to 14 50
+75503>>>>>            Set Location to 71 171
+75504>>>>>        End_Object
+75505>>>>>        
+75505>>>>>        On_Key Kcancel Send KeyAction of oOKButton
+75506>>>>>        
+75506>>>>>        Set Logo to "DacAbout.bmp"  // square bitmaps Of 42x42 work best
+75507>>>>>    End_Procedure
+75508>>>>>    
+75508>>>>>    Procedure Set ProductName String sProductName
+75510>>>>>        Set Label of oProductName to sProductName
+75511>>>>>    End_Procedure
+75512>>>>>    
+75512>>>>>    Procedure Set Version String sVersion
+75514>>>>>        Set Label of oVersion to sVersion
+75515>>>>>    End_Procedure
+75516>>>>>    
+75516>>>>>    Procedure Set Copyright String sCopyright
+75518>>>>>        Set Label of oCopyright to sCopyright
+75519>>>>>    End_Procedure
+75520>>>>>    
+75520>>>>>    Procedure Set Author String sAuthor
+75522>>>>>        Set Label of oAuthor to sAuthor
+75523>>>>>    End_Procedure
+75524>>>>>    
+75524>>>>>    Procedure Set Logo String sLogo
+75526>>>>>        // square bitmaps Of 42x42 work best
+75526>>>>>        Set Bitmap of oAboutGraphic to sLogo
+75527>>>>>    End_Procedure
+75528>>>>>    
+75528>>>>>    Procedure Show_Sysinfo
+75530>>>>>        Send Popup_Modal of oSysinfoDialog
+75531>>>>>    End_Procedure
+75532>>>>>    
+75532>>>>>    Procedure End_Construct_Object
+75534>>>>>        Handle hoVersionInfo
+75534>>>>>        Boolean bIncluded
+75534>>>>>        Integer iMajor iMinor iRelease iBuild
+75534>>>>>        String sLabel
+75534>>>>>        
+75534>>>>>        Get Label of oVersion to sLabel
+75535>>>>>        If (sLabel = C_$VERSION) Begin
+75537>>>>>            // set it To the version info Of the program, if available
+75537>>>>>            If (ghoApplication <> 0) Begin
+75539>>>>>                Get phoVersionInfo of ghoApplication to hoVersionInfo
+75540>>>>>                If (hoVersionInfo <> 0) Begin
+75542>>>>>                    Get pbIncluded of hoVersionInfo to bIncluded
+75543>>>>>                    If (bIncluded) Begin
+75545>>>>>                        Get piVersionMajor of hoVersionInfo to iMajor
+75546>>>>>                        Get piVersionMinor of hoVersionInfo to iMinor
+75547>>>>>                        Get piVersionRelease of hoVersionInfo to iRelease
+75548>>>>>                        Get piVersionBuild of hoVersionInfo to iBuild
+75549>>>>>                        Move (SFormat (C_$VERSION + ": %1.%2.%3.%4", iMajor, iMinor, iRelease, iBuild)) to sLabel
+75550>>>>>                        Set Version to sLabel
+75551>>>>>                    End
+75551>>>>>>
+75551>>>>>                End
+75551>>>>>>
+75551>>>>>            End
+75551>>>>>>
+75551>>>>>        End
+75551>>>>>>
+75551>>>>>        
+75551>>>>>        Forward Send End_Construct_Object
+75553>>>>>    End_Procedure
+75554>>>>>End_Class
+75555>>>
+75555>>>//  This is the default message. It is expected that you will
+75555>>>//  create your own message to override this
+75555>>>Procedure Activate_About
+75558>>>    Send DoAbout "" "" "" "" ""
+75559>>>End_Procedure
+75560>>>
+75560>>>//  It is expected that you will send this message (most
+75560>>>//  likely from Activate_About. This creates an about object, activates it
+75560>>>//  and destroys it when done. It is not exepected that you will augment this.
+75560>>>Procedure DoAbout String sTitle String sVersion String sCopyRight String sAuthor String sBitmap
+75563>>>    Integer hoObj hoMain
+75563>>>    
+75563>>>    // create object
+75563>>>    Object About is an AboutDialog
+75565>>>        // if no title passed use the label of the main panel
+75565>>>        // (if a main panel exists).
+75565>>>        If (sTitle = "") Begin
+75567>>>            Get Main_Window of desktop to hoMain
+75568>>>            If hoMain ;                Get Label of hoMain to sTitle
+75571>>>        End
+75571>>>>
+75571>>>        Set productname to sTitle
+75572>>>        Set version     to sVersion
+75573>>>        Set copyright   to sCopyRight
+75574>>>        Set author      to sAuthor
+75575>>>        If (sBitmap <> '') ;            Set logo to sBitMap // square bitmaps of 42x42 work best
+75578>>>        Move Self to hoObj // object Id
+75579>>>    End_Object
+75580>>>    Send Popup   of hoObj    // popup the about object
+75581>>>    Send Destroy of hoObj // when done, it will be destroyed
+75582>>>End_Procedure
+75583>>>
+75583>        Use Registrations_View.vw  
+Including file: Registrations_View.vw    (C:\Projects\DF20\DFRegistrations\AppSrc\Registrations_View.vw)
+75583>>>// C:\Projects\DF20\DFRegistrations\AppSrc\Registrations_View.vw
+75583>>>// Registration Codes
+75583>>>//
+75583>>>
+75583>>>Use DFClient.pkg
+75583>>>Use DFEntry.pkg
+75583>>>Use DfCEntry.pkg
+75583>>>
+75583>>>Use cRegistrationsDataDictionary.dd
+Including file: cRegistrationsDataDictionary.dd    (C:\Projects\DF20\DFRegistrations\DDSrc\cRegistrationsDataDictionary.dd)
+75583>>>>>Use DataDict.pkg
+75583>>>>>
+75583>>>>>Open Registrations
+Including file: Registrations.fd    (C:\Projects\DF20\DFRegistrations\DDSrc\Registrations.fd)
+75585>>>>>Open Sysfile
+Including file: Sysfile.fd    (C:\Projects\DF20\DFRegistrations\DDSrc\Sysfile.fd)
+75587>>>>>
+75587>>>>>Object oProduct_Classes is a ValidationTable
+75589>>>>>    Procedure Fill_List
+75592>>>>>        Forward Send Fill_List
+75594>>>>>        Send Add_Table_Value "DataFlex"
+75595>>>>>        Send Add_Table_Value "DataFlex Reports"
+75596>>>>>    End_Procedure
+75597>>>>>End_Object
+75598>>>>>
+75598>>>>>Register_Object Registrations_sl
+75598>>>>>
+75598>>>>>Class cRegistrationsDataDictionary is a DataDictionary
+75599>>>>>    
+75599>>>>>    Procedure Construct_Object
+75601>>>>>        Forward Send Construct_Object
+75603>>>>>        Set Main_File to Registrations.File_Number
+75604>>>>>
+75604>>>>>        Set Add_System_File to Sysfile.File_Number DD_Lock_On_All
+75605>>>>>
+75605>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
+75606>>>>>        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
+75607>>>>>        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
+75608>>>>>        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
+75609>>>>>
+75609>>>>>        Set Field_Auto_Increment Field Registrations.ID to File_Field Sysfile.NextID
+75610>>>>>        Set Field_Prompt_Object Field Registrations.ID to Registrations_sl
+75611>>>>>
+75611>>>>>        Set Field_Prompt_Object Field Registrations.SN to Registrations_sl
+75612>>>>>
+75612>>>>>        Set Field_Prompt_Object Field Registrations.NAME to Registrations_sl
+75613>>>>>
+75613>>>>>        Set Field_Prompt_Object Field Registrations.USERS to Registrations_sl
+75614>>>>>
+75614>>>>>        Set Field_Value_Table Field Registrations.Product_Class to oProduct_Classes
+75615>>>>>        Set Field_Class_Name Field Registrations.Product_Class to "Combo"
+75616>>>>>        Set Field_Auto_Increment Field Registrations.Product_Class to File_Field Sysfile.NextID
+75617>>>>>
+75617>>>>>    End_Procedure
+75618>>>>>
+75618>>>>>    Procedure Field_Defaults
+75620>>>>>        Forward Send Field_Defaults
+75622>>>>>        Set Field_Changed_Value Field Registrations.Product_Class to "DataFlex"
+75623>>>>>    End_Procedure
+75624>>>>>
+75624>>>>>End_Class
+75625>>>>>
+75625>>>>>    Use Registrations.sl
+Including file: Registrations.sl    (C:\Projects\DF20\DFRegistrations\AppSrc\Registrations.sl)
+75625>>>>>>>// Registrations.sl
+75625>>>>>>>// Registrations Selections
+75625>>>>>>>
+75625>>>>>>>Use DFClient.pkg
+75625>>>>>>>Use cDbCJGridPromptList.pkg
+75625>>>>>>>Use cDbCJGridColumn.pkg
+75625>>>>>>>Use Windows.pkg
+75625>>>>>>>
+75625>>>>>>>Use cRegistrationsDataDictionary.dd
+75625>>>>>>>
+75625>>>>>>>CD_Popup_Object Registrations_sl is a dbModalPanel
+75643>>>>>>>>
+75643>>>>>>>    Set Location to 5 5
+75644>>>>>>>    Set Size to 134 423
+75645>>>>>>>    Set Label To "Registrations Selections"
+75646>>>>>>>    Set Border_Style to Border_Thick
+75647>>>>>>>    Set Minimize_Icon to False
+75648>>>>>>>
+75648>>>>>>>
+75648>>>>>>>    Object oRegistrations_DD is a cRegistrationsDataDictionary
+75650>>>>>>>    End_Object 
+75651>>>>>>>
+75651>>>>>>>    Set Main_DD To oRegistrations_DD
+75652>>>>>>>    Set Server  To oRegistrations_DD
+75653>>>>>>>
+75653>>>>>>>    Object oSelList is a cDbCJGridPromptList
+75655>>>>>>>        Set Size to 105 413
+75656>>>>>>>        Set Location to 5 5
+75657>>>>>>>        Set peAnchors to anAll
+75658>>>>>>>        Set psLayoutSection to "Registrations_sl_oSelList"
+75659>>>>>>>        Set Ordering to 1
+75660>>>>>>>        Set pbAutoServer to True
+75661>>>>>>>
+75661>>>>>>>        Object oRegistrations_ID is a cDbCJGridColumn
+75663>>>>>>>            Entry_Item Registrations.ID
+75664>>>>>>>            Set piWidth to 80
+75665>>>>>>>            Set psCaption to "ID"
+75666>>>>>>>        End_Object 
+75667>>>>>>>
+75667>>>>>>>        Object oRegistrations_SN is a cDbCJGridColumn
+75669>>>>>>>            Entry_Item Registrations.SN
+75670>>>>>>>            Set piWidth to 46
+75671>>>>>>>            Set psCaption to "SN"
+75672>>>>>>>        End_Object 
+75673>>>>>>>
+75673>>>>>>>        Object oRegistrations_NAME is a cDbCJGridColumn
+75675>>>>>>>            Entry_Item Registrations.NAME
+75676>>>>>>>            Set piWidth to 250
+75677>>>>>>>            Set psCaption to "Name"
+75678>>>>>>>        End_Object 
+75679>>>>>>>
+75679>>>>>>>        Object oRegistrations_CODE is a cDbCJGridColumn
+75681>>>>>>>            Entry_Item Registrations.CODE
+75682>>>>>>>            Set piWidth to 250
+75683>>>>>>>            Set psCaption to "Code"
+75684>>>>>>>        End_Object 
+75685>>>>>>>
+75685>>>>>>>        Object oRegistrations_USERS is a cDbCJGridColumn
+75687>>>>>>>            Entry_Item Registrations.USERS
+75688>>>>>>>            Set piWidth to 45
+75689>>>>>>>            Set psCaption to "Users"
+75690>>>>>>>        End_Object 
+75691>>>>>>>
+75691>>>>>>>
+75691>>>>>>>    End_Object 
+75692>>>>>>>
+75692>>>>>>>    Object oOk_bn is a Button
+75694>>>>>>>        Set Label to C_$OkButtonLabel
+75695>>>>>>>        Set Location to 115 260
+75696>>>>>>>        Set peAnchors to anBottomRight
+75697>>>>>>>
+75697>>>>>>>        Procedure OnClick
+75700>>>>>>>            Send OK of oSelList
+75701>>>>>>>        End_Procedure
+75702>>>>>>>
+75702>>>>>>>    End_Object 
+75703>>>>>>>
+75703>>>>>>>    Object oCancel_bn is a Button
+75705>>>>>>>        Set Label to C_$CancelButtonLabel
+75706>>>>>>>        Set Location to 115 314
+75707>>>>>>>        Set peAnchors to anBottomRight
+75708>>>>>>>
+75708>>>>>>>        Procedure OnClick
+75711>>>>>>>            Send Cancel of oSelList
+75712>>>>>>>        End_Procedure
+75713>>>>>>>
+75713>>>>>>>    End_Object 
+75714>>>>>>>
+75714>>>>>>>    Object oSearch_bn is a Button
+75716>>>>>>>        Set Label to C_$SearchButtonLabel
+75717>>>>>>>        Set Location to 115 368
+75718>>>>>>>        Set peAnchors to anBottomRight
+75719>>>>>>>
+75719>>>>>>>        Procedure OnClick
+75722>>>>>>>            Send Search of oSelList
+75723>>>>>>>        End_Procedure
+75724>>>>>>>
+75724>>>>>>>    End_Object 
+75725>>>>>>>
+75725>>>>>>>    On_Key Key_Alt+C_$OkAcceleratorKey Send KeyAction of oOk_bn
+75726>>>>>>>    On_Key Key_Alt+C_$CancelAcceleratorKey Send KeyAction of oCancel_bn
+75727>>>>>>>    On_Key Key_Alt+C_$SearchAcceleratorKey Send KeyAction of oSearch_bn
+75728>>>>>>>
+75728>>>>>>>
+75728>>>>>>>CD_End_Object // Registrations_sl
+75730>>>>>>>>
+75730>>>>>    
+75730>>>Use cDbTextEdit.pkg
+75730>>>Use Windows.pkg
+75730>>>
+75730>>>ACTIVATE_VIEW Activate_oRegistrations_View FOR oRegistrations_View
+75740>>>>
+75740>>>Object oRegistrations_View is a dbView
+75742>>>    Set Location to 5 5
+75743>>>    Set Size to 222 308
+75744>>>    Set Label To "Registration Codes"
+75745>>>    Set Border_Style to Border_Thick
+75746>>>    Set pbAutoActivate to True
+75747>>>    Set Verify_Save_msg to (RefFunc(No_Confirmation))
+75748>>>    Set Auto_Clear_DEO_State to False
+75749>>>
+75749>>>
+75749>>>    Object oRegistrations_DD is a cRegistrationsDataDictionary
+75751>>>    End_Object 
+75752>>>
+75752>>>    Set Main_DD To oRegistrations_DD
+75753>>>    Set Server  To oRegistrations_DD
+75754>>>
+75754>>>    Object oRegistrationsID is a dbForm
+75756>>>        Entry_Item Registrations.ID
+75757>>>        Set Size to 12 54
+75758>>>        Set Location to 5 53
+75759>>>        Set Label to "ID"
+75760>>>        Set Label_Justification_mode to jMode_right
+75761>>>        Set Label_Col_Offset to 2
+75762>>>        Set Label_row_Offset to 0
+75763>>>    End_Object 
+75764>>>
+75764>>>    Object oRegistrationsSN is a dbForm
+75766>>>        Entry_Item Registrations.SN
+75767>>>        Set Size to 12 54
+75768>>>        Set Location to 19 53
+75769>>>        Set Label to "SN"
+75770>>>        Set Label_Justification_mode to jMode_right
+75771>>>        Set Label_Col_Offset to 2
+75772>>>        Set Label_row_Offset to 0
+75773>>>    End_Object 
+75774>>>
+75774>>>    Object oRegistrationsNAME is a dbForm
+75776>>>        Entry_Item Registrations.NAME
+75777>>>        Set Size to 12 250
+75778>>>        Set Location to 33 53
+75779>>>        Set peAnchors to anTopLeftRight
+75780>>>        Set Label to "NAME"
+75781>>>        Set Label_Justification_mode to jMode_right
+75782>>>        Set Label_Col_Offset to 2
+75783>>>        Set Label_row_Offset to 0
+75784>>>    End_Object 
+75785>>>
+75785>>>    Object oRegistrationsCODE is a dbForm
+75787>>>        Entry_Item Registrations.CODE
+75788>>>        Set Size to 12 250
+75789>>>        Set Location to 47 53
+75790>>>        Set peAnchors to anTopLeftRight
+75791>>>        Set Label to "CODE"
+75792>>>        Set Label_Justification_mode to jMode_right
+75793>>>        Set Label_Col_Offset to 2
+75794>>>        Set Label_row_Offset to 0
+75795>>>    End_Object 
+75796>>>
+75796>>>    Object oRegistrationsUSERS is a dbForm
+75798>>>        Entry_Item Registrations.USERS
+75799>>>        Set Size to 12 54
+75800>>>        Set Location to 61 53
+75801>>>        Set Label to "USERS"
+75802>>>        Set Label_Justification_mode to jMode_right
+75803>>>        Set Label_Col_Offset to 2
+75804>>>        Set Label_row_Offset to 0
+75805>>>    End_Object 
+75806>>>
+75806>>>    Object oRegistrationsProduct_Class is a dbComboForm
+75808>>>        Entry_Item Registrations.Product_Class
+75809>>>        Set Size to 12 199
+75810>>>        Set Location to 75 53
+75811>>>        Set peAnchors to anTopLeftRight
+75812>>>        Set Label to "Product Class"
+75813>>>        Set Label_Justification_mode to jMode_right
+75814>>>        Set Label_Col_Offset to 2
+75815>>>        Set Label_row_Offset to 0
+75816>>>        Set Entry_State to False
+75817>>>    End_Object 
+75818>>>
+75818>>>    Object oRegistrationsProduct_Name is a dbForm
+75820>>>        Entry_Item Registrations.Product_Name
+75821>>>        Set Size to 12 250
+75822>>>        Set Location to 89 53
+75823>>>        Set peAnchors to anTopLeftRight
+75824>>>        Set Label to "Product Name"
+75825>>>        Set Label_Justification_mode to jMode_right
+75826>>>        Set Label_Col_Offset to 2
+75827>>>        Set Label_row_Offset to 0
+75828>>>    End_Object 
+75829>>>
+75829>>>    Object oRegistrationsPN is a dbForm
+75831>>>        Entry_Item Registrations.PN
+75832>>>        Set Size to 12 54
+75833>>>        Set Location to 103 53
+75834>>>        Set peAnchors to anTopLeftRight
+75835>>>        Set Label to "PN"
+75836>>>        Set Label_Justification_mode to jMode_right
+75837>>>        Set Label_Col_Offset to 2
+75838>>>        Set Label_row_Offset to 0
+75839>>>    End_Object 
+75840>>>
+75840>>>    Object oDbTextEdit1 is a cDbTextEdit
+75842>>>        Entry_Item Registrations.Comments
+75843>>>        Set Size to 100 250
+75844>>>        Set Location to 118 52
+75845>>>        Set Label_Justification_Mode to JMode_Right
+75846>>>        Set Label_Row_Offset to 0
+75847>>>        Set Label to "Comments"
+75848>>>    End_Object
+75849>>>
+75849>>>    Object oCreate_IniFile_btn is a Button
+75851>>>        Set Size to 14 63
+75852>>>        Set Location to 12 171
+75853>>>        Set Label to "Create INI-file"   
+75854>>>        Set psToolTip to "Displays a popup dialog for creating an license data ini-file that can be read by the DataFlex Registration program."
+75855>>>    
+75855>>>        Procedure OnClick                       
+75858>>>            Integer iID
+75858>>>            Get Field_Current_Value of (Main_DD(Self)) Field Registrations.ID to iID
+75859>>>            Send Initialize_CreateIniFileDialog iID
+75860>>>        End_Procedure
+75861>>>    
+75861>>>    End_Object
+75862>>>
+75862>>>    On_Key Key_Ctrl+Key_S Send Request_Save
+75863>>>End_Object 
+75864>        Use CreateIniFile.dg
+Including file: CreateIniFile.dg    (C:\Projects\DF20\DFRegistrations\AppSrc\CreateIniFile.dg)
+75864>>>Use DFClient.pkg
+75864>>>Use cRegistrationsDataDictionary.dd
+75864>>>Use DFEntry.pkg
+75864>>>Use File_dlg.pkg
+75864>>>Use cApplication.pkg
+75864>>>Use GlobalFunctionsProcedures.pkg
+75864>>>Use seq_chnl.pkg
+75864>>>Use cIniFile.pkg
+75864>>>Use Windows.pkg
+75864>>>
+75864>>>Object oCreateIniFile is a dbModalPanel
+75866>>>    Set Label to "CreateIniFile"
+75867>>>    Set Size to 143 360
+75868>>>    Set piMinSize to 89 211
+75869>>>    Set Location to 12 0
+75870>>>    Set Border_Style to Border_Thick
+75871>>>
+75871>>>    Property Integer piID
+75873>>>    
+75873>>>    Object oRegistrations_DD is a cRegistrationsDataDictionary
+75875>>>    End_Object
+75876>>>
+75876>>>    Set Main_DD to oRegistrations_DD
+75877>>>    Set Server to oRegistrations_DD
+75878>>>
+75878>>>    Object oOK_btn is a Button
+75880>>>        Set Label    to "Create"
+75881>>>        Set Location to 125 252
+75882>>>        Set peAnchors to anBottomRight
+75883>>>        Set Default_State to True
+75884>>>
+75884>>>        Procedure OnClick
+75887>>>            Send CreateRegIniFile   
+75888>>>        End_Procedure 
+75889>>>        
+75889>>>        Procedure CreateRegIniFile
+75892>>>            String sFileName sSerialNo sRegName sRegCode sMsg
+75892>>>            Integer iRetval
+75892>>>            Handle hoIni hoDD
+75892>>>            
+75892>>>            Move (Main_DD(Self)) to hoDD
+75893>>>            Get Field_Current_Value of hoDD Field Registrations.SN   to sSerialNo
+75894>>>            Get Field_Current_Value of hoDD Field Registrations.NAME to sRegName
+75895>>>            Get Field_Current_Value of hoDD Field Registrations.CODE to sRegCode 
+75896>>>            If (sSerialNo = "0") Begin
+75898>>>                Send Info_Box "You need to find a Registration record first"
+75899>>>                Procedure_Return
+75900>>>            End
+75900>>>>
+75900>>>            
+75900>>>            Get Value of oIniFileName_fm to sFileName
+75901>>>            If (sFileName = "") Begin
+75903>>>                Send Info_Box "You need to specify an ini-file name first"
+75904>>>                Procedure_Return
+75905>>>            End
+75905>>>>
+75905>>>            Get YesNo_Box "Do you want to create an ini-file for the currently selected data now?\nThe ini-file can later be used by the DataFlex Registration program to easily import the license data." to iRetval
+75906>>>            If (iRetval <> MBR_Yes) Begin
+75908>>>                Procedure_Return
+75909>>>            End
+75909>>>>
+75909>>>            
+75909>>>            Move False to Err
+75910>>>            Get Create (RefClass(cIniFile)) to hoIni
+75911>>>            Set psFileName   of hoIni to sFileName
+75912>>>            Send WriteString of hoIni "DataFlex_License_Information" "Serial_Number"     sSerialNo
+75913>>>            Send WriteString of hoIni "DataFlex_License_Information" "Registration_Name" sRegName
+75914>>>            Send WriteString of hoIni "DataFlex_License_Information" "Registration_Code" sRegCode
+75915>>>            Send Destroy     of hoIni
+75916>>>            If (Err = True) Begin
+75918>>>                Move ("Sorry, the ini-file:\n" + sFileName + "\ncould not be created properly.") to sMsg
+75919>>>            End                                                                                         
+75919>>>>
+75919>>>            Else Begin
+75920>>>                Move "Success! The ini-file has been created." to sMsg
+75921>>>            End
+75921>>>>
+75921>>>            Send Info_Box sMsg
+75922>>>        End_Procedure
+75923>>>
+75923>>>    End_Object
+75924>>>
+75924>>>    Object oCancel_btn is a Button
+75926>>>        Set Size to 14 50
+75927>>>        Set Label    to "&Cancel"
+75928>>>        Set Location to 125 306
+75929>>>        Set peAnchors to anBottomRight
+75930>>>
+75930>>>        Procedure OnClick
+75933>>>           Send Close_Panel
+75934>>>        End_Procedure
+75935>>>
+75935>>>    End_Object
+75936>>>
+75936>>>    Object oInfo1_tb is a TextBox
+75938>>>        Set Auto_Size_State to False
+75939>>>        Set Size to 31 227
+75940>>>        Set Location to 6 125
+75941>>>        Set Label to "Note: Ini-files can be imported from the DataFlex License Registration program. This makes it easier than manually typing the license information."
+75942>>>        Set Justification_Mode to JMode_Left
+75943>>>    End_Object
+75944>>>
+75944>>>    Object oRegistrations_ID is a dbForm
+75946>>>        Entry_Item Registrations.ID
+75947>>>        Set Location to 15 37
+75948>>>        Set Size to 12 54
+75949>>>        Set Label to "ID:"
+75950>>>        Set Label_Justification_mode to jMode_right
+75951>>>        Set Label_Col_Offset to 2
+75952>>>        Set Label_row_Offset to 0
+75953>>>    End_Object
+75954>>>
+75954>>>    Object oRegistrations_SN is a dbForm
+75956>>>        Entry_Item Registrations.SN
+75957>>>        Set Location to 29 37
+75958>>>        Set Size to 12 78
+75959>>>        Set Label to "SN:"
+75960>>>        Set Label_Justification_mode to jMode_right
+75961>>>        Set Label_Col_Offset to 2
+75962>>>        Set Label_row_Offset to 0
+75963>>>    End_Object
+75964>>>
+75964>>>    Object oRegistrations_NAME is a dbForm
+75966>>>        Entry_Item Registrations.NAME
+75967>>>        Set Location to 43 37
+75968>>>        Set Size to 12 200
+75969>>>        Set Label to "NAME:"
+75970>>>        Set Label_Justification_mode to jMode_right
+75971>>>        Set Label_Col_Offset to 2
+75972>>>        Set Label_row_Offset to 0
+75973>>>    End_Object
+75974>>>
+75974>>>    Object oRegistrations_CODE is a dbForm
+75976>>>        Entry_Item Registrations.CODE
+75977>>>        Set Location to 57 37
+75978>>>        Set Size to 12 200
+75979>>>        Set Label to "CODE:"
+75980>>>        Set Label_Justification_mode to jMode_right
+75981>>>        Set Label_Col_Offset to 2
+75982>>>        Set Label_row_Offset to 0
+75983>>>    End_Object
+75984>>>
+75984>>>    Object oIniFileName_fm is a Form
+75986>>>        Set Size to 12 264
+75987>>>        Set Location to 88 37
+75988>>>        Set Label_Justification_Mode to JMode_Top
+75989>>>        Set Label_Col_Offset to 0
+75990>>>        Set Label to "Registration Ini-File name:"
+75991>>>        Set peAnchors to anTopLeftRight
+75992>>>    End_Object
+75993>>>
+75993>>>    Object oSelect_btn is a Button
+75995>>>        Set Size to 12 50
+75996>>>        Set Location to 88 306
+75997>>>        Set Label to "Select"
+75998>>>        Set peAnchors to anTopRight
+75999>>>    
+75999>>>        Procedure OnClick
+76002>>>            Handle ho
+76002>>>            String sPath sFileName 
+76002>>>            Boolean bOpen
+76002>>>            
+76002>>>            Get Value of oIniFileName_fm to sFileName
+76003>>>            Get ExtractFilePath sFileName to sPath 
+76004>>>            Get Create (RefClass(OpenDialog)) to ho
+76005>>>            Set Filter_String       of ho to "Ini-Files|*.ini|All Files|*.*"
+76006>>>            Set Initial_Folder      of ho to sPath  
+76007>>>            Set MultiSelect_State   of ho to False
+76008>>>            
+76008>>>            Get Show_Dialog of ho to bOpen
+76009>>>            If (bOpen = True) Begin
+76011>>>                Get File_Name of ho to sFileName
+76012>>>                Set Value of oIniFileName_fm to sFileName    
+76013>>>            End
+76013>>>>
+76013>>>            Send Destroy of ho
+76014>>>        End_Procedure
+76015>>>    
+76015>>>    End_Object                          
+76016>>>
+76016>>>    Object oInfo2_tb is a TextBox
+76018>>>        Set Auto_Size_State to False
+76019>>>        Set Size to 20 264
+76020>>>        Set Location to 108 37
+76021>>>        Set Label to "Note that a registration code for a more a recent DataFlex version also works for older versions."
+76022>>>        Set Justification_Mode to JMode_Left
+76023>>>        Set FontWeight to fw_Bold
+76024>>>    End_Object
+76025>>>    
+76025>>>    Procedure Page Integer iPageObject
+76028>>>        Forward Send Page iPageObject
+76030>>>        Set Icon to "Default.ico"    
+76031>>>    End_Procedure
+76032>>>    
+76032>>>    Procedure Popup       
+76035>>>        String sHome sPath sFileName sDFVersion
+76035>>>        Integer iVersion iRevision iBuild iID
+76035>>>        Handle hoDD
+76035>>>        
+76035>>>        Move (Main_DD(Self)) to hoDD
+76036>>>        Send Clear_All of hoDD
+76037>>>        Get piId to iID
+76038>>>        Move iID to Registrations.ID
+76039>>>        Find eq Registrations.ID
+76040>>>>
+76040>>>        Send Request_Assign of hoDD
+76041>>>
+76041>>>        Get psHome of (phoWorkspace(ghoApplication)) to sHome
+76042>>>        Version_Information iVersion iRevision iBuild
+76044>>>        Move ("DFRegistrationIniFile" + String(iVersion) + "." + String(iRevision) + ".ini") to sFileName
+76045>>>        Move (Trim(sHome) + sFileName) to sFileName
+76046>>>        Set Value of oIniFileName_fm to sFileName
+76047>>>        
+76047>>>        Forward Send Popup    
+76049>>>    End_Procedure
+76050>>>
+76050>>>    On_Key Key_Alt+Key_O Send KeyAction of oOk_btn
+76051>>>    On_Key Key_Alt+Key_C Send KeyAction of oCancel_btn
+76052>>>    On_Key kCancel       Send Close_Panel
+76053>>>End_Object
+76054>>>
+76054>>>Procedure Initialize_CreateIniFileDialog Integer iID
+76057>>>    Handle ho
+76057>>>    
+76057>>>    Move (oCreateIniFile(Self)) to ho
+76058>>>    
+76058>>>    Set piID of ho to iID
+76059>>>    Send Popup of ho
+76060>>>End_Procedure
+76061>
+76061>        Procedure Activate_About
+76064>            Send DoAbout ("Program:" * psProduct(ghoApplication)) ("Version:" * psVersion(ghoApplication)) ("Copyright:" * psCompany(ghoApplication)) "Author: Nils Svedmyr" ""
+76065>        End_Procedure
+76066>
+76066>    End_Object
+76067>
+76067>End_Object
+76068>
+76068>Start_UI
+76069>
+Summary
+Memory Available: 102155456512
+Total Warnings : 0
+Total Errors   : 0
+Total Symbols  : 43873
+Total Resources: 0
+Total Commands : 76068
+Total Windows  : 0
+Total Pages    : 0
+Static Data    : 540714
+Message area   : 530174
+Total Blocks   : 28568
