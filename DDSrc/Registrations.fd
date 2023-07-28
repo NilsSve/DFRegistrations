@@ -1,0 +1,11 @@
+#REPLACE FILE10 Registrations
+#REPLACE Registrations.Recnum |FN10,0
+#REPLACE Registrations.ID |FN10,1
+#REPLACE Registrations.SN |FN10,2
+#REPLACE Registrations.NAME |FS10,3
+#REPLACE Registrations.CODE |FS10,4
+#REPLACE Registrations.USERS |FN10,5
+#REPLACE Registrations.Product_Class |FS10,6
+#REPLACE Registrations.Product_Name |FS10,7
+#REPLACE Registrations.PN |FS10,8
+#REPLACE Registrations.Comments |FS10,9

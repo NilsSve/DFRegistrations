@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<DataDictionaryList xmlns="http://www.dataaccess.com/VisualDataFlex/2008/DataDictionaryList/">
+	<Tables>
+		<Table>
+			<tableNumber>1</tableNumber>
+			<tableName>Sysfile</tableName>
+			<DDClasses>
+				<DDClass>
+					<className>cSysfileDataDictionary</className>
+					<classFile>cSysfileDataDictionary.dd</classFile>
+					<preferred>true</preferred>
+				</DDClass>
+			</DDClasses>
+		</Table>
+		<Table>
+			<tableNumber>10</tableNumber>
+			<tableName>Registrations</tableName>
+			<DDClasses>
+				<DDClass>
+					<className>cRegistrationsDataDictionary</className>
+					<classFile>cRegistrationsDataDictionary.dd</classFile>
+					<preferred>true</preferred>
+				</DDClass>
+			</DDClasses>
+		</Table>
+	</Tables>
+</DataDictionaryList>

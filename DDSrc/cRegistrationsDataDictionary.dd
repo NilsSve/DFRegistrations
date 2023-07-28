@@ -1,0 +1,55 @@
+﻿Use DataDict.pkg
+
+Open Registrations
+Open Sysfile
+
+Object oProduct_Classes is a ValidationTable
+    Procedure Fill_List
+        Forward Send Fill_List
+        Send Add_Table_Value "DataFlex"
+        Send Add_Table_Value "DataFlex Reports"
+    End_Procedure
+End_Object
+
+Register_Object Registrations_sl
+
+Class cRegistrationsDataDictionary is a DataDictionary
+    
+    Procedure Construct_Object
+        Forward Send Construct_Object
+        Set Main_File to Registrations.File_Number
+
+        Set Add_System_File to Sysfile.File_Number DD_Lock_On_All
+
+        Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
+        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
+        Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
+        Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
+
+        Set Field_Auto_Increment Field Registrations.ID to File_Field Sysfile.NextID
+        Set Field_Prompt_Object Field Registrations.ID to Registrations_sl
+
+        Set Field_Prompt_Object Field Registrations.SN to Registrations_sl
+
+        Set Field_Prompt_Object Field Registrations.NAME to Registrations_sl
+
+        Set Field_Prompt_Object Field Registrations.USERS to Registrations_sl
+
+        Set Field_Value_Table Field Registrations.Product_Class to oProduct_Classes
+        Set Field_Class_Name Field Registrations.Product_Class to "Combo"
+        Set Field_Auto_Increment Field Registrations.Product_Class to File_Field Sysfile.NextID
+
+    End_Procedure
+
+    Procedure Field_Defaults
+        Forward Send Field_Defaults
+        Set Field_Changed_Value Field Registrations.Product_Class to "DataFlex"
+    End_Procedure
+
+End_Class
+
+    #IFDEF Is$WebApp
+    #ELSE
+    Use Registrations.sl
+    #ENDIF
+    
