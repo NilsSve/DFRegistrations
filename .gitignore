@@ -1,5 +1,7 @@
 # Files to be ignored by git in a DataFlex workspace
 
+#Home
+*.ini
 # AppHtml
 **/apphtml/global.asa
 
