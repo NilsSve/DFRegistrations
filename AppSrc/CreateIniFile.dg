@@ -10,7 +10,7 @@ Use Windows.pkg
 
 Object oCreateIniFile is a dbModalPanel
     Set Label to "CreateIniFile"
-    Set Size to 143 360
+    Set Size to 178 361
     Set piMinSize to 89 211
     Set Location to 12 0
     Set Border_Style to Border_Thick
@@ -25,7 +25,7 @@ Object oCreateIniFile is a dbModalPanel
 
     Object oOK_btn is a Button
         Set Label    to "Create"
-        Set Location to 125 252
+        Set Location to 158 252
         Set peAnchors to anBottomRight
         Set Default_State to True
 
@@ -34,7 +34,7 @@ Object oCreateIniFile is a dbModalPanel
         End_Procedure 
         
         Procedure CreateRegIniFile
-            String sFileName sSerialNo sRegName sRegCode sMsg
+            String sFileName sHeader sLicenseType sSerialNo sRegName sRegCode sMsg
             Integer iRetval
             Handle hoIni hoDD
             
@@ -42,6 +42,7 @@ Object oCreateIniFile is a dbModalPanel
             Get Field_Current_Value of hoDD Field Registrations.SN   to sSerialNo
             Get Field_Current_Value of hoDD Field Registrations.NAME to sRegName
             Get Field_Current_Value of hoDD Field Registrations.CODE to sRegCode 
+            Get Field_Current_Value of hoDD Field Registrations.Product_Class to sLicenseType 
             If (sSerialNo = "0") Begin
                 Send Info_Box "You need to find a Registration record first"
                 Procedure_Return
@@ -56,13 +57,20 @@ Object oCreateIniFile is a dbModalPanel
             If (iRetval <> MBR_Yes) Begin
                 Procedure_Return
             End
-            
+
+            If (sLicenseType = "DataFlex") Begin
+                Move "DataFlex_License_Information" to sHeader
+            End 
+            Else Begin
+                Move "DataFlex_Reports_License_Information" to sHeader
+            End
+                
             Move False to Err
             Get Create (RefClass(cIniFile)) to hoIni
             Set psFileName   of hoIni to sFileName
-            Send WriteString of hoIni "DataFlex_License_Information" "Serial_Number"     sSerialNo
-            Send WriteString of hoIni "DataFlex_License_Information" "Registration_Name" sRegName
-            Send WriteString of hoIni "DataFlex_License_Information" "Registration_Code" sRegCode
+            Send WriteString of hoIni sHeader "Serial_Number"     sSerialNo
+            Send WriteString of hoIni sHeader "Registration_Name" sRegName
+            Send WriteString of hoIni sHeader "Registration_Code" sRegCode
             Send Destroy     of hoIni
             If (Err = True) Begin
                 Move ("Sorry, the ini-file:\n" + sFileName + "\ncould not be created properly.") to sMsg
@@ -78,7 +86,7 @@ Object oCreateIniFile is a dbModalPanel
     Object oCancel_btn is a Button
         Set Size to 14 50
         Set Label    to "&Cancel"
-        Set Location to 125 306
+        Set Location to 158 306
         Set peAnchors to anBottomRight
 
         Procedure OnClick
@@ -89,55 +97,84 @@ Object oCreateIniFile is a dbModalPanel
 
     Object oInfo1_tb is a TextBox
         Set Auto_Size_State to False
-        Set Size to 31 227
-        Set Location to 6 125
+        Set Size to 31 201
+        Set Location to 6 151
         Set Label to "Note: Ini-files can be imported from the DataFlex License Registration program. This makes it easier than manually typing the license information."
         Set Justification_Mode to JMode_Left
     End_Object
 
     Object oRegistrations_ID is a dbForm
         Entry_Item Registrations.ID
-        Set Location to 15 37
+        Set Location to 15 53
         Set Size to 12 54
         Set Label to "ID:"
         Set Label_Justification_mode to jMode_right
         Set Label_Col_Offset to 2
         Set Label_row_Offset to 0
+        Set Enabled_State to False
     End_Object
 
     Object oRegistrations_SN is a dbForm
         Entry_Item Registrations.SN
-        Set Location to 29 37
+        Set Location to 29 53
         Set Size to 12 78
         Set Label to "SN:"
         Set Label_Justification_mode to jMode_right
         Set Label_Col_Offset to 2
         Set Label_row_Offset to 0
+        Set Enabled_State to False
     End_Object
 
     Object oRegistrations_NAME is a dbForm
         Entry_Item Registrations.NAME
-        Set Location to 43 37
+        Set Location to 43 53
         Set Size to 12 200
         Set Label to "NAME:"
         Set Label_Justification_mode to jMode_right
         Set Label_Col_Offset to 2
         Set Label_row_Offset to 0
+        Set Enabled_State to False
     End_Object
 
     Object oRegistrations_CODE is a dbForm
         Entry_Item Registrations.CODE
-        Set Location to 57 37
+        Set Location to 57 53
         Set Size to 12 200
         Set Label to "CODE:"
         Set Label_Justification_mode to jMode_right
         Set Label_Col_Offset to 2
         Set Label_row_Offset to 0
+        Set Enabled_State to False
     End_Object
 
+    Object oRegistrationsProduct_Class is a dbComboForm
+        Entry_Item Registrations.Product_Class
+        Set Size to 12 199
+        Set Location to 70 53
+        Set peAnchors to anTopLeftRight
+        Set Label to "Product Class"
+        Set Label_Justification_mode to jMode_right
+        Set Label_Col_Offset to 2
+        Set Label_row_Offset to 0
+        Set Entry_State to False
+        Set Enabled_State to False
+    End_Object 
+
+    Object oRegistrationsProduct_Name is a dbForm
+        Entry_Item Registrations.Product_Name
+        Set Size to 12 250
+        Set Location to 84 53
+        Set peAnchors to anTopLeftRight
+        Set Label to "Product Name"
+        Set Label_Justification_mode to jMode_right
+        Set Label_Col_Offset to 2
+        Set Label_row_Offset to 0
+        Set Enabled_State to False
+    End_Object 
+
     Object oIniFileName_fm is a Form
-        Set Size to 12 264
-        Set Location to 88 37
+        Set Size to 12 250
+        Set Location to 118 53
         Set Label_Justification_Mode to JMode_Top
         Set Label_Col_Offset to 0
         Set Label to "Registration Ini-File name:"
@@ -146,7 +183,7 @@ Object oCreateIniFile is a dbModalPanel
 
     Object oSelect_btn is a Button
         Set Size to 12 50
-        Set Location to 88 306
+        Set Location to 118 306
         Set Label to "Select"
         Set peAnchors to anTopRight
     
@@ -174,8 +211,8 @@ Object oCreateIniFile is a dbModalPanel
 
     Object oInfo2_tb is a TextBox
         Set Auto_Size_State to False
-        Set Size to 20 264
-        Set Location to 108 37
+        Set Size to 17 264
+        Set Location to 138 53
         Set Label to "Note that a registration code for a more a recent DataFlex version also works for older versions."
         Set Justification_Mode to JMode_Left
         Set FontWeight to fw_Bold
@@ -187,7 +224,7 @@ Object oCreateIniFile is a dbModalPanel
     End_Procedure
     
     Procedure Popup       
-        String sHome sPath sFileName sDFVersion
+        String sHome sPath sFileName sDFVersion sLicenseType sHeader
         Integer iVersion iRevision iBuild iID
         Handle hoDD
         
@@ -195,12 +232,23 @@ Object oCreateIniFile is a dbModalPanel
         Send Clear_All of hoDD
         Get piId to iID
         Move iID to Registrations.ID
-        Find eq Registrations.ID
+        Find eq Registrations.ID                       
         Send Request_Assign of hoDD
+        Move (Trim(Registrations.Product_Class)) to sLicenseType
+
+        If (sLicenseType = "DataFlex") Begin
+            Move "DataFlex_License_Information" to sHeader
+            Move "DFRegistrationIniFile"        to sFileName
+        End 
+        Else Begin
+            Move "DataFlex_Reports_License_Information" to sHeader
+            Move "DFReportsRegistrationIniFile"         to sFileName
+        End
+                
 
         Get psHome of (phoWorkspace(ghoApplication)) to sHome
         Version_Information iVersion iRevision iBuild
-        Move ("DFRegistrationIniFile" + String(iVersion) + "." + String(iRevision) + ".ini") to sFileName
+        Append sFileName (String(iVersion) + "." + String(iRevision) + ".ini")
         Move (Trim(sHome) + sFileName) to sFileName
         Set Value of oIniFileName_fm to sFileName
         
