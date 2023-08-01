@@ -10,7 +10,7 @@ Use Windows.pkg
 
 Object oCreateIniFile is a dbModalPanel
     Set Label to "CreateIniFile"
-    Set Size to 178 361
+    Set Size to 190 361
     Set piMinSize to 89 211
     Set Location to 12 0
     Set Border_Style to Border_Thick
@@ -25,7 +25,7 @@ Object oCreateIniFile is a dbModalPanel
 
     Object oOK_btn is a Button
         Set Label    to "Create"
-        Set Location to 158 252
+        Set Location to 170 252
         Set peAnchors to anBottomRight
         Set Default_State to True
 
@@ -34,9 +34,10 @@ Object oCreateIniFile is a dbModalPanel
         End_Procedure 
         
         Procedure CreateRegIniFile
-            String sFileName sHeader sLicenseType sSerialNo sRegName sRegCode sMsg
+            String sPath sFileName sHeader sLicenseType sSerialNo sRegName sRegCode sMsg
             Integer iRetval
-            Handle hoIni hoDD
+            Handle hoIni hoDD      
+            Boolean bSavePath bOK
             
             Move (Main_DD(Self)) to hoDD
             Get Field_Current_Value of hoDD Field Registrations.SN   to sSerialNo
@@ -64,6 +65,9 @@ Object oCreateIniFile is a dbModalPanel
             Else Begin
                 Move "DataFlex_Reports_License_Information" to sHeader
             End
+            
+            Get Checked_State of oSavePath_cb to bSavePath
+            Get SavePath bSavePath sFileName to bOK
                 
             Move False to Err
             Get Create (RefClass(cIniFile)) to hoIni
@@ -85,8 +89,8 @@ Object oCreateIniFile is a dbModalPanel
 
     Object oCancel_btn is a Button
         Set Size to 14 50
-        Set Label    to "&Cancel"
-        Set Location to 158 306
+        Set Label    to "&Close"
+        Set Location to 170 306
         Set peAnchors to anBottomRight
 
         Procedure OnClick
@@ -209,22 +213,69 @@ Object oCreateIniFile is a dbModalPanel
     
     End_Object                          
 
+    Object oSavePath_cb is a CheckBox
+        Set Size to 10 50
+        Set Location to 136 52
+        Set Label to "Save Path"
+    End_Object
+
     Object oInfo2_tb is a TextBox
         Set Auto_Size_State to False
         Set Size to 17 264
-        Set Location to 138 53
-        Set Label to "Note that a registration code for a more a recent DataFlex version also works for older versions."
+        Set Location to 149 53
+        Set Label to "Note: A registration code for a more a recent DataFlex version also works for older versions."
         Set Justification_Mode to JMode_Left
         Set FontWeight to fw_Bold
     End_Object
     
+    Function SavePath Boolean bSavePath String sFullPath Returns Boolean
+        Handle hoIni     
+        String sPath sFileName sProgramPath
+        Integer iErr
+        Boolean bRetval
+        
+        Move Err to iErr
+        Get psProgramPath of (phoWorkspace(ghoApplication)) to sProgramPath
+        Move (sProgramPath + "\Config.ini") to sFileName
+        
+        Get ExtractFilePath sFullPath to sPath
+        Get Create (RefClass(cIniFile)) to hoIni
+        Set psFileName   of hoIni to sFileName
+        Send WriteString of hoIni "Save Path" "bSavePath" (If(bSavePath = True, "T", "F"))
+        Send WriteString of hoIni "Save Path" "Path" sPath
+        Send Destroy     of hoIni
+        
+        Move (Err = iErr) to bRetval
+        Move iErr to Err
+        Function_Return bRetval
+    End_Function
+
+    Function ReadPath Returns String
+        Handle hoIni     
+        String sPath sFileName sProgramPath sState
+        
+        Move "" to sPath
+        Get psProgramPath of (phoWorkspace(ghoApplication)) to sProgramPath
+        Move (sProgramPath + "\Config.ini") to sFileName
+        
+        Get Create (RefClass(cIniFile)) to hoIni
+        Set psFileName  of hoIni to sFileName
+        Get ReadString  of hoIni "Save Path" "bSavePath" "F" to sState
+        If (sState = "T") Begin
+            Get ReadString  of hoIni "Save Path" "Path"      ""  to sPath
+        End
+        Send Destroy of hoIni
+        
+        Function_Return sPath
+    End_Function
+
     Procedure Page Integer iPageObject
         Forward Send Page iPageObject
         Set Icon to "Default.ico"    
     End_Procedure
     
     Procedure Popup       
-        String sHome sPath sFileName sDFVersion sLicenseType sHeader
+        String sPath sFileName sDFVersion sLicenseType sHeader
         Integer iVersion iRevision iBuild iID
         Handle hoDD
         
@@ -244,12 +295,18 @@ Object oCreateIniFile is a dbModalPanel
             Move "DataFlex_Reports_License_Information" to sHeader
             Move "DFReportsRegistrationIniFile"         to sFileName
         End
-                
-
-        Get psHome of (phoWorkspace(ghoApplication)) to sHome
+        
+        Get ReadPath to sPath
+        If (sPath = "") Begin
+            Get psHome of (phoWorkspace(ghoApplication)) to sPath
+        End
+        Else Begin
+            Set Checked_State of oSavePath_cb to True
+        End                                          
+        
         Version_Information iVersion iRevision iBuild
         Append sFileName (String(iVersion) + "." + String(iRevision) + ".ini")
-        Move (Trim(sHome) + sFileName) to sFileName
+        Move (Trim(sPath) + sFileName) to sFileName
         Set Value of oIniFileName_fm to sFileName
         
         Forward Send Popup    
