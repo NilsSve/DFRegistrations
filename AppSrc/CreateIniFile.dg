@@ -260,7 +260,7 @@ Object oCreateIniFile is a dbModalPanel
         
         Get Create (RefClass(cIniFile)) to hoIni
         Set psFileName  of hoIni to sFileName
-        Get ReadString  of hoIni "Save Path" "bSavePath" "F" to sState
+        Get ReadString  of hoIni "Save Path" "bSavePath" "T" to sState
         If (sState = "T") Begin
             Get ReadString  of hoIni "Save Path" "Path"      ""  to sPath
         End
