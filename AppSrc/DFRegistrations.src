@@ -117,87 +117,87 @@ Object oMain is a Panel
                 End_Object
             End_Object
             
-            Object oReportMenu is a cCJMenuItem
-                Set peControlType to xtpControlPopup          
-                Set psCaption to "&Report"
-                Set psToolTip to "Report"
-                Set psDescription to "Available Reports"
-            End_Object
+//            Object oReportMenu is a cCJMenuItem
+//                Set peControlType to xtpControlPopup          
+//                Set psCaption to "&Report"
+//                Set psToolTip to "Report"
+//                Set psDescription to "Available Reports"
+//            End_Object
 
-            Object oNavigateMenu is a cCJMenuItem
-                Set peControlType to xtpControlPopup      
-                Set psCaption to "&Navigate"    
-                Set psTooltip to "Navigate"    
-                Set psDescription to "Move to different areas of the application"
+//            Object oNavigateMenu is a cCJMenuItem
+//                Set peControlType to xtpControlPopup      
+//                Set psCaption to "&Navigate"    
+//                Set psTooltip to "Navigate"    
+//                Set psDescription to "Move to different areas of the application"
+//
+//                Object oNextAreaMenu is a cCJNextAreaMenu
+//                End_Object
+//
+//                Object oPriorAreaMenu is a cCJPriorAreaMenu
+//                End_Object
+//
+//                Object oNextViewMenu is a cCJNextViewMenu
+//                End_Object
+//
+//                Object oPriorViewMenu is a cCJPriorViewMenu
+//                End_Object
+//
+//                Object oPromptMenu is a cCJPromptMenuItem
+//                    Set pbControlBeginGroup to True
+//                End_Object
+//
+//                Object oZoomMenu is a cCJZoomMenuItem
+//                End_Object
+//
+//            End_Object
 
-                Object oNextAreaMenu is a cCJNextAreaMenu
-                End_Object
-
-                Object oPriorAreaMenu is a cCJPriorAreaMenu
-                End_Object
-
-                Object oNextViewMenu is a cCJNextViewMenu
-                End_Object
-
-                Object oPriorViewMenu is a cCJPriorViewMenu
-                End_Object
-
-                Object oPromptMenu is a cCJPromptMenuItem
-                    Set pbControlBeginGroup to True
-                End_Object
-
-                Object oZoomMenu is a cCJZoomMenuItem
-                End_Object
-
-            End_Object
-
-            Object oWindowMenu is a cCJMDIWindowsMenuItem
-                Set peControlType to xtpControlPopup
-                Set psCaption to "&Window"
-                Set psToolTip to "Window"
-                Set psDescription to "Display Current Views and set other display options."    
-
-                // These are the static windows items. More will be created in onInitPopup 
-                Object oDisplayOptionsMenu is a cCJMenuItem
-                    Set peControlType to xtpControlPopup          
-                    Set psCaption to "&Display Options"
-                    Set psToolTip to "Display Options"
-                    Set psDescription to "Set display options"
-
-                    Object oStatusbarMenu is a cCJStatusbarMenuItem
-                    End_Object
-
-                    Object oAutoArrangeIconsMenu is a cCJAutoArrangeIconsMenuItem
-                    End_Object
-
-                    Object oRestoreMenusMenu is a cCJRestoreMenusMenuItem
-                        Set pbControlBeginGroup to True
-                    End_Object
-
-                End_Object
-
-                Object oCascadeMenu is a cCJCascadeMenuItem
-                    Set pbControlBeginGroup to True
-                End_Object
-
-                Object oHorizTile is a cCJTileHorizontally
-                End_Object
-
-                Object oVertTile is a cCJTileVertically
-                End_Object
-
-                Object oMinimizeMenuItem is a cCJMinimizeWindowsMenuItem
-                    Set pbControlBeginGroup to True
-                End_Object
-
-                Object oRestoreMenuItem is a cCJRestoreWindowsMenuItem
-                End_Object
-
-                Object oArrangeIconsMenuItem is a cCJAutoArrangeIconsMenuItem
-                    Set pbControlBeginGroup to True
-                End_Object
-
-            End_Object
+//            Object oWindowMenu is a cCJMDIWindowsMenuItem
+//                Set peControlType to xtpControlPopup
+//                Set psCaption to "&Window"
+//                Set psToolTip to "Window"
+//                Set psDescription to "Display Current Views and set other display options."    
+//
+//                // These are the static windows items. More will be created in onInitPopup 
+//                Object oDisplayOptionsMenu is a cCJMenuItem
+//                    Set peControlType to xtpControlPopup          
+//                    Set psCaption to "&Display Options"
+//                    Set psToolTip to "Display Options"
+//                    Set psDescription to "Set display options"
+//
+//                    Object oStatusbarMenu is a cCJStatusbarMenuItem
+//                    End_Object
+//
+//                    Object oAutoArrangeIconsMenu is a cCJAutoArrangeIconsMenuItem
+//                    End_Object
+//
+//                    Object oRestoreMenusMenu is a cCJRestoreMenusMenuItem
+//                        Set pbControlBeginGroup to True
+//                    End_Object
+//
+//                End_Object
+//
+//                Object oCascadeMenu is a cCJCascadeMenuItem
+//                    Set pbControlBeginGroup to True
+//                End_Object
+//
+//                Object oHorizTile is a cCJTileHorizontally
+//                End_Object
+//
+//                Object oVertTile is a cCJTileVertically
+//                End_Object
+//
+//                Object oMinimizeMenuItem is a cCJMinimizeWindowsMenuItem
+//                    Set pbControlBeginGroup to True
+//                End_Object
+//
+//                Object oRestoreMenuItem is a cCJRestoreWindowsMenuItem
+//                End_Object
+//
+//                Object oArrangeIconsMenuItem is a cCJAutoArrangeIconsMenuItem
+//                    Set pbControlBeginGroup to True
+//                End_Object
+//
+//            End_Object
 
             Object oHelpMenu is a cCJMenuItem
                 Set peControlType to xtpControlPopup    
@@ -205,8 +205,8 @@ Object oMain is a Panel
                 Set psDescription to "Access Information for learning and using this DataFlex application."
                 Set psToolTip to "Help"
 
-                Object oHelpMenuItem is a cCJHelpMenuItem 
-                End_Object
+//                Object oHelpMenuItem is a cCJHelpMenuItem 
+//                End_Object
 
                 Object oAboutMenuItem is a cCJAboutMenuItem
                 End_Object

@@ -10,7 +10,7 @@ Use Windows.pkg
 
 Object oCreateIniFile is a dbModalPanel
     Set Label to "CreateIniFile"
-    Set Size to 190 361
+    Set Size to 218 378
     Set piMinSize to 89 211
     Set Location to 12 0
     Set Border_Style to Border_Thick
@@ -25,7 +25,7 @@ Object oCreateIniFile is a dbModalPanel
 
     Object oOK_btn is a Button
         Set Label    to "Create"
-        Set Location to 170 252
+        Set Location to 198 266
         Set peAnchors to anBottomRight
         Set Default_State to True
 
@@ -90,7 +90,7 @@ Object oCreateIniFile is a dbModalPanel
     Object oCancel_btn is a Button
         Set Size to 14 50
         Set Label    to "&Close"
-        Set Location to 170 306
+        Set Location to 198 320
         Set peAnchors to anBottomRight
 
         Procedure OnClick
@@ -99,86 +99,9 @@ Object oCreateIniFile is a dbModalPanel
 
     End_Object
 
-    Object oInfo1_tb is a TextBox
-        Set Auto_Size_State to False
-        Set Size to 31 201
-        Set Location to 6 151
-        Set Label to "Note: Ini-files can be imported from the DataFlex License Registration program. This makes it easier than manually typing the license information."
-        Set Justification_Mode to JMode_Left
-    End_Object
-
-    Object oRegistrations_ID is a dbForm
-        Entry_Item Registrations.ID
-        Set Location to 15 53
-        Set Size to 12 54
-        Set Label to "ID:"
-        Set Label_Justification_mode to jMode_right
-        Set Label_Col_Offset to 2
-        Set Label_row_Offset to 0
-        Set Enabled_State to False
-    End_Object
-
-    Object oRegistrations_SN is a dbForm
-        Entry_Item Registrations.SN
-        Set Location to 29 53
-        Set Size to 12 78
-        Set Label to "SN:"
-        Set Label_Justification_mode to jMode_right
-        Set Label_Col_Offset to 2
-        Set Label_row_Offset to 0
-        Set Enabled_State to False
-    End_Object
-
-    Object oRegistrations_NAME is a dbForm
-        Entry_Item Registrations.NAME
-        Set Location to 43 53
-        Set Size to 12 200
-        Set Label to "NAME:"
-        Set Label_Justification_mode to jMode_right
-        Set Label_Col_Offset to 2
-        Set Label_row_Offset to 0
-        Set Enabled_State to False
-    End_Object
-
-    Object oRegistrations_CODE is a dbForm
-        Entry_Item Registrations.CODE
-        Set Location to 57 53
-        Set Size to 12 200
-        Set Label to "CODE:"
-        Set Label_Justification_mode to jMode_right
-        Set Label_Col_Offset to 2
-        Set Label_row_Offset to 0
-        Set Enabled_State to False
-    End_Object
-
-    Object oRegistrationsProduct_Class is a dbComboForm
-        Entry_Item Registrations.Product_Class
-        Set Size to 12 199
-        Set Location to 70 53
-        Set peAnchors to anTopLeftRight
-        Set Label to "Product Class"
-        Set Label_Justification_mode to jMode_right
-        Set Label_Col_Offset to 2
-        Set Label_row_Offset to 0
-        Set Entry_State to False
-        Set Enabled_State to False
-    End_Object 
-
-    Object oRegistrationsProduct_Name is a dbForm
-        Entry_Item Registrations.Product_Name
-        Set Size to 12 250
-        Set Location to 84 53
-        Set peAnchors to anTopLeftRight
-        Set Label to "Product Name"
-        Set Label_Justification_mode to jMode_right
-        Set Label_Col_Offset to 2
-        Set Label_row_Offset to 0
-        Set Enabled_State to False
-    End_Object 
-
     Object oIniFileName_fm is a Form
-        Set Size to 12 250
-        Set Location to 118 53
+        Set Size to 12 247
+        Set Location to 143 68
         Set Label_Justification_Mode to JMode_Top
         Set Label_Col_Offset to 0
         Set Label to "Registration Ini-File name:"
@@ -187,7 +110,7 @@ Object oCreateIniFile is a dbModalPanel
 
     Object oSelect_btn is a Button
         Set Size to 12 50
-        Set Location to 118 306
+        Set Location to 143 320
         Set Label to "Select"
         Set peAnchors to anTopRight
     
@@ -215,17 +138,94 @@ Object oCreateIniFile is a dbModalPanel
 
     Object oSavePath_cb is a CheckBox
         Set Size to 10 50
-        Set Location to 136 52
+        Set Location to 161 68
         Set Label to "Save Path"
     End_Object
 
     Object oInfo2_tb is a TextBox
         Set Auto_Size_State to False
         Set Size to 17 264
-        Set Location to 149 53
+        Set Location to 174 68
         Set Label to "Note: A registration code for a more a recent DataFlex version also works for older versions."
         Set Justification_Mode to JMode_Left
         Set FontWeight to fw_Bold
+    End_Object
+
+    Object oDataInfo_grp is a dbGroup
+        Set Size to 114 357
+        Set Location to 6 11
+        Set Label to "Data Record Info"
+
+        Object oInfo1_tb is a TextBox
+            Set Auto_Size_State to False
+            Set Size to 31 187
+            Set Location to 12 153
+            Set Label to "Note: Ini-files can be imported from the DataFlex License Registration program. This makes it easier than manually typing the license information."
+            Set Justification_Mode to JMode_Left
+        End_Object
+        Object oRegistrations_ID is a dbForm
+            Entry_Item Registrations.ID
+            Set Location to 21 55
+            Set Size to 12 54
+            Set Label to "ID:"
+            Set Label_Justification_mode to jMode_right
+            Set Label_Col_Offset to 2
+            Set Label_row_Offset to 0
+            Set Enabled_State to False
+        End_Object
+        Object oRegistrations_SN is a dbForm
+            Entry_Item Registrations.SN
+            Set Location to 35 55
+            Set Size to 12 78
+            Set Label to "SN:"
+            Set Label_Justification_mode to jMode_right
+            Set Label_Col_Offset to 2
+            Set Label_row_Offset to 0
+            Set Enabled_State to False
+        End_Object
+        Object oRegistrations_NAME is a dbForm
+            Entry_Item Registrations.NAME
+            Set Location to 49 55
+            Set Size to 12 200
+            Set Label to "NAME:"
+            Set Label_Justification_mode to jMode_right
+            Set Label_Col_Offset to 2
+            Set Label_row_Offset to 0
+            Set Enabled_State to False
+        End_Object
+        Object oRegistrations_CODE is a dbForm
+            Entry_Item Registrations.CODE
+            Set Location to 63 55
+            Set Size to 12 200
+            Set Label to "CODE:"
+            Set Label_Justification_mode to jMode_right
+            Set Label_Col_Offset to 2
+            Set Label_row_Offset to 0
+            Set Enabled_State to False
+        End_Object
+        Object oRegistrationsProduct_Class is a dbComboForm
+            Entry_Item Registrations.Product_Class
+            Set Size to 12 199
+            Set Location to 76 55
+            Set peAnchors to anTopLeftRight
+            Set Label to "Product Class"
+            Set Label_Justification_mode to jMode_right
+            Set Label_Col_Offset to 2
+            Set Label_row_Offset to 0
+            Set Entry_State to False
+            Set Enabled_State to False
+        End_Object 
+        Object oRegistrationsProduct_Name is a dbForm
+            Entry_Item Registrations.Product_Name
+            Set Size to 12 250
+            Set Location to 90 55
+            Set peAnchors to anTopLeftRight
+            Set Label to "Product Name"
+            Set Label_Justification_mode to jMode_right
+            Set Label_Col_Offset to 2
+            Set Label_row_Offset to 0
+            Set Enabled_State to False
+        End_Object 
     End_Object
     
     Function SavePath Boolean bSavePath String sFullPath Returns Boolean
