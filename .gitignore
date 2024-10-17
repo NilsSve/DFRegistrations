@@ -14,7 +14,6 @@
 **/appsrc/**/*.pbg
 **/appsrc/**/*.pdp
 **/appsrc/**/*.pkd
-**/appsrc/**/*.prn
 **/appsrc/**/*.prp
 
 # Data
@@ -39,3 +38,23 @@
 **/programs/*.exe
 **/programs/*.exe.manifest
 **/programs/*.log
+Data - Copy/CodeMast.dat
+Data - Copy/CodeMast.hdr
+Data - Copy/codemast.k1
+Data - Copy/CodeMast.tag
+Data - Copy/CodeType.dat
+Data - Copy/CodeType.hdr
+Data - Copy/codetype.k1
+Data - Copy/CodeType.tag
+Data - Copy/Filelist.cfg
+Data - Copy/registrations.dat
+Data - Copy/registrations.hdr
+Data - Copy/registrations.k1
+Data - Copy/registrations.k2
+Data - Copy/registrations.k3
+Data - Copy/registrations.k4
+Data - Copy/registrations.k5
+Data - Copy/registrations.k6
+Data - Copy/registrations.tag
+Data - Copy/sysfile.dat
+Data - Copy/sysfile.hdr
