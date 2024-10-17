@@ -85,10 +85,10 @@ Object oRegistrations_View is a dbView
         Set Location to 75 53
         Set peAnchors to anTopLeftRight
         Set Label to "Product Class"
-        Set Label_Justification_mode to jMode_right
+        Set Label_Justification_mode to JMode_Right
         Set Label_Col_Offset to 2
         Set Label_row_Offset to 0
-        Set Entry_State to False
+//        Set Entry_State to False
     End_Object 
 
     Object oRegistrationsProduct_Name is a dbForm
@@ -127,10 +127,16 @@ Object oRegistrations_View is a dbView
         Set Location to 12 171
         Set Label to "Create INI-file"   
         Set psToolTip to "Displays a popup dialog for creating an license data ini-file that can be read by the DataFlex Registration program."
+        Set FontWeight to fw_Bold
     
         Procedure OnClick                       
             Integer iID
             Get Field_Current_Value of (Main_DD(Self)) Field Registrations.ID to iID
+            If (iID = 0) Begin
+                Send Info_Box "Please select a record first."
+                Send Activate of oRegistrationsID
+                Procedure_Return
+            End
             Send Initialize_CreateIniFileDialog iID
         End_Procedure
     
