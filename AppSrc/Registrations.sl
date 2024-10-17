@@ -32,13 +32,13 @@ CD_Popup_Object Registrations_sl is a dbModalPanel
 
         Object oRegistrations_ID is a cDbCJGridColumn
             Entry_Item Registrations.ID
-            Set piWidth to 80
+            Set piWidth to 40
             Set psCaption to "ID"
         End_Object 
 
         Object oRegistrations_SN is a cDbCJGridColumn
             Entry_Item Registrations.SN
-            Set piWidth to 46
+            Set piWidth to 80
             Set psCaption to "SN"
         End_Object 
 
@@ -59,7 +59,6 @@ CD_Popup_Object Registrations_sl is a dbModalPanel
             Set piWidth to 45
             Set psCaption to "Users"
         End_Object 
-
 
     End_Object 
 
@@ -99,6 +98,4 @@ CD_Popup_Object Registrations_sl is a dbModalPanel
     On_Key Key_Alt+C_$OkAcceleratorKey Send KeyAction of oOk_bn
     On_Key Key_Alt+C_$CancelAcceleratorKey Send KeyAction of oCancel_bn
     On_Key Key_Alt+C_$SearchAcceleratorKey Send KeyAction of oSearch_bn
-
-
-CD_End_Object // Registrations_sl
+Cd_End_Object

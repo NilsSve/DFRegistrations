@@ -4,6 +4,7 @@ Open Registrations
 Open Sysfile
 
 Object oProduct_Classes is a ValidationTable
+    Set Table_Title to "Product Class"
     Procedure Fill_List
         Forward Send Fill_List
         Send Add_Table_Value "DataFlex"
@@ -37,13 +38,16 @@ Class cRegistrationsDataDictionary is a DataDictionary
 
         Set Field_Value_Table Field Registrations.Product_Class to oProduct_Classes
         Set Field_Class_Name Field Registrations.Product_Class to "Combo"
-        Set Field_Auto_Increment Field Registrations.Product_Class to File_Field Sysfile.NextID
 
     End_Procedure
 
     Procedure Field_Defaults
         Forward Send Field_Defaults
         Set Field_Changed_Value Field Registrations.Product_Class to "DataFlex"
+    End_Procedure 
+    
+    Procedure Creating
+        Forward Send Creating
     End_Procedure
 
 End_Class
