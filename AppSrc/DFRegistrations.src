@@ -8,7 +8,7 @@ Object oApplication is a cApplication
     Set peHelpType to htHtmlHelp
     Set psCompany to "RDC Tools International"
     Set psProduct to "DFRegistrations"
-    Set psVersion to "2023"
+    Set psVersion to "2025"
     
     Object oConnection is a cConnection
         Use LoginEncryption.pkg
