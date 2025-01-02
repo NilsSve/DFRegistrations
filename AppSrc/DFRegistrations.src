@@ -27,7 +27,7 @@ Use oDEOEditContextMenu17.pkg
 Object oMain is a Panel
     Set Label to "DataFlex Registration Ini-file Creator"
     Set Location to 4 3
-    Set Size to 300 667
+    Set Size to 300 566
 
     Object oCommandBarSystem is a cCJCommandBarSystem
         Set pbTimerUpdate to True
