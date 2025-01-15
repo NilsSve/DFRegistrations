@@ -1,9 +1,0 @@
-ID
-SN
-NAME
-CODE
-USERS
-Product_Class
-Product_Name
-PN
-Comments
